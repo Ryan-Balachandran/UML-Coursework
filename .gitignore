@@ -63,3 +63,6 @@ Thumbs.db
 *.blg
 *.log
 *.pdf
+*.csv
+*.zip
+*.tar.gz
