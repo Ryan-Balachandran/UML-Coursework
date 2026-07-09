@@ -1,0 +1,2605 @@
+%!PS-Adobe-3.0
+%%BoundingBox: 50 50 562 742
+%%Title: Enscript Output
+%%Creator: GNU Enscript 1.6.5.90
+%%CreationDate: Wed May  1 22:13:11 2019
+%%Orientation: Portrait
+%%Pages: (atend)
+%%DocumentMedia: Letter 612 792 0 () ()
+%%DocumentNeededResources: (atend)
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset Enscript-Prolog 1.6.5 90
+%
+% Procedures.
+%
+
+/_S {	% save current state
+  /_s save def
+} def
+/_R {	% restore from saved state
+  _s restore
+} def
+
+/S {	% showpage protecting gstate
+  gsave
+  showpage
+  grestore
+} bind def
+
+/MF {	% fontname newfontname -> -	make a new encoded font
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  % insert only valid encoding vectors
+  encoding_vector length 256 eq {
+    newfont /Encoding encoding_vector put
+  } if
+
+  newfontname newfont definefont pop
+} def
+
+/MF_PS { % fontname newfontname -> -	make a new font preserving its enc
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  newfontname newfont definefont pop
+} def
+
+/SF { % fontname width height -> -	set a new font
+  /height exch def
+  /width exch def
+
+  findfont
+  [width 0 0 height 0 0] makefont setfont
+} def
+
+/SUF { % fontname width height -> -	set a new user font
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF
+  /F-gs-user-font width height SF
+} def
+
+/SUF_PS { % fontname width height -> -	set a new user font preserving its enc
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF_PS
+  /F-gs-user-font width height SF
+} def
+
+/M {moveto} bind def
+/s {show} bind def
+
+/Box {	% x y w h -> -			define box path
+  /d_h exch def /d_w exch def /d_y exch def /d_x exch def
+  d_x d_y  moveto
+  d_w 0 rlineto
+  0 d_h rlineto
+  d_w neg 0 rlineto
+  closepath
+} def
+
+/bgs {	% x y height blskip gray str -> -	show string with bg color
+  /str exch def
+  /gray exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    gray setgray
+    fill
+  grestore
+  x y M str s
+} def
+
+/bgcs { % x y height blskip red green blue str -> -  show string with bg color
+  /str exch def
+  /blue exch def
+  /green exch def
+  /red exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    red green blue setrgbcolor
+    fill
+  grestore
+  x y M str s
+} def
+
+% Highlight bars.
+/highlight_bars {	% nlines lineheight output_y_margin gray -> -
+  gsave
+    setgray
+    /ymarg exch def
+    /lineheight exch def
+    /nlines exch def
+
+    % This 2 is just a magic number to sync highlight lines to text.
+    0 d_header_y ymarg sub 2 sub translate
+
+    /cw d_output_w cols div def
+    /nrows d_output_h ymarg 2 mul sub lineheight div cvi def
+
+    % for each column
+    0 1 cols 1 sub {
+      cw mul /xp exch def
+
+      % for each rows
+      0 1 nrows 1 sub {
+        /rn exch def
+        rn lineheight mul neg /yp exch def
+        rn nlines idiv 2 mod 0 eq {
+	  % Draw highlight bar.  4 is just a magic indentation.
+	  xp 4 add yp cw 8 sub lineheight neg Box fill
+	} if
+      } for
+    } for
+
+  grestore
+} def
+
+% Line highlight bar.
+/line_highlight {	% x y width height gray -> -
+  gsave
+    /gray exch def
+    Box gray setgray fill
+  grestore
+} def
+
+% Column separator lines.
+/column_lines {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h translate
+    /cw d_output_w cols div def
+    1 1 cols 1 sub {
+      cw mul 0 moveto
+      0 d_output_h rlineto stroke
+    } for
+  grestore
+} def
+
+% Column borders.
+/column_borders {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h moveto
+    0 d_output_h rlineto
+    d_output_w 0 rlineto
+    0 d_output_h neg rlineto
+    closepath stroke
+  grestore
+} def
+
+% Do the actual underlay drawing
+/draw_underlay {
+  ul_style 0 eq {
+    ul_str true charpath stroke
+  } {
+    ul_str show
+  } ifelse
+} def
+
+% Underlay
+/underlay {	% - -> -
+  gsave
+    0 d_page_h translate
+    d_page_h neg d_page_w atan rotate
+
+    ul_gray setgray
+    ul_font setfont
+    /dw d_page_h dup mul d_page_w dup mul add sqrt def
+    ul_str stringwidth pop dw exch sub 2 div ul_h_ptsize -2 div moveto
+    draw_underlay
+  grestore
+} def
+
+/user_underlay {	% - -> -
+  gsave
+    ul_x ul_y translate
+    ul_angle rotate
+    ul_gray setgray
+    ul_font setfont
+    0 0 ul_h_ptsize 2 div sub moveto
+    draw_underlay
+  grestore
+} def
+
+% Page prefeed
+/page_prefeed {		% bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} def
+
+% Wrapped line markers
+/wrapped_line_mark {	% x y charwith charheight type -> -
+  /type exch def
+  /h exch def
+  /w exch def
+  /y exch def
+  /x exch def
+
+  type 2 eq {
+    % Black boxes (like TeX does)
+    gsave
+      0 setlinewidth
+      x w 4 div add y M
+      0 h rlineto w 2 div 0 rlineto 0 h neg rlineto
+      closepath fill
+    grestore
+  } {
+    type 3 eq {
+      % Small arrows
+      gsave
+        .2 setlinewidth
+        x w 2 div add y h 2 div add M
+        w 4 div 0 rlineto
+        x w 4 div add y lineto stroke
+
+        x w 4 div add w 8 div add y h 4 div add M
+        x w 4 div add y lineto
+	w 4 div h 8 div rlineto stroke
+      grestore
+    } {
+      % do nothing
+    } ifelse
+  } ifelse
+} def
+
+% EPSF import.
+
+/BeginEPSF {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack
+  userdict begin
+  /showpage { } def
+  0 setgray 0 setlinecap
+  1 setlinewidth 0 setlinejoin
+  10 setmiterlimit [ ] 0 setdash newpath
+  /languagelevel where {
+    pop languagelevel
+    1 ne {
+      false setstrokeadjust false setoverprint
+    } if
+  } if
+} bind def
+
+/EndEPSF {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+%%EndResource
+%%BeginResource: procset Enscript-Encoding-88591 1.6.5 90
+/encoding_vector [
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclam       	/quotedbl     	/numbersign   	
+/dollar       	/percent      	/ampersand    	/quoteright   	
+/parenleft    	/parenright   	/asterisk     	/plus         	
+/comma        	/hyphen       	/period       	/slash        	
+/zero         	/one          	/two          	/three        	
+/four         	/five         	/six          	/seven        	
+/eight        	/nine         	/colon        	/semicolon    	
+/less         	/equal        	/greater      	/question     	
+/at           	/A            	/B            	/C            	
+/D            	/E            	/F            	/G            	
+/H            	/I            	/J            	/K            	
+/L            	/M            	/N            	/O            	
+/P            	/Q            	/R            	/S            	
+/T            	/U            	/V            	/W            	
+/X            	/Y            	/Z            	/bracketleft  	
+/backslash    	/bracketright 	/asciicircum  	/underscore   	
+/quoteleft    	/a            	/b            	/c            	
+/d            	/e            	/f            	/g            	
+/h            	/i            	/j            	/k            	
+/l            	/m            	/n            	/o            	
+/p            	/q            	/r            	/s            	
+/t            	/u            	/v            	/w            	
+/x            	/y            	/z            	/braceleft    	
+/bar          	/braceright   	/tilde        	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclamdown   	/cent         	/sterling     	
+/currency     	/yen          	/brokenbar    	/section      	
+/dieresis     	/copyright    	/ordfeminine  	/guillemotleft	
+/logicalnot   	/hyphen       	/registered   	/macron       	
+/degree       	/plusminus    	/twosuperior  	/threesuperior	
+/acute        	/mu           	/paragraph    	/bullet       	
+/cedilla      	/onesuperior  	/ordmasculine 	/guillemotright	
+/onequarter   	/onehalf      	/threequarters	/questiondown 	
+/Agrave       	/Aacute       	/Acircumflex  	/Atilde       	
+/Adieresis    	/Aring        	/AE           	/Ccedilla     	
+/Egrave       	/Eacute       	/Ecircumflex  	/Edieresis    	
+/Igrave       	/Iacute       	/Icircumflex  	/Idieresis    	
+/Eth          	/Ntilde       	/Ograve       	/Oacute       	
+/Ocircumflex  	/Otilde       	/Odieresis    	/multiply     	
+/Oslash       	/Ugrave       	/Uacute       	/Ucircumflex  	
+/Udieresis    	/Yacute       	/Thorn        	/germandbls   	
+/agrave       	/aacute       	/acircumflex  	/atilde       	
+/adieresis    	/aring        	/ae           	/ccedilla     	
+/egrave       	/eacute       	/ecircumflex  	/edieresis    	
+/igrave       	/iacute       	/icircumflex  	/idieresis    	
+/eth          	/ntilde       	/ograve       	/oacute       	
+/ocircumflex  	/otilde       	/odieresis    	/divide       	
+/oslash       	/ugrave       	/uacute       	/ucircumflex  	
+/udieresis    	/yacute       	/thorn        	/ydieresis    	
+] def
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Courier
+/HFpt_w 10 def
+/HFpt_h 10 def
+/Courier-Bold /HF-gs-font MF
+/HF /HF-gs-font findfont [HFpt_w 0 0 HFpt_h 0 0] makefont def
+/Courier /F-gs-font MF
+/F-gs-font 10 10 SF
+/#copies 1 def
+% Pagedevice definitions:
+gs_languagelevel 1 gt {
+  <<
+    /PageSize [612 792] 
+  >> setpagedevice
+} if
+%%BeginResource: procset Enscript-Header-simple 1.6.5 90
+
+/do_header {	% print default simple header
+  gsave
+    d_header_x d_header_y HFpt_h 3 div add translate
+
+    HF setfont
+    user_header_p {
+      5 0 moveto user_header_left_str show
+
+      d_header_w user_header_center_str stringwidth pop sub 2 div
+      0 moveto user_header_center_str show
+
+      d_header_w user_header_right_str stringwidth pop sub 5 sub
+      0 moveto user_header_right_str show
+    } {
+      5 0 moveto fname show
+      45 0 rmoveto fmodstr show
+      45 0 rmoveto pagenumstr show
+    } ifelse
+
+  grestore
+} def
+%%EndResource
+/d_page_w 512 def
+/d_page_h 692 def
+/d_header_x 0 def
+/d_header_y 677 def
+/d_header_w 512 def
+/d_header_h 15 def
+/d_footer_x 0 def
+/d_footer_y 0 def
+/d_footer_w 512 def
+/d_footer_h 0 def
+/d_output_w 512 def
+/d_output_h 677 def
+/cols 1 def
+%%EndSetup
+%%Page: (1) 1
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 1 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (1) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+30 664 M (1:) s
+48 664 M
+(#include <iostream>) s
+30 653 M (2:) s
+48 653 M
+(#include <thread>) s
+30 642 M (3:) s
+48 642 M
+(#include <condition_variable>) s
+30 631 M (4:) s
+48 631 M
+(#include <mutex>) s
+30 620 M (5:) s
+30 609 M (6:) s
+48 609 M
+(#include "AirportServer.h") s
+30 598 M (7:) s
+30 587 M (8:) s
+30 576 M (9:) s
+48 576 M
+(/**) s
+24 565 M (10:) s
+48 565 M
+(*  Called by an Airplane when it wishes to land on a runway) s
+24 554 M (11:) s
+48 554 M
+(*/) s
+24 543 M (12:) s
+48 543 M
+(void AirportServer::reserveRunway\(int airplaneNum, AirportRunways::RunwayNum) s
+5 532 M
+(ber runway\)) s
+24 521 M (13:) s
+48 521 M
+({) s
+24 510 M (14:) s
+48 510 M
+(        // Acquire runway\(s\)) s
+24 499 M (15:) s
+48 499 M
+(        {  // Begin critical region) s
+24 488 M (16:) s
+24 477 M (17:) s
+48 477 M
+(          //unique_lock<mutex> runwaysLock\(runwaysMutex\);) s
+24 466 M (18:) s
+24 455 M (19:) s
+48 455 M
+(                {) s
+24 444 M (20:) s
+48 444 M
+(                        lock_guard<mutex> lk\(AirportRunways::checkMutex\);) s
+24 433 M (21:) s
+24 422 M (22:) s
+48 422 M
+(                        cout << "-------------Airplane #" << airplaneNum << ) s
+5 411 M
+(" is acquiring any needed runway\(s\) for landing on Runway ") s
+24 400 M (23:) s
+48 400 M
+(                                 << AirportRunways::runwayName\(runway\) << en) s
+5 389 M
+(dl;) s
+24 378 M (24:) s
+48 378 M
+(                }) s
+24 367 M (25:) s
+24 356 M (26:) s
+48 356 M
+(                /**) s
+24 345 M (27:) s
+48 345 M
+(                 *  ***** Add your synchronization here! *****) s
+24 334 M (28:) s
+48 334 M
+(                 */) s
+24 323 M (29:) s
+24 312 M (30:) s
+48 312 M
+(                //##########################################################) s
+5 301 M
+(###########################################) s
+24 290 M (31:) s
+24 279 M (32:) s
+48 279 M
+(                //******************************RUNWAY 14*******************) s
+5 268 M
+(***********) s
+24 257 M (33:) s
+48 257 M
+(                if \(AirportRunways::runwayName\(runway\) == "14" && _14_occupi) s
+5 246 M
+(ed == false\)) s
+24 235 M (34:) s
+48 235 M
+(                {) s
+24 224 M (35:) s
+48 224 M
+(                  // Requested Runway 14 can be used simultaneously with any) s
+5 213 M
+( other runway) s
+24 202 M (36:) s
+48 202 M
+(                  ) s
+24 191 M (37:) s
+48 191 M
+(                  unique_lock<mutex> Runway_14\(lock_14\);) s
+24 180 M (38:) s
+48 180 M
+(                  _14_occupied = true;) s
+24 169 M (39:) s
+48 169 M
+(                }) s
+24 158 M (40:) s
+48 158 M
+(                else if \(AirportRunways::runwayName\(runway\) == "14" && _14_o) s
+5 147 M
+(ccupied == true\)) s
+24 136 M (41:) s
+48 136 M
+(                {) s
+24 125 M (42:) s
+48 125 M
+(                  // Runway 14 is occupied) s
+24 114 M (43:) s
+48 114 M
+(                  // Plane\(s\) must wait) s
+24 103 M (44:) s
+48 103 M
+(                  ) s
+24 92 M (45:) s
+48 92 M
+(                  unique_lock<mutex> Runway_14\(lock_14\);) s
+24 81 M (46:) s
+48 81 M
+(                  while \(_14_occupied == true\)) s
+24 70 M (47:) s
+48 70 M
+(                    _14.wait\(Runway_14\);) s
+24 59 M (48:) s
+48 59 M
+(                }) s
+24 48 M (49:) s
+24 37 M (50:) s
+48 37 M
+(                //******************************RUNWAY 4L*******************) s
+5 26 M
+(***********) s
+24 15 M (51:) s
+48 15 M
+(                if \(\(AirportRunways::runwayName\(runway\) == "4L" && _4L_occup) s
+5 4 M
+(ied == false && _4R_occupied == false\)) s
+_R
+S
+%%Page: (2) 2
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 2 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (2) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+24 664 M (52:) s
+48 664 M
+(                    && _15L_occupied == false && _15R_occupied == false\)) s
+24 653 M (53:) s
+48 653 M
+(                {) s
+24 642 M (54:) s
+48 642 M
+(                  // Requested Runway is 4L) s
+24 631 M (55:) s
+48 631 M
+(                  // Runway's 15L and 15R are not occupied) s
+24 620 M (56:) s
+48 620 M
+(                  ) s
+24 609 M (57:) s
+48 609 M
+(                  unique_lock<mutex> Runway_4L\(lock_4L\);) s
+24 598 M (58:) s
+48 598 M
+(                  _4L_occupied = true;) s
+24 587 M (59:) s
+48 587 M
+(                  _15L_occupied = true;) s
+24 576 M (60:) s
+48 576 M
+(                  _15R_occupied = true;) s
+24 565 M (61:) s
+48 565 M
+(                }) s
+24 554 M (62:) s
+48 554 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "4L" && _4L_) s
+5 543 M
+(occupied == false && _4R_occupied == true\)) s
+24 532 M (63:) s
+48 532 M
+(                         && _15L_occupied == false && _15R_occupied == false) s
+5 521 M
+(\)) s
+24 510 M (64:) s
+48 510 M
+(                {) s
+24 499 M (65:) s
+48 499 M
+(                  // Requested Runway is 4L) s
+24 488 M (66:) s
+48 488 M
+(                  // Runway's 15L and 15R are blocked by runwy 4R) s
+24 477 M (67:) s
+48 477 M
+(                  ) s
+24 466 M (68:) s
+48 466 M
+(                  unique_lock<mutex> Runway_4L\(lock_4L\);) s
+24 455 M (69:) s
+48 455 M
+(                  _4L_occupied = true;) s
+24 444 M (70:) s
+48 444 M
+(                }) s
+24 433 M (71:) s
+48 433 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "4L" && _4L_) s
+5 422 M
+(occupied == true && _4R_occupied == false\)) s
+24 411 M (72:) s
+48 411 M
+(                         && _15L_occupied == false && _15R_occupied == false) s
+5 400 M
+(\)) s
+24 389 M (73:) s
+48 389 M
+(                {) s
+24 378 M (74:) s
+48 378 M
+(                  // Runway 4L is occupied) s
+24 367 M (75:) s
+48 367 M
+(                  // Plane\(s\) must wait) s
+24 356 M (76:) s
+48 356 M
+(                  ) s
+24 345 M (77:) s
+48 345 M
+(                  unique_lock<mutex> Runway_4L\(lock_4L\);) s
+24 334 M (78:) s
+48 334 M
+(                  while \(_4L_occupied == true\)) s
+24 323 M (79:) s
+48 323 M
+(                    _4L.wait\(Runway_4L\);) s
+24 312 M (80:) s
+48 312 M
+(                }) s
+24 301 M (81:) s
+48 301 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "4L" && _4L_) s
+5 290 M
+(occupied == true && _4R_occupied == true\)) s
+24 279 M (82:) s
+48 279 M
+(                         && _15L_occupied == false && _15R_occupied == false) s
+5 268 M
+(\)) s
+24 257 M (83:) s
+48 257 M
+(                {) s
+24 246 M (84:) s
+48 246 M
+(                  // Runway 4L is occupied) s
+24 235 M (85:) s
+48 235 M
+(                  // Plane\(s\) must wait) s
+24 224 M (86:) s
+48 224 M
+(                  ) s
+24 213 M (87:) s
+48 213 M
+(                  unique_lock<mutex> Runway_4L\(lock_4L\);) s
+24 202 M (88:) s
+48 202 M
+(                  while \(_4L_occupied == true\)) s
+24 191 M (89:) s
+48 191 M
+(                    _4L.wait\(Runway_4L\);) s
+24 180 M (90:) s
+48 180 M
+(                }) s
+24 169 M (91:) s
+48 169 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "4L" && _4L_) s
+5 158 M
+(occupied == true\)) s
+24 147 M (92:) s
+48 147 M
+(                         && _15L_occupied == true || _15R_occupied == true\)) s
+24 136 M (93:) s
+48 136 M
+(                {) s
+24 125 M (94:) s
+48 125 M
+(                  if \(_15L_occupied == true && _15R_occupied == false\)) s
+24 114 M (95:) s
+48 114 M
+(                  {) s
+24 103 M (96:) s
+48 103 M
+(                    unique_lock<mutex> Runway_15L\(lock_15L\);) s
+24 92 M (97:) s
+48 92 M
+(                    while \(_15L_occupied == true\)) s
+24 81 M (98:) s
+48 81 M
+(                      _15L.wait\(Runway_15L\);) s
+24 70 M (99:) s
+48 70 M
+(                  }) s
+18 59 M (100:) s
+48 59 M
+(                  else if \(_15L_occupied == false && _15R_occupied == true\)) s
+18 48 M (101:) s
+48 48 M
+(                  {) s
+18 37 M (102:) s
+48 37 M
+(                    unique_lock<mutex> Runway_15R\(lock_15R\);) s
+18 26 M (103:) s
+48 26 M
+(                    while \(_15R_occupied == true\)) s
+18 15 M (104:) s
+48 15 M
+(                      _15R.wait\(Runway_15R\);) s
+18 4 M (105:) s
+48 4 M
+(                  }) s
+_R
+S
+%%Page: (3) 3
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 3 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (3) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (106:) s
+48 664 M
+(                  else if \(_15L_occupied == true && _15R_occupied == true\)) s
+18 653 M (107:) s
+48 653 M
+(                  {) s
+18 642 M (108:) s
+48 642 M
+(                    unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 631 M (109:) s
+48 631 M
+(                    while \(_15L_occupied == true\)) s
+18 620 M (110:) s
+48 620 M
+(                      _15L.wait\(Runway_15L\);) s
+18 609 M (111:) s
+48 609 M
+(                  }) s
+18 598 M (112:) s
+48 598 M
+(                }) s
+18 587 M (113:) s
+18 576 M (114:) s
+48 576 M
+(                //******************************RUNWAY 4R*******************) s
+5 565 M
+(***********) s
+18 554 M (115:) s
+48 554 M
+(                if \(\(AirportRunways::runwayName\(runway\) == "4R" && _4R_occup) s
+5 543 M
+(ied == false && _4L_occupied == false\)) s
+18 532 M (116:) s
+48 532 M
+(                    && _15L_occupied == false && _15R_occupied == false && _) s
+5 521 M
+(9_occupied == false\)) s
+18 510 M (117:) s
+48 510 M
+(                {) s
+18 499 M (118:) s
+48 499 M
+(                  // Requested Runway is 4R) s
+18 488 M (119:) s
+48 488 M
+(                  // Runway's 15L and 15R are not occupied) s
+18 477 M (120:) s
+48 477 M
+(                  ) s
+18 466 M (121:) s
+48 466 M
+(                  unique_lock<mutex> Runway_4R\(lock_4R\);) s
+18 455 M (122:) s
+48 455 M
+(                  _4R_occupied = true;) s
+18 444 M (123:) s
+48 444 M
+(                  _15L_occupied = true;) s
+18 433 M (124:) s
+48 433 M
+(                  _15R_occupied = true;) s
+18 422 M (125:) s
+48 422 M
+(                  _9_occupied = true;) s
+18 411 M (126:) s
+48 411 M
+(                }) s
+18 400 M (127:) s
+48 400 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "4R" && _4R_) s
+5 389 M
+(occupied == false && _4L_occupied == true\)) s
+18 378 M (128:) s
+48 378 M
+(                         && _15L_occupied == false && _15R_occupied == false) s
+5 367 M
+( && _9_occupied == false\)) s
+18 356 M (129:) s
+48 356 M
+(                {) s
+18 345 M (130:) s
+48 345 M
+(                  // Requested Runway is 4R) s
+18 334 M (131:) s
+48 334 M
+(                  // Runway's 15L and 15R are blocked by runwy 4L) s
+18 323 M (132:) s
+48 323 M
+(                  ) s
+18 312 M (133:) s
+48 312 M
+(                  unique_lock<mutex> Runway_4R\(lock_4R\);) s
+18 301 M (134:) s
+48 301 M
+(                  _4R_occupied = true;) s
+18 290 M (135:) s
+48 290 M
+(                  _9_occupied = true;) s
+18 279 M (136:) s
+48 279 M
+(                }) s
+18 268 M (137:) s
+48 268 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "4R" && _4R_) s
+5 257 M
+(occupied == true && _4L_occupied == false\)) s
+18 246 M (138:) s
+48 246 M
+(                         && _15L_occupied == false && _15R_occupied == false) s
+5 235 M
+( && _9_occupied == false\)) s
+18 224 M (139:) s
+48 224 M
+(                {) s
+18 213 M (140:) s
+48 213 M
+(                  // Runway 4R is occupied) s
+18 202 M (141:) s
+48 202 M
+(                  // Plane\(s\) must wait) s
+18 191 M (142:) s
+48 191 M
+(                  ) s
+18 180 M (143:) s
+48 180 M
+(                  unique_lock<mutex> Runway_4R\(lock_4R\);) s
+18 169 M (144:) s
+48 169 M
+(                  while \(_4R_occupied == true\)) s
+18 158 M (145:) s
+48 158 M
+(                    _4R.wait\(Runway_4R\);) s
+18 147 M (146:) s
+48 147 M
+(                }) s
+18 136 M (147:) s
+48 136 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "4R" && _4R_) s
+5 125 M
+(occupied == true && _4L_occupied == true\)) s
+18 114 M (148:) s
+48 114 M
+(                         && _15L_occupied == false && _15R_occupied == false) s
+5 103 M
+( && _9_occupied == false\)) s
+18 92 M (149:) s
+48 92 M
+(                {) s
+18 81 M (150:) s
+48 81 M
+(                  // Runway 4R is occupied) s
+18 70 M (151:) s
+48 70 M
+(                  // Plane\(s\) must wait) s
+18 59 M (152:) s
+48 59 M
+(                  ) s
+18 48 M (153:) s
+48 48 M
+(                  unique_lock<mutex> Runway_4R\(lock_4R\);) s
+18 37 M (154:) s
+48 37 M
+(                  while \(_4R_occupied == true\)) s
+18 26 M (155:) s
+48 26 M
+(                    _4R.wait\(Runway_4R\);) s
+18 15 M (156:) s
+48 15 M
+(                }) s
+18 4 M (157:) s
+48 4 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "4R" && _4R_) s
+_R
+S
+%%Page: (4) 4
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 4 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (4) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+5 664 M
+(occupied == true\)) s
+18 653 M (158:) s
+48 653 M
+(                         && _15L_occupied == true || _15R_occupied == true |) s
+5 642 M
+(| _9_occupied == true\)) s
+18 631 M (159:) s
+48 631 M
+(                {) s
+18 620 M (160:) s
+48 620 M
+(                  if \(_15L_occupied == true && _15R_occupied == false && _9_) s
+5 609 M
+(occupied == false\)) s
+18 598 M (161:) s
+48 598 M
+(                  {) s
+18 587 M (162:) s
+48 587 M
+(                    unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 576 M (163:) s
+48 576 M
+(                    while \(_15L_occupied == true\)) s
+18 565 M (164:) s
+48 565 M
+(                      _15L.wait\(Runway_15L\);) s
+18 554 M (165:) s
+48 554 M
+(                  }) s
+18 543 M (166:) s
+48 543 M
+(                  else if \(_15L_occupied == false && _15R_occupied == true &) s
+5 532 M
+(& _9_occupied == false\)) s
+18 521 M (167:) s
+48 521 M
+(                  {) s
+18 510 M (168:) s
+48 510 M
+(                    unique_lock<mutex> Runway_15R\(lock_15R\);) s
+18 499 M (169:) s
+48 499 M
+(                    while \(_15R_occupied == true\)) s
+18 488 M (170:) s
+48 488 M
+(                      _15R.wait\(Runway_15R\);) s
+18 477 M (171:) s
+48 477 M
+(                  }) s
+18 466 M (172:) s
+48 466 M
+(                  else if \(_15L_occupied == true && _15R_occupied == true &&) s
+5 455 M
+( _9_occupied == false\)) s
+18 444 M (173:) s
+48 444 M
+(                  {) s
+18 433 M (174:) s
+48 433 M
+(                    unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 422 M (175:) s
+48 422 M
+(                    while \(_15L_occupied == true\)) s
+18 411 M (176:) s
+48 411 M
+(                      _15L.wait\(Runway_15L\);) s
+18 400 M (177:) s
+48 400 M
+(                  }) s
+18 389 M (178:) s
+48 389 M
+(                  else if \(_15L_occupied == true && _15R_occupied == false &) s
+5 378 M
+(& _9_occupied == true\)) s
+18 367 M (179:) s
+48 367 M
+(                  {) s
+18 356 M (180:) s
+48 356 M
+(                    unique_lock<mutex> Runway_9\(lock_9\);) s
+18 345 M (181:) s
+48 345 M
+(                    while \(_9_occupied == true\)) s
+18 334 M (182:) s
+48 334 M
+(                      _9.wait\(Runway_9\);) s
+18 323 M (183:) s
+48 323 M
+(                  }) s
+18 312 M (184:) s
+48 312 M
+(                }) s
+18 301 M (185:) s
+18 290 M (186:) s
+48 290 M
+(                //******************************RUNWAY 15L******************) s
+5 279 M
+(************) s
+18 268 M (187:) s
+48 268 M
+(                if \(\(AirportRunways::runwayName\(runway\) == "15L" && _15L_occ) s
+5 257 M
+(upied == false && _15R_occupied == false\)) s
+18 246 M (188:) s
+48 246 M
+(                    && _4L_occupied == false && _4R_occupied == false && _9_) s
+5 235 M
+(occupied == false\)) s
+18 224 M (189:) s
+48 224 M
+(                {) s
+18 213 M (190:) s
+48 213 M
+(                  // Requested Runway is 15L) s
+18 202 M (191:) s
+48 202 M
+(                  // Runway's 4L and 4R are not occupied) s
+18 191 M (192:) s
+48 191 M
+(                  ) s
+18 180 M (193:) s
+48 180 M
+(                  unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 169 M (194:) s
+48 169 M
+(                  _15L_occupied = true;) s
+18 158 M (195:) s
+48 158 M
+(                  _4L_occupied = true;) s
+18 147 M (196:) s
+48 147 M
+(                  _4R_occupied = true;) s
+18 136 M (197:) s
+48 136 M
+(                }) s
+18 125 M (198:) s
+48 125 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "15L" && _15) s
+5 114 M
+(L_occupied == false && _15R_occupied == true\)) s
+18 103 M (199:) s
+48 103 M
+(                    && _4L_occupied == false && _4R_occupied == false && _9_) s
+5 92 M
+(occupied == false\)) s
+18 81 M (200:) s
+48 81 M
+(                {) s
+18 70 M (201:) s
+48 70 M
+(                  // Requested Runway is 15L) s
+18 59 M (202:) s
+48 59 M
+(                  // Runway's 4L and 4R are blocked by runwy 15R) s
+18 48 M (203:) s
+48 48 M
+(                  ) s
+18 37 M (204:) s
+48 37 M
+(                  unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 26 M (205:) s
+48 26 M
+(                  _15L_occupied = true;) s
+18 15 M (206:) s
+48 15 M
+(                }) s
+18 4 M (207:) s
+48 4 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "15L" && _15) s
+_R
+S
+%%Page: (5) 5
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 5 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (5) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+5 664 M
+(L_occupied == true && _15R_occupied == false\)) s
+18 653 M (208:) s
+48 653 M
+(                    && _4L_occupied == false && _4R_occupied == false && _9_) s
+5 642 M
+(occupied == false\)) s
+18 631 M (209:) s
+48 631 M
+(                {) s
+18 620 M (210:) s
+48 620 M
+(                  // Runway 15L is occupied) s
+18 609 M (211:) s
+48 609 M
+(                  // Plane\(s\) must wait) s
+18 598 M (212:) s
+48 598 M
+(                  ) s
+18 587 M (213:) s
+48 587 M
+(                  unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 576 M (214:) s
+48 576 M
+(                  while \(_15L_occupied == true\)) s
+18 565 M (215:) s
+48 565 M
+(                    _15L.wait\(Runway_15L\);) s
+18 554 M (216:) s
+48 554 M
+(                }) s
+18 543 M (217:) s
+48 543 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "15L" && _15) s
+5 532 M
+(L_occupied == true && _15R_occupied == true\)) s
+18 521 M (218:) s
+48 521 M
+(                    && _4L_occupied == false && _4R_occupied == false && _9_) s
+5 510 M
+(occupied == false\)) s
+18 499 M (219:) s
+48 499 M
+(                {) s
+18 488 M (220:) s
+48 488 M
+(                  // Runway 15L is occupied) s
+18 477 M (221:) s
+48 477 M
+(                  // Plane\(s\) must wait) s
+18 466 M (222:) s
+48 466 M
+(                  ) s
+18 455 M (223:) s
+48 455 M
+(                  unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 444 M (224:) s
+48 444 M
+(                  while \(_15L_occupied == true\)) s
+18 433 M (225:) s
+48 433 M
+(                    _15L.wait\(Runway_15L\);) s
+18 422 M (226:) s
+48 422 M
+(                }) s
+18 411 M (227:) s
+48 411 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "15L" && _15) s
+5 400 M
+(L_occupied == false && _15R_occupied == false\)) s
+18 389 M (228:) s
+48 389 M
+(                    && _4L_occupied == false && _4R_occupied == false && _9_) s
+5 378 M
+(occupied == true\)) s
+18 367 M (229:) s
+48 367 M
+(                {) s
+18 356 M (230:) s
+48 356 M
+(                  // Requested Runway is 15L) s
+18 345 M (231:) s
+48 345 M
+(                  // Runway's 4L and 4R are not occupied) s
+18 334 M (232:) s
+48 334 M
+(                  // Runway 15L may be used simultaneously with runway 9) s
+18 323 M (233:) s
+48 323 M
+(                  ) s
+18 312 M (234:) s
+48 312 M
+(                  unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 301 M (235:) s
+48 301 M
+(                  _15L_occupied = true;) s
+18 290 M (236:) s
+48 290 M
+(                  _4L_occupied = true;) s
+18 279 M (237:) s
+48 279 M
+(                }) s
+18 268 M (238:) s
+48 268 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "15L" && _15) s
+5 257 M
+(L_occupied == true && _15R_occupied == false\)) s
+18 246 M (239:) s
+48 246 M
+(                    && _4L_occupied == false && _4R_occupied == false && _9_) s
+5 235 M
+(occupied == true\)) s
+18 224 M (240:) s
+48 224 M
+(                {) s
+18 213 M (241:) s
+48 213 M
+(                  // Runway 15L is occupied) s
+18 202 M (242:) s
+48 202 M
+(                  // Plane\(s\) must wait) s
+18 191 M (243:) s
+48 191 M
+(                  ) s
+18 180 M (244:) s
+48 180 M
+(                  unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 169 M (245:) s
+48 169 M
+(                  while \(_15L_occupied == true\)) s
+18 158 M (246:) s
+48 158 M
+(                    _15L.wait\(Runway_15L\);) s
+18 147 M (247:) s
+48 147 M
+(                }) s
+18 136 M (248:) s
+48 136 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "15L" && _15) s
+5 125 M
+(L_occupied == true\)) s
+18 114 M (249:) s
+48 114 M
+(                         && _4L_occupied == true || _4R_occupied == true\)) s
+18 103 M (250:) s
+48 103 M
+(                {) s
+18 92 M (251:) s
+48 92 M
+(                  if \(_4L_occupied == true && _4R_occupied == false\)) s
+18 81 M (252:) s
+48 81 M
+(                  {) s
+18 70 M (253:) s
+48 70 M
+(                    unique_lock<mutex> Runway_4L\(lock_4L\);) s
+18 59 M (254:) s
+48 59 M
+(                    while \(_4L_occupied == true\)) s
+18 48 M (255:) s
+48 48 M
+(                      _4L.wait\(Runway_4L\);) s
+18 37 M (256:) s
+48 37 M
+(                  }) s
+18 26 M (257:) s
+48 26 M
+(                  else if \(_4L_occupied == false && _4R_occupied == true\)) s
+18 15 M (258:) s
+48 15 M
+(                  {) s
+18 4 M (259:) s
+48 4 M
+(                    unique_lock<mutex> Runway_4R\(lock_4R\);) s
+_R
+S
+%%Page: (6) 6
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 6 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (6) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (260:) s
+48 664 M
+(                    while \(_4R_occupied == true\)) s
+18 653 M (261:) s
+48 653 M
+(                      _4R.wait\(Runway_4R\);) s
+18 642 M (262:) s
+48 642 M
+(                  }) s
+18 631 M (263:) s
+48 631 M
+(                  else if \(_15L_occupied == true && _15R_occupied == true\)) s
+18 620 M (264:) s
+48 620 M
+(                  {) s
+18 609 M (265:) s
+48 609 M
+(                    unique_lock<mutex> Runway_4L\(lock_4L\);) s
+18 598 M (266:) s
+48 598 M
+(                    while \(_4L_occupied == true\)) s
+18 587 M (267:) s
+48 587 M
+(                      _4L.wait\(Runway_4L\);) s
+18 576 M (268:) s
+48 576 M
+(                  }) s
+18 565 M (269:) s
+48 565 M
+(                }) s
+18 554 M (270:) s
+18 543 M (271:) s
+48 543 M
+(                //******************************RUNWAY 15R******************) s
+5 532 M
+(************) s
+18 521 M (272:) s
+48 521 M
+(                if \(\(AirportRunways::runwayName\(runway\) == "15R" && _15R_occ) s
+5 510 M
+(upied == false && _15L_occupied == false\)) s
+18 499 M (273:) s
+48 499 M
+(                    && _4L_occupied == false && _4R_occupied == false && _9_) s
+5 488 M
+(occupied == false\)) s
+18 477 M (274:) s
+48 477 M
+(                {) s
+18 466 M (275:) s
+48 466 M
+(                  // Requested Runway is 15R) s
+18 455 M (276:) s
+48 455 M
+(                  // Runway's 4L and 4R are not occupied) s
+18 444 M (277:) s
+48 444 M
+(                  ) s
+18 433 M (278:) s
+48 433 M
+(                  unique_lock<mutex> Runway_15R\(lock_15R\);) s
+18 422 M (279:) s
+48 422 M
+(                  _15R_occupied = true;) s
+18 411 M (280:) s
+48 411 M
+(                  _4L_occupied = true;) s
+18 400 M (281:) s
+48 400 M
+(                  _4R_occupied = true;) s
+18 389 M (282:) s
+48 389 M
+(                  _9_occupied = true;) s
+18 378 M (283:) s
+48 378 M
+(                }) s
+18 367 M (284:) s
+48 367 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "15R" && _15) s
+5 356 M
+(R_occupied == false && _15L_occupied == true\)) s
+18 345 M (285:) s
+48 345 M
+(                    && _4L_occupied == false && _4R_occupied == false && _9_) s
+5 334 M
+(occupied == false\)) s
+18 323 M (286:) s
+48 323 M
+(                {) s
+18 312 M (287:) s
+48 312 M
+(                  // Requested Runway is 15R) s
+18 301 M (288:) s
+48 301 M
+(                  // Runway's 4L and 4R are blocked by runwy 15L) s
+18 290 M (289:) s
+48 290 M
+(                  ) s
+18 279 M (290:) s
+48 279 M
+(                  unique_lock<mutex> Runway_15R\(lock_15R\);) s
+18 268 M (291:) s
+48 268 M
+(                  _15R_occupied = true;) s
+18 257 M (292:) s
+48 257 M
+(                  _9_occupied = true;) s
+18 246 M (293:) s
+48 246 M
+(                }) s
+18 235 M (294:) s
+48 235 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "15R" && _15) s
+5 224 M
+(R_occupied == true && _15L_occupied == false\)) s
+18 213 M (295:) s
+48 213 M
+(                    && _4L_occupied == false && _4R_occupied == false && _9_) s
+5 202 M
+(occupied == false\)) s
+18 191 M (296:) s
+48 191 M
+(                {) s
+18 180 M (297:) s
+48 180 M
+(                  // Runway 15R is occupied) s
+18 169 M (298:) s
+48 169 M
+(                  // Plane\(s\) must wait) s
+18 158 M (299:) s
+48 158 M
+(                  ) s
+18 147 M (300:) s
+48 147 M
+(                  unique_lock<mutex> Runway_15R\(lock_15R\);) s
+18 136 M (301:) s
+48 136 M
+(                  while \(_15R_occupied == true\)) s
+18 125 M (302:) s
+48 125 M
+(                    _15R.wait\(Runway_15R\);) s
+18 114 M (303:) s
+48 114 M
+(                }) s
+18 103 M (304:) s
+48 103 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "15R" && _15) s
+5 92 M
+(R_occupied == true && _15L_occupied == true\)) s
+18 81 M (305:) s
+48 81 M
+(                    && _4L_occupied == false && _4R_occupied == false && _9_) s
+5 70 M
+(occupied == false\)) s
+18 59 M (306:) s
+48 59 M
+(                {) s
+18 48 M (307:) s
+48 48 M
+(                  // Runway 15R is occupied) s
+18 37 M (308:) s
+48 37 M
+(                  // Plane\(s\) must wait) s
+18 26 M (309:) s
+48 26 M
+(                  ) s
+18 15 M (310:) s
+48 15 M
+(                  unique_lock<mutex> Runway_15R\(lock_15R\);) s
+18 4 M (311:) s
+48 4 M
+(                  while \(_15R_occupied == true\)) s
+_R
+S
+%%Page: (7) 7
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 7 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (7) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (312:) s
+48 664 M
+(                    _15R.wait\(Runway_15R\);) s
+18 653 M (313:) s
+48 653 M
+(                }) s
+18 642 M (314:) s
+48 642 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "15R" && _15) s
+5 631 M
+(R_occupied == true\)) s
+18 620 M (315:) s
+48 620 M
+(                         && _4L_occupied == true || _4R_occupied == true || ) s
+5 609 M
+(_9_occupied == true\)) s
+18 598 M (316:) s
+48 598 M
+(                {) s
+18 587 M (317:) s
+48 587 M
+(                  if \(_4L_occupied == true && _4R_occupied == false && _9_oc) s
+5 576 M
+(cupied == false\)) s
+18 565 M (318:) s
+48 565 M
+(                  {) s
+18 554 M (319:) s
+48 554 M
+(                    unique_lock<mutex> Runway_4L\(lock_4L\);) s
+18 543 M (320:) s
+48 543 M
+(                    while \(_4L_occupied == true\)) s
+18 532 M (321:) s
+48 532 M
+(                      _4L.wait\(Runway_4L\);) s
+18 521 M (322:) s
+48 521 M
+(                  }) s
+18 510 M (323:) s
+48 510 M
+(                  else if \(_4L_occupied == false && _4R_occupied == true && ) s
+5 499 M
+(_9_occupied == false\)) s
+18 488 M (324:) s
+48 488 M
+(                  {) s
+18 477 M (325:) s
+48 477 M
+(                    unique_lock<mutex> Runway_4R\(lock_4R\);) s
+18 466 M (326:) s
+48 466 M
+(                    while \(_4R_occupied == true\)) s
+18 455 M (327:) s
+48 455 M
+(                      _4R.wait\(Runway_4R\);) s
+18 444 M (328:) s
+48 444 M
+(                  }) s
+18 433 M (329:) s
+48 433 M
+(                  else if \(_15L_occupied == true && _15R_occupied == true &&) s
+5 422 M
+( _9_occupied == false\)) s
+18 411 M (330:) s
+48 411 M
+(                  {) s
+18 400 M (331:) s
+48 400 M
+(                    unique_lock<mutex> Runway_4L\(lock_4L\);) s
+18 389 M (332:) s
+48 389 M
+(                    while \(_4L_occupied == true\)) s
+18 378 M (333:) s
+48 378 M
+(                      _4L.wait\(Runway_4L\);) s
+18 367 M (334:) s
+48 367 M
+(                  }) s
+18 356 M (335:) s
+48 356 M
+(                  else if \(_15L_occupied == false && _15R_occupied == false ) s
+5 345 M
+(&& _9_occupied == true\)) s
+18 334 M (336:) s
+48 334 M
+(                  {) s
+18 323 M (337:) s
+48 323 M
+(                    unique_lock<mutex> Runway_9\(lock_9\);) s
+18 312 M (338:) s
+48 312 M
+(                    while \(_9_occupied == true\)) s
+18 301 M (339:) s
+48 301 M
+(                      _9.wait\(Runway_9\);) s
+18 290 M (340:) s
+48 290 M
+(                  }) s
+18 279 M (341:) s
+48 279 M
+(                  else if \(_15L_occupied == true && _15R_occupied == false &) s
+5 268 M
+(& _9_occupied == true\)) s
+18 257 M (342:) s
+48 257 M
+(                  {) s
+18 246 M (343:) s
+48 246 M
+(                    unique_lock<mutex> Runway_4L\(lock_4L\);) s
+18 235 M (344:) s
+48 235 M
+(                    while \(_4L_occupied == true\)) s
+18 224 M (345:) s
+48 224 M
+(                      _4L.wait\(Runway_4L\);) s
+18 213 M (346:) s
+48 213 M
+(                  }) s
+18 202 M (347:) s
+48 202 M
+(                }) s
+18 191 M (348:) s
+18 180 M (349:) s
+48 180 M
+(                //******************************RUNWAY 9********************) s
+5 169 M
+(**********) s
+18 158 M (350:) s
+48 158 M
+(                if \(\(AirportRunways::runwayName\(runway\) == "9" && _9_occupie) s
+5 147 M
+(d == false && _15L_occupied == false\)) s
+18 136 M (351:) s
+48 136 M
+(                    && _4R_occupied == false && _15R_occupied == false\)) s
+18 125 M (352:) s
+48 125 M
+(                {) s
+18 114 M (353:) s
+48 114 M
+(                  // Requested Runway is 9) s
+18 103 M (354:) s
+48 103 M
+(                  // Runway's 4R and 15R are not occupied) s
+18 92 M (355:) s
+48 92 M
+(                  ) s
+18 81 M (356:) s
+48 81 M
+(                  unique_lock<mutex> Runway_9\(lock_9\);) s
+18 70 M (357:) s
+48 70 M
+(                  _9_occupied = true;) s
+18 59 M (358:) s
+48 59 M
+(                  _15R_occupied = true;) s
+18 48 M (359:) s
+48 48 M
+(                  _4R_occupied = true;) s
+18 37 M (360:) s
+48 37 M
+(                }) s
+18 26 M (361:) s
+48 26 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "9" && _9_oc) s
+5 15 M
+(cupied == false && _15L_occupied == true\)) s
+18 4 M (362:) s
+48 4 M
+(                    && _4R_occupied == false && _15R_occupied == false\)) s
+_R
+S
+%%Page: (8) 8
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 8 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (8) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (363:) s
+48 664 M
+(                {) s
+18 653 M (364:) s
+48 653 M
+(                  // Requested Runway is 9) s
+18 642 M (365:) s
+48 642 M
+(                  // Runway's 4R and 15R are blocked by runwy 15L) s
+18 631 M (366:) s
+48 631 M
+(                  ) s
+18 620 M (367:) s
+48 620 M
+(                  unique_lock<mutex> Runway_9\(lock_9\);) s
+18 609 M (368:) s
+48 609 M
+(                  _9_occupied = true;) s
+18 598 M (369:) s
+48 598 M
+(                  _15R_occupied = true;) s
+18 587 M (370:) s
+48 587 M
+(                }) s
+18 576 M (371:) s
+48 576 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "9" && _9_oc) s
+5 565 M
+(cupied == true && _15L_occupied == false\)) s
+18 554 M (372:) s
+48 554 M
+(                    && _4R_occupied == false && _15R_occupied == false\)) s
+18 543 M (373:) s
+48 543 M
+(                {) s
+18 532 M (374:) s
+48 532 M
+(                  // Runway 9 is occupied) s
+18 521 M (375:) s
+48 521 M
+(                  // Plane\(s\) must wait) s
+18 510 M (376:) s
+48 510 M
+(                  ) s
+18 499 M (377:) s
+48 499 M
+(                  unique_lock<mutex> Runway_9\(lock_9\);) s
+18 488 M (378:) s
+48 488 M
+(                  while \(_9_occupied == true\)) s
+18 477 M (379:) s
+48 477 M
+(                    _9.wait\(Runway_9\);) s
+18 466 M (380:) s
+48 466 M
+(                }) s
+18 455 M (381:) s
+48 455 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "9" && _9_oc) s
+5 444 M
+(cupied == true && _15L_occupied == true\)) s
+18 433 M (382:) s
+48 433 M
+(                    && _4R_occupied == false && _15R_occupied == false\)) s
+18 422 M (383:) s
+48 422 M
+(                {) s
+18 411 M (384:) s
+48 411 M
+(                  // Runway 9 is occupied) s
+18 400 M (385:) s
+48 400 M
+(                  // Plane\(s\) must wait) s
+18 389 M (386:) s
+48 389 M
+(                  ) s
+18 378 M (387:) s
+48 378 M
+(                  unique_lock<mutex> Runway_9\(lock_9\);) s
+18 367 M (388:) s
+48 367 M
+(                  while \(_9_occupied == true\)) s
+18 356 M (389:) s
+48 356 M
+(                    _9.wait\(Runway_9\);) s
+18 345 M (390:) s
+48 345 M
+(                }) s
+18 334 M (391:) s
+48 334 M
+(                else if \(\(AirportRunways::runwayName\(runway\) == "9" && _9_oc) s
+5 323 M
+(cupied == true\)) s
+18 312 M (392:) s
+48 312 M
+(                         && _4R_occupied == true || _15R_occupied == true\)) s
+18 301 M (393:) s
+48 301 M
+(                {) s
+18 290 M (394:) s
+48 290 M
+(                  if \(_4R_occupied == true && _15R_occupied == false\)) s
+18 279 M (395:) s
+48 279 M
+(                  {) s
+18 268 M (396:) s
+48 268 M
+(                    unique_lock<mutex> Runway_4R\(lock_4R\);) s
+18 257 M (397:) s
+48 257 M
+(                    while \(_4R_occupied == true\)) s
+18 246 M (398:) s
+48 246 M
+(                      _4R.wait\(Runway_4R\);) s
+18 235 M (399:) s
+48 235 M
+(                  }) s
+18 224 M (400:) s
+48 224 M
+(                  else if \(_4R_occupied == false && _15R_occupied == false\)) s
+18 213 M (401:) s
+48 213 M
+(                  {) s
+18 202 M (402:) s
+48 202 M
+(                    unique_lock<mutex> Runway_15R\(lock_15R\);) s
+18 191 M (403:) s
+48 191 M
+(                    while \(_15R_occupied == true\)) s
+18 180 M (404:) s
+48 180 M
+(                      _15R.wait\(Runway_15R\);) s
+18 169 M (405:) s
+48 169 M
+(                  }) s
+18 158 M (406:) s
+48 158 M
+(                }) s
+18 147 M (407:) s
+48 147 M
+(                ) s
+18 136 M (408:) s
+48 136 M
+(                //##########################################################) s
+5 125 M
+(###########################################) s
+18 114 M (409:) s
+18 103 M (410:) s
+48 103 M
+(                // Check status of the airport for any rule violations) s
+18 92 M (411:) s
+48 92 M
+(                AirportRunways::checkAirportStatus\(runway\);) s
+18 81 M (412:) s
+18 70 M (413:) s
+48 70 M
+(                //runwaysLock.unlock\(\);) s
+18 59 M (414:) s
+18 48 M (415:) s
+48 48 M
+(        } // End critical region) s
+18 37 M (416:) s
+18 26 M (417:) s
+48 26 M
+(        // obtain a seed from the system clock:) s
+18 15 M (418:) s
+48 15 M
+(        unsigned seed = std::chrono::system_clock::now\(\).time_since_epoch\(\).) s
+5 4 M
+(count\(\);) s
+_R
+S
+%%Page: (9) 9
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 9 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (9) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (419:) s
+48 664 M
+(        std::default_random_engine generator\(seed\);) s
+18 653 M (420:) s
+18 642 M (421:) s
+48 642 M
+(        // Taxi for a random number of milliseconds) s
+18 631 M (422:) s
+48 631 M
+(        std::uniform_int_distribution<int> taxiTimeDistribution\(1, MAX_TAXI_) s
+5 620 M
+(TIME\);) s
+18 609 M (423:) s
+48 609 M
+(        int taxiTime = taxiTimeDistribution\(generator\);) s
+18 598 M (424:) s
+18 587 M (425:) s
+48 587 M
+(        {) s
+18 576 M (426:) s
+48 576 M
+(                lock_guard<mutex> lk\(AirportRunways::checkMutex\);) s
+18 565 M (427:) s
+18 554 M (428:) s
+48 554 M
+(                cout << "-------------Airplane #" << airplaneNum << " is tax) s
+5 543 M
+(iing on Runway " << AirportRunways::runwayName\(runway\)) s
+18 532 M (429:) s
+48 532 M
+(                         << " for " << taxiTime << " milliseconds\\n";) s
+18 521 M (430:) s
+48 521 M
+(        }) s
+18 510 M (431:) s
+18 499 M (432:) s
+48 499 M
+(        std::this_thread::sleep_for\(std::chrono::milliseconds\(taxiTime\)\);) s
+18 488 M (433:) s
+18 477 M (434:) s
+48 477 M
+(} // end AirportServer::reserveRunway\(\)) s
+18 466 M (435:) s
+18 455 M (436:) s
+18 444 M (437:) s
+18 433 M (438:) s
+18 422 M (439:) s
+18 411 M (440:) s
+18 400 M (441:) s
+48 400 M
+( /**) s
+18 389 M (442:) s
+48 389 M
+(  *  Called by an Airplane when it is finished landing) s
+18 378 M (443:) s
+48 378 M
+(  */) s
+18 367 M (444:) s
+48 367 M
+(void AirportServer::releaseRunway\(int airplaneNum, AirportRunways::RunwayNum) s
+5 356 M
+(ber runway\)) s
+18 345 M (445:) s
+48 345 M
+({) s
+18 334 M (446:) s
+48 334 M
+(        // Release the landing runway and any other needed runways) s
+18 323 M (447:) s
+48 323 M
+(        { // Begin critical region) s
+18 312 M (448:) s
+18 301 M (449:) s
+48 301 M
+(          //unique_lock<mutex> runwaysLock\(runwaysMutex\);) s
+18 290 M (450:) s
+18 279 M (451:) s
+48 279 M
+(                {) s
+18 268 M (452:) s
+48 268 M
+(                        lock_guard<mutex> lk\(AirportRunways::checkMutex\);) s
+18 257 M (453:) s
+18 246 M (454:) s
+48 246 M
+(                        cout << "Airplane #" << airplaneNum << " is releasin) s
+5 235 M
+(g any needed runway\(s\) after landing on Runway ") s
+18 224 M (455:) s
+48 224 M
+(                                 << AirportRunways::runwayName\(runway\) << en) s
+5 213 M
+(dl;) s
+18 202 M (456:) s
+48 202 M
+(                }) s
+18 191 M (457:) s
+18 180 M (458:) s
+48 180 M
+(                // Update the status of the airport to indicate that the lan) s
+5 169 M
+(ding is complete) s
+18 158 M (459:) s
+48 158 M
+(                AirportRunways::finishedWithRunway\(runway\);) s
+18 147 M (460:) s
+18 136 M (461:) s
+48 136 M
+(                /**) s
+18 125 M (462:) s
+48 125 M
+(                *  ***** Add your synchronization here! *****) s
+18 114 M (463:) s
+48 114 M
+(                */) s
+18 103 M (464:) s
+18 92 M (465:) s
+48 92 M
+(                //##########################################################) s
+5 81 M
+(###########################################) s
+18 70 M (466:) s
+18 59 M (467:) s
+48 59 M
+(                //******************************RUNWAY 14*******************) s
+5 48 M
+(***********) s
+18 37 M (468:) s
+48 37 M
+(                if \(AirportRunways::runwayName\(runway\) == "14" && _14_occupi) s
+5 26 M
+(ed == true\)) s
+18 15 M (469:) s
+48 15 M
+(                {) s
+18 4 M (470:) s
+48 4 M
+(                  unique_lock<mutex> Runway_14\(lock_14\);) s
+_R
+S
+%%Page: (10) 10
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 10 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (10) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (471:) s
+48 664 M
+(                  AirportRunways::decNumLandingRequests\(\);) s
+18 653 M (472:) s
+48 653 M
+(                  _14_occupied = false;) s
+18 642 M (473:) s
+48 642 M
+(                  Runway_14.unlock\(\);) s
+18 631 M (474:) s
+48 631 M
+(                  _14.notify_one\(\);) s
+18 620 M (475:) s
+48 620 M
+(                }) s
+18 609 M (476:) s
+18 598 M (477:) s
+48 598 M
+(                //******************************RUNWAY 4L*******************) s
+5 587 M
+(***********) s
+18 576 M (478:) s
+48 576 M
+(                if \(AirportRunways::runwayName\(runway\) == "4L" && _4L_occupi) s
+5 565 M
+(ed == true && _4R_occupied == false\)) s
+18 554 M (479:) s
+48 554 M
+(                {) s
+18 543 M (480:) s
+48 543 M
+(                  unique_lock<mutex> Runway_4L\(lock_4L\);) s
+18 532 M (481:) s
+48 532 M
+(                  _4L_occupied = false;) s
+18 521 M (482:) s
+48 521 M
+(                  _15L_occupied = false;) s
+18 510 M (483:) s
+48 510 M
+(                  _15R_occupied = false;) s
+18 499 M (484:) s
+48 499 M
+(                  ) s
+18 488 M (485:) s
+48 488 M
+(                  Runway_4L.unlock\(\);) s
+18 477 M (486:) s
+48 477 M
+(                  _4L.notify_one\(\);) s
+18 466 M (487:) s
+48 466 M
+(                }) s
+18 455 M (488:) s
+48 455 M
+(                else if \(AirportRunways::runwayName\(runway\) == "4L" && _4L_o) s
+5 444 M
+(ccupied == true && _4R_occupied == true\)) s
+18 433 M (489:) s
+48 433 M
+(                {) s
+18 422 M (490:) s
+48 422 M
+(                  unique_lock<mutex> Runway_4L\(lock_4L\);) s
+18 411 M (491:) s
+48 411 M
+(                  _4L_occupied = false;) s
+18 400 M (492:) s
+48 400 M
+(                  ) s
+18 389 M (493:) s
+48 389 M
+(                  Runway_4L.unlock\(\);) s
+18 378 M (494:) s
+48 378 M
+(                  _4L.notify_one\(\);) s
+18 367 M (495:) s
+48 367 M
+(                }) s
+18 356 M (496:) s
+18 345 M (497:) s
+48 345 M
+(                //******************************RUNWAY 4R*******************) s
+5 334 M
+(***********) s
+18 323 M (498:) s
+48 323 M
+(                if \(AirportRunways::runwayName\(runway\) == "4R" && _4R_occupi) s
+5 312 M
+(ed == true && _4L_occupied == false\)) s
+18 301 M (499:) s
+48 301 M
+(                {) s
+18 290 M (500:) s
+48 290 M
+(                  unique_lock<mutex> Runway_4R\(lock_4R\);) s
+18 279 M (501:) s
+48 279 M
+(                  _4R_occupied = false;) s
+18 268 M (502:) s
+48 268 M
+(                  _15L_occupied = false;) s
+18 257 M (503:) s
+48 257 M
+(                  _15R_occupied = false;) s
+18 246 M (504:) s
+48 246 M
+(                  _9_occupied = false;) s
+18 235 M (505:) s
+48 235 M
+(                  ) s
+18 224 M (506:) s
+48 224 M
+(                  Runway_4R.unlock\(\);) s
+18 213 M (507:) s
+48 213 M
+(                  _4R.notify_one\(\);) s
+18 202 M (508:) s
+48 202 M
+(                }) s
+18 191 M (509:) s
+48 191 M
+(                else if \(AirportRunways::runwayName\(runway\) == "4L" && _4L_o) s
+5 180 M
+(ccupied == true && _4R_occupied == true\)) s
+18 169 M (510:) s
+48 169 M
+(                {) s
+18 158 M (511:) s
+48 158 M
+(                  unique_lock<mutex> Runway_4L\(lock_4L\);) s
+18 147 M (512:) s
+18 136 M (513:) s
+48 136 M
+(                  _4L_occupied = false;) s
+18 125 M (514:) s
+48 125 M
+(                  _9_occupied = false;) s
+18 114 M (515:) s
+48 114 M
+(                  ) s
+18 103 M (516:) s
+48 103 M
+(                  Runway_4L.unlock\(\);) s
+18 92 M (517:) s
+48 92 M
+(                  _4L.notify_one\(\);) s
+18 81 M (518:) s
+48 81 M
+(                }) s
+18 70 M (519:) s
+18 59 M (520:) s
+48 59 M
+(                //******************************RUNWAY 15L******************) s
+5 48 M
+(************) s
+18 37 M (521:) s
+48 37 M
+(                if \(AirportRunways::runwayName\(runway\) == "15L" && _15L_occu) s
+5 26 M
+(pied == true) s
+18 15 M (522:) s
+48 15 M
+(                    && _15R_occupied == false && _9_occupied == false\)) s
+18 4 M (523:) s
+48 4 M
+(                {) s
+_R
+S
+%%Page: (11) 11
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 11 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (11) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (524:) s
+48 664 M
+(                  unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 653 M (525:) s
+48 653 M
+(                  _15L_occupied = false;) s
+18 642 M (526:) s
+48 642 M
+(                  _4L_occupied = false;) s
+18 631 M (527:) s
+48 631 M
+(                  _4R_occupied = false;) s
+18 620 M (528:) s
+48 620 M
+(                  ) s
+18 609 M (529:) s
+48 609 M
+(                  Runway_15L.unlock\(\);) s
+18 598 M (530:) s
+48 598 M
+(                  _15L.notify_one\(\);) s
+18 587 M (531:) s
+48 587 M
+(                }) s
+18 576 M (532:) s
+48 576 M
+(                else if \(AirportRunways::runwayName\(runway\) == "15L" && _15L) s
+5 565 M
+(_occupied == true) s
+18 554 M (533:) s
+48 554 M
+(                      && _15R_occupied == true && _9_occupied == false\)) s
+18 543 M (534:) s
+48 543 M
+(                {) s
+18 532 M (535:) s
+48 532 M
+(                  unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 521 M (536:) s
+48 521 M
+(                  _15L_occupied = false;) s
+18 510 M (537:) s
+48 510 M
+(                  ) s
+18 499 M (538:) s
+48 499 M
+(                  Runway_15L.unlock\(\);) s
+18 488 M (539:) s
+48 488 M
+(                  _15L.notify_one\(\);) s
+18 477 M (540:) s
+48 477 M
+(                }) s
+18 466 M (541:) s
+48 466 M
+(                else if \(AirportRunways::runwayName\(runway\) == "15L" && _15L) s
+5 455 M
+(_occupied == true) s
+18 444 M (542:) s
+48 444 M
+(                      && _15R_occupied == false && _9_occupied == true\)) s
+18 433 M (543:) s
+48 433 M
+(                {) s
+18 422 M (544:) s
+48 422 M
+(                  unique_lock<mutex> Runway_15L\(lock_15L\);) s
+18 411 M (545:) s
+48 411 M
+(                  _15L_occupied = false;) s
+18 400 M (546:) s
+48 400 M
+(                  _4L_occupied = false;) s
+18 389 M (547:) s
+48 389 M
+(                  ) s
+18 378 M (548:) s
+48 378 M
+(                  Runway_15L.unlock\(\);) s
+18 367 M (549:) s
+48 367 M
+(                  _15L.notify_one\(\);) s
+18 356 M (550:) s
+48 356 M
+(                }) s
+18 345 M (551:) s
+18 334 M (552:) s
+48 334 M
+(                //******************************RUNWAY 15R******************) s
+5 323 M
+(************) s
+18 312 M (553:) s
+48 312 M
+(                if \(AirportRunways::runwayName\(runway\) == "15R" && _15R_occu) s
+5 301 M
+(pied == true && _15L_occupied == false\)) s
+18 290 M (554:) s
+48 290 M
+(                {) s
+18 279 M (555:) s
+48 279 M
+(                  unique_lock<mutex> Runway_15R\(lock_15R\);) s
+18 268 M (556:) s
+48 268 M
+(                  _15L_occupied = false;) s
+18 257 M (557:) s
+48 257 M
+(                  _4L_occupied = false;) s
+18 246 M (558:) s
+48 246 M
+(                  _4R_occupied = false;) s
+18 235 M (559:) s
+48 235 M
+(                  _9_occupied = false;) s
+18 224 M (560:) s
+48 224 M
+(                  ) s
+18 213 M (561:) s
+48 213 M
+(                  Runway_15R.unlock\(\);) s
+18 202 M (562:) s
+48 202 M
+(                  _15R.notify_one\(\);) s
+18 191 M (563:) s
+48 191 M
+(                }) s
+18 180 M (564:) s
+48 180 M
+(                else if \(AirportRunways::runwayName\(runway\) == "15R" && _15R) s
+5 169 M
+(_occupied == true && _15L_occupied == true\)) s
+18 158 M (565:) s
+48 158 M
+(                {) s
+18 147 M (566:) s
+48 147 M
+(                  unique_lock<mutex> Runway_15R\(lock_15R\);) s
+18 136 M (567:) s
+48 136 M
+(                  _15R_occupied = false;) s
+18 125 M (568:) s
+48 125 M
+(                  _9_occupied = false;) s
+18 114 M (569:) s
+48 114 M
+(                  ) s
+18 103 M (570:) s
+48 103 M
+(                  Runway_15R.unlock\(\);) s
+18 92 M (571:) s
+48 92 M
+(                  _15R.notify_one\(\);) s
+18 81 M (572:) s
+48 81 M
+(                }) s
+18 70 M (573:) s
+18 59 M (574:) s
+48 59 M
+(                //******************************RUNWAY 9********************) s
+5 48 M
+(**********) s
+18 37 M (575:) s
+48 37 M
+(                if \(AirportRunways::runwayName\(runway\) == "9" && _9_occupied) s
+5 26 M
+( == true && _15L_occupied == false\)) s
+18 15 M (576:) s
+48 15 M
+(                {) s
+18 4 M (577:) s
+48 4 M
+(                  unique_lock<mutex> Runway_9\(lock_9\);) s
+_R
+S
+%%Page: (12) 12
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 12 def
+/fname (AirportServer.cpp) def
+/fdir (.) def
+/ftail (AirportServer.cpp) def
+% User defined strings:
+/fmodstr (Thu Apr 25 15:16:13 2019) def
+/pagenumstr (12) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (578:) s
+48 664 M
+(                  _9_occupied = false;) s
+18 653 M (579:) s
+48 653 M
+(                  _15R_occupied = false;) s
+18 642 M (580:) s
+48 642 M
+(                  _4R_occupied = false;) s
+18 631 M (581:) s
+48 631 M
+(                  ) s
+18 620 M (582:) s
+48 620 M
+(                  Runway_9.unlock\(\);) s
+18 609 M (583:) s
+48 609 M
+(                  _9.notify_one\(\);) s
+18 598 M (584:) s
+48 598 M
+(                }) s
+18 587 M (585:) s
+48 587 M
+(                else if \(AirportRunways::runwayName\(runway\) == "9" && _9_occ) s
+5 576 M
+(upied == true && _15L_occupied == true\)) s
+18 565 M (586:) s
+48 565 M
+(                {) s
+18 554 M (587:) s
+48 554 M
+(                  unique_lock<mutex> Runway_9\(lock_9\);) s
+18 543 M (588:) s
+48 543 M
+(                  _9_occupied = false;) s
+18 532 M (589:) s
+48 532 M
+(                  _15R_occupied = false;) s
+18 521 M (590:) s
+48 521 M
+(                  ) s
+18 510 M (591:) s
+48 510 M
+(                  Runway_9.unlock\(\);) s
+18 499 M (592:) s
+48 499 M
+(                  _9.notify_one\(\);) s
+18 488 M (593:) s
+48 488 M
+(                }) s
+18 477 M (594:) s
+18 466 M (595:) s
+48 466 M
+(                //##########################################################) s
+5 455 M
+(###########################################) s
+18 444 M (596:) s
+18 433 M (597:) s
+48 433 M
+(                //runwaysLock.unlock\(\);) s
+18 422 M (598:) s
+18 411 M (599:) s
+48 411 M
+(        } // End critical region) s
+18 400 M (600:) s
+18 389 M (601:) s
+48 389 M
+(        // obtain a seed from the system clock:) s
+18 378 M (602:) s
+48 378 M
+(        unsigned seed = std::chrono::system_clock::now\(\).time_since_epoch\(\).) s
+5 367 M
+(count\(\);) s
+18 356 M (603:) s
+48 356 M
+(        std::default_random_engine generator\(seed\);) s
+18 345 M (604:) s
+18 334 M (605:) s
+48 334 M
+(        // Wait for a random number of milliseconds before requesting the ne) s
+5 323 M
+(xt landing for this Airplane) s
+18 312 M (606:) s
+48 312 M
+(        std::uniform_int_distribution<int> waitTimeDistribution\(1, MAX_WAIT_) s
+5 301 M
+(TIME\);) s
+18 290 M (607:) s
+48 290 M
+(        int waitTime = waitTimeDistribution\(generator\);) s
+18 279 M (608:) s
+18 268 M (609:) s
+48 268 M
+(        {) s
+18 257 M (610:) s
+48 257 M
+(                lock_guard<mutex> lk\(AirportRunways::checkMutex\);) s
+18 246 M (611:) s
+18 235 M (612:) s
+48 235 M
+(                cout << "Airplane #" << airplaneNum << " is waiting for " <<) s
+5 224 M
+( waitTime << " milliseconds before landing again\\n";) s
+18 213 M (613:) s
+48 213 M
+(        }) s
+18 202 M (614:) s
+18 191 M (615:) s
+48 191 M
+(        std::this_thread::sleep_for\(std::chrono::milliseconds\(waitTime\)\);) s
+18 180 M (616:) s
+18 169 M (617:) s
+48 169 M
+(} // end AirportServer::releaseRunway\(\)) s
+_R
+S
+%%Trailer
+%%Pages: 12
+%%DocumentNeededResources: font Courier-Bold Courier 
+%%EOF

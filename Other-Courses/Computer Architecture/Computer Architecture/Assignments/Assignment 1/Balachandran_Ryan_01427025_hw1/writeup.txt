@@ -1,0 +1,34 @@
+Ryan Balachandran
+Computing Architecture
+COMP 3050-201
+Email: Ryan_Balachandran@student.uml.edu
+
+I think my degree of success is 95%
+
+I approached the assignment by first putting a for loop 
+around the input and output before creating an outline 
+for the desired output to be displayed. I then printed 
+the mantissa in hex by first accessing the union, 
+following by the sign_exp_mantissa struct called f_bits 
+to get at the mantissa. I then printed out the mantissa 
+in binary using a for loop and looping through the bit_string 
+array, as the struct and bytes share the same memory location.
+ I then did the same for the exponent and sign bit.
+
+The number -92,457,321.670245 does not work, but -92457321.670245 does (without the commas)
+
+
+*******************************************************
+I forgot to add five more numbers to
+Test other than the five given in the assignment.
+These are the five numbers I chose when resubmitting.
+
+0.009285
+
+482492.2843
+
+-29484.2899
+
+30.245
+
+-.0829562

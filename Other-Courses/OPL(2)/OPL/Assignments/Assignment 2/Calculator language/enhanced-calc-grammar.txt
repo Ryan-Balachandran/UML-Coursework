@@ -1,0 +1,27 @@
+P	→ SL $$
+SL	→ S SL  |  ε
+S	→ id := R  |  read id  |  write R  |  if R SL fi  |  do SL od  |  check R
+R	→ E ET
+E	→ T TT
+T	→ F FT
+F	→ ( R )  |  id  |  lit
+ET	→ ro E  |  ε
+TT	→ ao T TT  |  ε
+FT	→ mo F FT  |  ε
+ro	→ ==  |  <>  |  <  |  >  |  <=  |  >=
+ao	→ +  |  -
+mo	→ *  |  /
+
+P = program
+SL = stmt_list
+S = stmt
+R = relation
+E = expression
+T = term
+F = factor
+ET = expression_tail
+TT = term_tail
+FT = factor_tail
+ro = relation_operation
+ao = add_operation
+mo = mult_operation

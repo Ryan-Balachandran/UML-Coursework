@@ -1,0 +1,40 @@
+pprmpt:		0
+prompt:		"PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767"
+ofstr:		"OVERFLOW, NO SUM POSSIBLE"
+sumstr:		"THE SUM OF THESE INTEGERS IS: "
+nxtchr:		0
+lpcnt:		0
+mask:		10
+cn1:		-1
+d1:		0
+d2:		0
+d3:		0
+d4:		0
+d5:		0
+pdig:		0
+num1:		0
+num2:		0
+rslt:		0
+numcnt:		2
+quot:		0
+pchar:		0
+igzer:		0
+resadr:		0
+retadr:		0
+on1:		8
+on2:		8
+on3:		8
+c1a:		1
+c1b:		1
+c1c:		1
+c255a:		255
+c255b:		255
+numoff:		48
+numoff1:	48
+cra:		13
+crb:		13
+nla:		10
+nlb:		10
+nlc:		10
+maskx:		10
+maskr:		10

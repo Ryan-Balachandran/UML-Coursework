@@ -1,0 +1,51 @@
+Ryan Balachandran
+Computing Architecture
+COMP 3050-201
+Email: Ryan_Balachandran@student.uml.edu
+
+I think my degree of success is 100%
+
+This assignment was easy to do.
+
+After copying the assignment 7 starter code to a .c file, added #include <string.h>
+
+The focus of this assignment was filling in the switch statement.
+
+Before the switch statement, I added a sprintf message that displayed the parents PID.
+
+In the first case of the switch statement, case -1, I added perror("Fork call failed: ");
+And then exit(1) for if the fork process failed.
+
+For the default case of the switch statement, I added a print statement of the parent 
+program creating a child with a given PID, and writing that message to the terminal.
+
+For case 0 of the switch statement, I simply copied and pasted the process report:
+
+	    printf("\nThis is the Child process report:\n");
+
+            pid  = getpid();
+            ppid = getppid();
+            ruid = getuid();
+            euid = geteuid();
+            rgid = getgid();
+            egid = getegid();
+            priority = getpriority(PRIO_PROCESS, 0);
+
+            printf("\nCHILD PROG:  Process ID is:\t\t%d\n", pid);
+            printf("CHILD PROC:  Process parent ID is:\t%d\n", ppid);
+            printf("CHILD PROC:  Real UID is:\t\t%d\n", ruid);
+            printf("CHILD PROC:  Real GID is:\t\t%d\n", rgid);
+            printf("CHILD PROC:  Effective UID is:\t\t%d\n", euid);
+            printf("CHILD PROC:  Effective GID is:\t\t%d\n", egid);
+            printf("CHILD PROC:  Process priority is:\t%d\n", priority);
+
+            printf("\nCHILD PROG: about to read pipe and report parent message:\n\n");
+
+
+HOW TO RUN: 
+
+In the terminal:
+
+1) Type: 'make' to compile the C file
+
+2) Type: './thread' to run the executable

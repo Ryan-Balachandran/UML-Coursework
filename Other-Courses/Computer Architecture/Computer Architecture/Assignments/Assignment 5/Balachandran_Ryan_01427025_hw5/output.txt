@@ -1,0 +1,200 @@
+lacha@mercury2 HW5]$ ls
+How To Run.txt  IO_adder.asm  Makefile  masm_mrd  mic1  prom_mrd.dat  writeup.txt
+[rbalacha@mercury2 HW5]$ make
+./masm_mrd < IO_adder.asm > IO_adder.obj
+./mic1 prom_mrd.dat IO_adder.obj 0 1024
+
+Read in 152 micro instructions
+Read in 297 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+235
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+0
+THE SUM OF THESE INTEGERS IS: 
+235
+
+ProgramCounter : 0000000000000100  base 10:       4
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000001111111010  base 10:    1018
+ARegister      : 1111111111110101  base 10:   65525
+BRegister      : 1111111111110110  base 10:   65526
+CRegister      : 0000000000000000  base 10:       0
+DRegister      : 0000000000000010  base 10:       2
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 2290610
+
+Type decimal address to view memory,  q  to quit or  c  to continue: q
+MIC-1 emulator finishing, goodbye
+
+[rbalacha@mercury2 HW5]$ make
+./masm_mrd < IO_adder.asm > IO_adder.obj
+./mic1 prom_mrd.dat IO_adder.obj 0 1024
+
+Read in 152 micro instructions
+Read in 297 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+16341
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+957
+THE SUM OF THESE INTEGERS IS: 
+17298
+
+ProgramCounter : 0000000000000100  base 10:       4
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000001111111100  base 10:    1020
+ARegister      : 1111111111110101  base 10:   65525
+BRegister      : 1111111111110110  base 10:   65526
+CRegister      : 0000000000000000  base 10:       0
+DRegister      : 0000000000000001  base 10:       1
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 2546052
+
+Type decimal address to view memory,  q  to quit or  c  to continue: q
+MIC-1 emulator finishing, goodbye
+
+[rbalacha@mercury2 HW5]$ make
+./masm_mrd < IO_adder.asm > IO_adder.obj
+./mic1 prom_mrd.dat IO_adder.obj 0 1024
+
+Read in 152 micro instructions
+Read in 297 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+23786
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+12400
+THE SUM OF THESE INTEGERS IS: 
+OVERFLOW, NO SUM POSSIBLE
+
+ProgramCounter : 0000000000000100  base 10:       4
+Accumulator    : 1111111111111111  base 10:   65535
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000001111111010  base 10:    1018
+ARegister      : 1111111111110101  base 10:   65525
+BRegister      : 1111111111111111  base 10:   65535
+CRegister      : 0000000000000000  base 10:       0
+DRegister      : 0011000001110000  base 10:   12400
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 2982285
+
+Type decimal address to view memory,  q  to quit or  c  to continue: q
+MIC-1 emulator finishing, goodbye
+
+[rbalacha@mercury2 HW5]$ make
+./masm_mrd < IO_adder.asm > IO_adder.obj
+./mic1 prom_mrd.dat IO_adder.obj 0 1024
+
+Read in 152 micro instructions
+Read in 297 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+12
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+23
+THE SUM OF THESE INTEGERS IS: 
+35
+
+ProgramCounter : 0000000000000100  base 10:       4
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000001111111001  base 10:    1017
+ARegister      : 1111111111110101  base 10:   65525
+BRegister      : 1111111111110110  base 10:   65526
+CRegister      : 0000000000000000  base 10:       0
+DRegister      : 0000000000000011  base 10:       3
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 940699
+
+Type decimal address to view memory,  q  to quit or  c  to continue: q
+MIC-1 emulator finishing, goodbye
+
+[rbalacha@mercury2 HW5]$ make
+./masm_mrd < IO_adder.asm > IO_adder.obj
+./mic1 prom_mrd.dat IO_adder.obj 0 1024
+
+Read in 152 micro instructions
+Read in 297 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+1
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+1343
+THE SUM OF THESE INTEGERS IS: 
+1344
+
+ProgramCounter : 0000000000000100  base 10:       4
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000001111111011  base 10:    1019
+ARegister      : 1111111111110101  base 10:   65525
+BRegister      : 1111111111110110  base 10:   65526
+CRegister      : 0000000000000000  base 10:       0
+DRegister      : 0000000000000001  base 10:       1
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 1236635
+
+Type decimal address to view memory,  q  to quit or  c  to continue: q
+MIC-1 emulator finishing, goodbye
+
+[rbalacha@mercury2 HW5]$ make
+./masm_mrd < IO_adder.asm > IO_adder.obj
+./mic1 prom_mrd.dat IO_adder.obj 0 1024
+
+Read in 152 micro instructions
+Read in 297 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+30000
+PLEASE ENTER AN INTEGER BETWEEN 1 AND 32767
+500
+THE SUM OF THESE INTEGERS IS: 
+30500
+
+ProgramCounter : 0000000000000100  base 10:       4
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000001111111100  base 10:    1020
+ARegister      : 1111111111110101  base 10:   65525
+BRegister      : 1111111111110110  base 10:   65526
+CRegister      : 0000000000000000  base 10:       0
+DRegister      : 0000000000000011  base 10:       3
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 1864527
+
+Type decimal address to view memory,  q  to quit or  c  to continue: q
+MIC-1 emulator finishing, goodbye
+

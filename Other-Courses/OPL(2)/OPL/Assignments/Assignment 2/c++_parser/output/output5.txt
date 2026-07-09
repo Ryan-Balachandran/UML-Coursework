@@ -1,0 +1,5 @@
+predict program --> stmt_list eof
+predict stmt_list --> stmt stmt_list
+predict stmt --> id gets expr
+matched id: hello
+syntax error

@@ -1,0 +1,5 @@
+*.pyc
+*.swp
+heatmap*.png
+combinedHeatmap*.png
+stats/*

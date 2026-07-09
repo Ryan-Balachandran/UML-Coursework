@@ -1,0 +1,3 @@
+Even though the PDF said a makefile isn't needed, I didn't want to have to keep typing in the command to run it.
+
+	- Typing 'make' builds and runs the files

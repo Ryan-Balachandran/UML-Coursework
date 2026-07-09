@@ -1,0 +1,46 @@
+Ryan Balachandran
+Computing Architecture
+COMP 3050-201
+Email: Ryan_Balachandran@student.uml.edu
+
+I think my degree of success is 100%
+
+I had a lot of trouble with organizing how to do this one.
+
+The first thing I did was figure out what portions of the IO_adder.asm file from assignment 5 would go into each of the separate files.
+Xbsywt and rbsywt were the easiest to separate from the main file as well as moving all the variables at the end of the original file to their own file.
+I then went to sb.asm and took the sb function from the original file along with the next 3 functions of loop1, add1, and finish.
+After that it was relatively easy to divide the rest of the assignment 5 file into their own separate files. 
+
+For main.asm, I had the 4 functions: main, result, addinp, and start. At the end of the start function, I put a call to nextw, which is in the writeint.asm file.
+For writeint.asm, I initially put 2 functions, nextw (next word) and crnl (carriage return, newline). At the end of the crnl function, I put a call to bgndig, which is in the readint.asm file.
+For readint.asm, I have only two functions: bgndig and nxtdig.
+For writestr.asm, I initially put 6 functions, endnum, oneinp, twoinp, sumofd, and crnl2. At the end of the crnl2 function, I put a call to addnum, which is in the addints.asm file.
+For the addint.asm file, there is only one function, addnum. At the end of the function, I have a call to convrt which goes back to the writeint.asm file.
+Back in the writeint.asm file, after the crnl function, I put 6 more functions: cnvrt, prntr, loopp, contin, and donep. At the end of the function donep, it returns to the file addint.asm which then continues.
+In the addint.asm file, their is also a jump condition to oflow (overflow), which is in the writestr.asm file after the crnl2 function. 
+Back in the writestr.asm file after the crnl2 function, I have 4 functions, oflow, nextw3, crnl3, and fail.
+For xbsywt and rbsywt, all I had was one function which loaded the transmitter/reciever, subtracted the mask, determine a jump condition, then return to the file and line number that called it.
+For sb.asm, I had 4 functions: sb, loop1, add1, and finish. At the end of the file, I added a .LOC 230 (after determining how many lines of code there is) to separate the running code from the variables in data.asm file.
+
+The biggest problem I had was going back and duplicating any constant variables so every file didn't use the same variable. 
+The variables I had to duplicate was on (3 times), c1 (3 times), c255 (2 times), numoff (2 times), cr (2 times), nl (3 times), and mask (2 times).
+
+HOW TO RUN: 
+
+In the terminal:
+
+1) Type: 'make link' to compile the linker
+
+2) Type: 'make view' to output each of the asm files to the screen 
+	a) also in source_code.asm
+
+3) Type: 'make build' to compile each of the separate .asm files into .o files and output them to the screen
+	b) also in source_code.asm
+
+4) Type: 'make dump' to compile the assembly code into a consolidated .o file, which is then outputted to the screen
+
+5) Type: 'make run' to compile each file, link them into an executable, and output the result to the screen
+
+6) Type: ./mic1 prom_mrd.dat cons_link.exe 0 2048 to run the program
+

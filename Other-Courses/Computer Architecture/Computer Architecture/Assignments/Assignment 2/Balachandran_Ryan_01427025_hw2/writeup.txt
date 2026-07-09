@@ -1,0 +1,17 @@
+Ryan Balachandran
+Computing Architecture
+COMP 3050-201
+Email: Ryan_Balachandran@student.uml.edu
+
+I think my degree of success is about 80%
+
+I faced a lot of trouble with this assignment. I was easily able to format the output to the specification required in the assignment, but I had a hard time figuring out how to push the hidden bit into the mantissa and shift it to the right by the appropriate amount. 
+
+After a lot of trial and error, I slowly began to work on the exponents with an if else statement to find which binary floating point number was smaller while signing the value of the larger exponent to the smaller number.
+
+With the mantissa, I decremented the shift count by 1 to account for having to shift the mantissa of the lower number by one to slam in the hidden bit, then shift the mantissa by the remaining amount required.
+
+Finally, I got to adding the mantissa's together by OR'ing them. I tested the first set of numbers from the slides: 88.0 and .8125 and came out with 88.8125, which matched the hardware result. When I tried the next set of numbers however: 120.0 and 13.5, my program wasn't OR'ing them together correctly and the result was lower than the hardware result by about 10. So, I tried with the third set of numbers on the slide: 120.0 and 108.0, and the result wasn't correct either, but this time it was off by about 100. 
+
+Given, I hadn't implemented the calculations to shift the 0 or 1 carried over to the hidden bit into the mantissa by 1, the calculations from the mantissa were wrong and didn't match the result from the slides (except the first one). 
+

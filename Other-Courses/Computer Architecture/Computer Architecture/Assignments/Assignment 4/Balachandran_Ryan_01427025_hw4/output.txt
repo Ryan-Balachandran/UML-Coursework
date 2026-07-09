@@ -1,0 +1,17 @@
+lacha@mercury2 HW4]$ ls
+div_test.asm  Makefile  mcc  mic1  mic1symasm.c  mic1symasm.h  mic1symasm.ll  microcode.mc  mult_test.asm  rshift_test.asm
+[rbalacha@mercury2 HW4]$ make
+gcc -c -g mic1symasm.c
+flex mic1symasm.ll
+gcc -c -g lex.yy.c
+gcc -o masm_nr mic1symasm.o lex.yy.o
+./mcc microcode.mc > prom.dat
+Microcode Compiler - Version 1.0 - Richard Boccuzzi
+./masm_nr -o < div_test.asm > div.obj
+./masm_nr -o < mult_test.asm > mult.obj
+./masm_nr -o < rshift_test.asm > rshift.obj
+[rbalacha@mercury2 HW4]$ ls
+div.obj       lex.yy.c  Makefile  mcc   mic1symasm.c  mic1symasm.ll  microcode.mc  mult_test.asm  rshift.obj
+div_test.asm  lex.yy.o  masm_nr   mic1  mic1symasm.h  mic1symasm.o   mult.obj      prom.dat       rshift_test.asm
+[rbalacha@mercury2 HW4]$ 
+

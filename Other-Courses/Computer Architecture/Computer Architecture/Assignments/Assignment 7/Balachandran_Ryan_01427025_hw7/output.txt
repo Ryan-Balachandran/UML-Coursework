@@ -1,0 +1,32 @@
+This is the Parent process report:
+
+PARENT PROG:  Process ID is:		13970
+PARENT PROC:  Process parent ID is:	3368
+PARENT PROC:  Real UID is:		15546
+PARENT PROC:  Real GID is:		2021
+PARENT PROC:  Effective UID is:		15546
+PARENT PROC:  Effective GID is:		2021
+PARENT PROC:  Process priority is:	0
+
+PARENT PROC: will now create child, write pipe, and do a normal termination
+
+PARENT PROG: Created child with 13971 PID
+
+This is the Child process report:
+
+CHILD PROG:  Process ID is:		13971
+CHILD PROC:  Process parent ID is:	13970
+CHILD PROC:  Real UID is:		15546
+CHILD PROC:  Real GID is:		2021
+CHILD PROC:  Effective UID is:		15546
+CHILD PROC:  Effective GID is:		2021
+CHILD PROC:  Process priority is:	0
+
+CHILD PROG: about to read pipe and report parent message:
+
+CHILD PROC: parent's msg is: 
+This is the pipe message from the parent with 13970 PID
+
+CHILD PROC: Process parent ID now is: 13970
+CHILD PROC: ### Goodbye ###
+

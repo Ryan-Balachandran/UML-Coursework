@@ -1,0 +1,386 @@
+************************************************************************************
+This program will emulate the addition of two IEEE 754 floating point numbers.
+Please enter two positive floating point values each with: 
+- no more than 6 significan digits
+- a value between + 10**37 and 10**-37
+
+Enter float 1: 34.5
+Enter float 2: 1.25
+
+Original pattern of Float 1: 0 | 1000 0100 | 000 1010 0000 0000 0000 0000
+Original pattern of Float 2: 0 | 0111 1111 | 010 0000 0000 0000 0000 0000
+
+Exponent of float 1 as int: 132
+Exponent of float 2 as int: 127
+Floating point 1 is larger
+Shift count = 5
+
+Exponent of Float 1 after alignment: 0 | 1000 0100 | 000 1010 0000 0000 0000 0000
+Exponent of Float 2 after alignment: 0 | 1000 0100 | 010 0000 0000 0000 0000 0000
+
+Mantissa of Float 1: 0 | 1000 0100 | 000 1010 0000 0000 0000 0000
+Mantissa of Float 2: 0 | 1000 0100 | 000 0101 0000 0000 0000 0000
+
+
+     0 | 1000 0100 | 000 1010 0000 0000 0000 0000
+    +0 | 1000 0100 | 000 0101 0000 0000 0000 0000
+    ----------------------------------------------
+     0 | 1000 0100 | 000 1111 0000 0000 0000 0000
+
+
+Bit pattern of result: 0 | 1000 0100 | 000 1111 0000 0000 0000 0000
+EMULATED FLOATING RESULT FROM PRINTF ==>>> 35.75 
+HARDWARE FLOATING RESULT FROM PRINTF ==>>> 35.75 
+************************************************************************************
+
+
+
+
+
+************************************************************************************
+This program will emulate the addition of two IEEE 754 floating point numbers.
+Please enter two positive floating point values each with: 
+- no more than 6 significan digits
+- a value between + 10**37 and 10**-37
+
+Enter float 1: 2.75e3
+Enter float 2: 256.0
+
+Original pattern of Float 1: 0 | 1000 1010 | 010 1011 1110 0000 0000 0000
+Original pattern of Float 2: 0 | 1000 0111 | 000 0000 0000 0000 0000 0000
+
+Exponent of float 1 as int: 138
+Exponent of float 2 as int: 135
+Floating point 1 is larger
+Shift count = 3
+
+Exponent of Float 1 after alignment: 0 | 1000 1010 | 010 1011 1110 0000 0000 0000
+Exponent of Float 2 after alignment: 0 | 1000 1010 | 000 0000 0000 0000 0000 0000
+
+Mantissa of Float 1: 0 | 1000 1010 | 010 1011 1110 0000 0000 0000
+Mantissa of Float 2: 0 | 1000 1010 | 001 0000 0000 0000 0000 0000
+
+
+     0 | 1000 1010 | 010 1011 1110 0000 0000 0000
+    +0 | 1000 1010 | 001 0000 0000 0000 0000 0000
+    ----------------------------------------------
+     0 | 1000 1010 | 011 1011 1110 0000 0000 0000
+
+
+Bit pattern of result: 0 | 1000 1010 | 011 1011 1110 0000 0000 0000
+EMULATED FLOATING RESULT FROM PRINTF ==>>> 3006 
+HARDWARE FLOATING RESULT FROM PRINTF ==>>> 3006 
+************************************************************************************
+
+
+
+
+
+************************************************************************************
+This program will emulate the addition of two IEEE 754 floating point numbers.
+Please enter two positive floating point values each with: 
+- no more than 6 significan digits
+- a value between + 10**37 and 10**-37
+
+Enter float 1: 1.4e-3
+Enter float 2: 13.0
+
+Original pattern of Float 1: 0 | 0111 0101 | 011 0111 1000 0000 0011 0100
+Original pattern of Float 2: 0 | 1000 0010 | 101 0000 0000 0000 0000 0000
+
+Exponent of float 1 as int: 117
+Exponent of float 2 as int: 130
+Floating point 2 is larger
+Shift count = 13
+
+Exponent of Float 1 after alignment: 0 | 1000 0010 | 011 0111 1000 0000 0011 0100
+Exponent of Float 2 after alignment: 0 | 1000 0010 | 101 0000 0000 0000 0000 0000
+
+Mantissa of Float 1: 0 | 1000 0010 | 000 0000 0000 0101 1011 1100
+Mantissa of Float 2: 0 | 1000 0010 | 101 0000 0000 0000 0000 0000
+
+
+     0 | 1000 0010 | 000 0000 0000 0101 1011 1100
+    +0 | 1000 0010 | 101 0000 0000 0000 0000 0000
+    ----------------------------------------------
+     0 | 1000 0010 | 101 0000 0000 0101 1011 1100
+
+
+Bit pattern of result: 0 | 1000 0010 | 101 0000 0000 0101 1011 1100
+EMULATED FLOATING RESULT FROM PRINTF ==>>> 13.0014 
+HARDWARE FLOATING RESULT FROM PRINTF ==>>> 13.0014 
+************************************************************************************
+
+
+
+
+
+************************************************************************************
+This program will emulate the addition of two IEEE 754 floating point numbers.
+Please enter two positive floating point values each with: 
+- no more than 6 significan digits
+- a value between + 10**37 and 10**-37
+
+Enter float 1: 7.491
+Enter float 2: 4.617e20
+
+Original pattern of Float 1: 0 | 1000 0001 | 110 1111 1011 0110 0100 0110
+Original pattern of Float 2: 0 | 1100 0011 | 100 1000 0011 1010 1111 1111
+
+Exponent of float 1 as int: 129
+Exponent of float 2 as int: 195
+Floating point 2 is larger
+Shift count = 66
+
+Exponent of Float 1 after alignment: 0 | 1100 0011 | 110 1111 1011 0110 0100 0110
+Exponent of Float 2 after alignment: 0 | 1100 0011 | 100 1000 0011 1010 1111 1111
+
+Mantissa of Float 1: 0 | 1100 0011 | 011 1011 1110 1101 1001 0001
+Mantissa of Float 2: 0 | 1100 0011 | 100 1000 0011 1010 1111 1111
+
+
+     0 | 1100 0011 | 011 1011 1110 1101 1001 0001
+    +0 | 1100 0011 | 100 1000 0011 1010 1111 1111
+    ----------------------------------------------
+     0 | 1100 0011 | 111 1011 1111 1111 1111 1111
+
+
+Bit pattern of result: 0 | 1100 0011 | 111 1011 1111 1111 1111 1111
+EMULATED FLOATING RESULT FROM PRINTF ==>>> 5.81072e+20                          <------------------- ERROR
+HARDWARE FLOATING RESULT FROM PRINTF ==>>> 4.617e+20 
+************************************************************************************
+
+
+
+
+
+************************************************************************************
+This program will emulate the addition of two IEEE 754 floating point numbers.
+Please enter two positive floating point values each with: 
+- no more than 6 significan digits
+- a value between + 10**37 and 10**-37
+
+Enter float 1: 9643.0
+Enter float 2: 1.237e-2
+
+Original pattern of Float 1: 0 | 1000 1100 | 001 0110 1010 1100 0000 0000
+Original pattern of Float 2: 0 | 0111 1000 | 100 1010 1010 1011 1000 1010
+
+Exponent of float 1 as int: 140
+Exponent of float 2 as int: 120
+Floating point 1 is larger
+Shift count = 20
+
+Exponent of Float 1 after alignment: 0 | 1000 1100 | 001 0110 1010 1100 0000 0000
+Exponent of Float 2 after alignment: 0 | 1000 1100 | 100 1010 1010 1011 1000 1010
+
+Mantissa of Float 1: 0 | 1000 1100 | 001 0110 1010 1100 0000 0000
+Mantissa of Float 2: 0 | 1000 1100 | 000 0000 0000 0000 0000 1100
+
+
+     0 | 1000 1100 | 001 0110 1010 1100 0000 0000
+    +0 | 1000 1100 | 000 0000 0000 0000 0000 1100
+    ----------------------------------------------
+     0 | 1000 1100 | 001 0110 1010 1100 0000 1100
+
+
+Bit pattern of result: 0 | 1000 1100 | 001 0110 1010 1100 0000 1100
+EMULATED FLOATING RESULT FROM PRINTF ==>>> 9643.01 
+HARDWARE FLOATING RESULT FROM PRINTF ==>>> 9643.01 
+************************************************************************************
+
+
+
+
+
+************************************************************************************
+This program will emulate the addition of two IEEE 754 floating point numbers.
+Please enter two positive floating point values each with: 
+- no more than 6 significan digits
+- a value between + 10**37 and 10**-37
+
+Enter float 1: 25e37
+Enter float 2: 15e37
+
+Original pattern of Float 1: 0 | 1111 1110 | 011 1100 0001 0100 0100 0000
+Original pattern of Float 2: 0 | 1111 1101 | 110 0001 1011 0001 1110 0110
+
+Exponent of float 1 as int: 254
+Exponent of float 2 as int: 253
+Floating point 1 is larger
+Shift count = 1
+
+Exponent of Float 1 after alignment: 0 | 1111 1110 | 011 1100 0001 0100 0100 0000
+Exponent of Float 2 after alignment: 0 | 1111 1110 | 110 0001 1011 0001 1110 0110
+
+Mantissa of Float 1: 0 | 1111 1110 | 011 1100 0001 0100 0100 0000
+Mantissa of Float 2: 0 | 1111 1110 | 111 0000 1101 1000 1111 0011
+
+
+     0 | 1111 1110 | 011 1100 0001 0100 0100 0000
+    +0 | 1111 1110 | 111 0000 1101 1000 1111 0011
+    ----------------------------------------------
+     0 | 1111 1110 | 111 1100 1101 1100 1111 0011
+
+
+Bit pattern of result: 0 | 1111 1110 | 111 1100 1101 1100 1111 0011
+EMULATED FLOATING RESULT FROM PRINTF ==>>> 3.36113e+38                          <------------------- ERROR
+HARDWARE FLOATING RESULT FROM PRINTF ==>>> inf 
+************************************************************************************
+
+
+
+
+
+************************************************************************************
+This program will emulate the addition of two IEEE 754 floating point numbers.
+Please enter two positive floating point values each with: 
+- no more than 6 significan digits
+- a value between + 10**37 and 10**-37
+
+Enter float 1: .25
+Enter float 2: 100
+
+Original pattern of Float 1: 0 | 0111 1101 | 000 0000 0000 0000 0000 0000
+Original pattern of Float 2: 0 | 1000 0101 | 100 1000 0000 0000 0000 0000
+
+Exponent of float 1 as int: 125
+Exponent of float 2 as int: 133
+Floating point 2 is larger
+Shift count = 8
+
+Exponent of Float 1 after alignment: 0 | 1000 0101 | 000 0000 0000 0000 0000 0000
+Exponent of Float 2 after alignment: 0 | 1000 0101 | 100 1000 0000 0000 0000 0000
+
+Mantissa of Float 1: 0 | 1000 0101 | 000 0000 1000 0000 0000 0000
+Mantissa of Float 2: 0 | 1000 0101 | 100 1000 0000 0000 0000 0000
+
+
+     0 | 1000 0101 | 000 0000 1000 0000 0000 0000
+    +0 | 1000 0101 | 100 1000 0000 0000 0000 0000
+    ----------------------------------------------
+     0 | 1000 0101 | 100 1000 1000 0000 0000 0000
+
+
+Bit pattern of result: 0 | 1000 0101 | 100 1000 1000 0000 0000 0000
+EMULATED FLOATING RESULT FROM PRINTF ==>>> 100.25 
+HARDWARE FLOATING RESULT FROM PRINTF ==>>> 100.25 
+************************************************************************************
+
+
+
+
+
+************************************************************************************
+This program will emulate the addition of two IEEE 754 floating point numbers.
+Please enter two positive floating point values each with: 
+- no more than 6 significan digits
+- a value between + 10**37 and 10**-37
+
+Enter float 1: 88.0
+Enter float 2: .8125
+
+Original pattern of Float 1: 0 | 1000 0101 | 011 0000 0000 0000 0000 0000
+Original pattern of Float 2: 0 | 0111 1110 | 101 0000 0000 0000 0000 0000
+
+Exponent of float 1 as int: 133
+Exponent of float 2 as int: 126
+Floating point 1 is larger
+Shift count = 7
+
+Exponent of Float 1 after alignment: 0 | 1000 0101 | 011 0000 0000 0000 0000 0000
+Exponent of Float 2 after alignment: 0 | 1000 0101 | 101 0000 0000 0000 0000 0000
+
+Mantissa of Float 1: 0 | 1000 0101 | 011 0000 0000 0000 0000 0000
+Mantissa of Float 2: 0 | 1000 0101 | 000 0001 1010 0000 0000 0000
+
+
+     0 | 1000 0101 | 011 0000 0000 0000 0000 0000
+    +0 | 1000 0101 | 000 0001 1010 0000 0000 0000
+    ----------------------------------------------
+     0 | 1000 0101 | 011 0001 1010 0000 0000 0000
+
+
+Bit pattern of result: 0 | 1000 0101 | 011 0001 1010 0000 0000 0000
+EMULATED FLOATING RESULT FROM PRINTF ==>>> 88.8125 
+HARDWARE FLOATING RESULT FROM PRINTF ==>>> 88.8125 
+************************************************************************************
+
+
+
+
+
+************************************************************************************
+This program will emulate the addition of two IEEE 754 floating point numbers.
+Please enter two positive floating point values each with: 
+- no more than 6 significan digits
+- a value between + 10**37 and 10**-37
+
+Enter float 1: 120.0
+Enter float 2: 13.5
+
+Original pattern of Float 1: 0 | 1000 0101 | 111 0000 0000 0000 0000 0000
+Original pattern of Float 2: 0 | 1000 0010 | 101 1000 0000 0000 0000 0000
+
+Exponent of float 1 as int: 133
+Exponent of float 2 as int: 130
+Floating point 1 is larger
+Shift count = 3
+
+Exponent of Float 1 after alignment: 0 | 1000 0101 | 111 0000 0000 0000 0000 0000
+Exponent of Float 2 after alignment: 0 | 1000 0101 | 101 1000 0000 0000 0000 0000
+
+Mantissa of Float 1: 0 | 1000 0101 | 111 0000 0000 0000 0000 0000
+Mantissa of Float 2: 0 | 1000 0101 | 001 1011 0000 0000 0000 0000
+
+
+     0 | 1000 0101 | 111 0000 0000 0000 0000 0000
+    +0 | 1000 0101 | 001 1011 0000 0000 0000 0000
+    ----------------------------------------------
+     0 | 1000 0101 | 111 1011 0000 0000 0000 0000
+
+
+Bit pattern of result: 0 | 1000 0101 | 111 1011 0000 0000 0000 0000
+EMULATED FLOATING RESULT FROM PRINTF ==>>> 125.5                                <------------------- ERROR
+HARDWARE FLOATING RESULT FROM PRINTF ==>>> 133.5 
+************************************************************************************
+
+
+
+
+
+************************************************************************************
+This program will emulate the addition of two IEEE 754 floating point numbers.
+Please enter two positive floating point values each with: 
+- no more than 6 significan digits
+- a value between + 10**37 and 10**-37
+
+Enter float 1: 120.0
+Enter float 2: 108.0
+
+Original pattern of Float 1: 0 | 1000 0101 | 111 0000 0000 0000 0000 0000
+Original pattern of Float 2: 0 | 1000 0101 | 101 1000 0000 0000 0000 0000
+
+Exponent of float 1 as int: 133
+Exponent of float 2 as int: 133
+Floating point 2 is larger
+Shift count = 0
+
+Exponent of Float 1 after alignment: 0 | 1000 0101 | 111 0000 0000 0000 0000 0000
+Exponent of Float 2 after alignment: 0 | 1000 0101 | 101 1000 0000 0000 0000 0000
+
+Mantissa of Float 1: 0 | 1000 0101 | 111 0000 0000 0000 0000 0000
+Mantissa of Float 2: 0 | 1000 0101 | 101 1000 0000 0000 0000 0000
+
+
+     0 | 1000 0101 | 111 0000 0000 0000 0000 0000
+    +0 | 1000 0101 | 101 1000 0000 0000 0000 0000
+    ----------------------------------------------
+     0 | 1000 0101 | 111 1000 0000 0000 0000 0000
+
+
+Bit pattern of result: 0 | 1000 0101 | 111 1000 0000 0000 0000 0000
+EMULATED FLOATING RESULT FROM PRINTF ==>>> 124                                  <------------------- ERROR
+HARDWARE FLOATING RESULT FROM PRINTF ==>>> 228 
+************************************************************************************
+

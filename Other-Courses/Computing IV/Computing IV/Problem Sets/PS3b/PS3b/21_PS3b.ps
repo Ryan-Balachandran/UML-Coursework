@@ -1,0 +1,1213 @@
+%!PS-Adobe-3.0
+%%BoundingBox: 50 50 562 742
+%%Title: Enscript Output
+%%Creator: GNU Enscript 1.6.5.90
+%%CreationDate: Wed May  1 19:55:31 2019
+%%Orientation: Portrait
+%%Pages: (atend)
+%%DocumentMedia: Letter 612 792 0 () ()
+%%DocumentNeededResources: (atend)
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset Enscript-Prolog 1.6.5 90
+%
+% Procedures.
+%
+
+/_S {	% save current state
+  /_s save def
+} def
+/_R {	% restore from saved state
+  _s restore
+} def
+
+/S {	% showpage protecting gstate
+  gsave
+  showpage
+  grestore
+} bind def
+
+/MF {	% fontname newfontname -> -	make a new encoded font
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  % insert only valid encoding vectors
+  encoding_vector length 256 eq {
+    newfont /Encoding encoding_vector put
+  } if
+
+  newfontname newfont definefont pop
+} def
+
+/MF_PS { % fontname newfontname -> -	make a new font preserving its enc
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  newfontname newfont definefont pop
+} def
+
+/SF { % fontname width height -> -	set a new font
+  /height exch def
+  /width exch def
+
+  findfont
+  [width 0 0 height 0 0] makefont setfont
+} def
+
+/SUF { % fontname width height -> -	set a new user font
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF
+  /F-gs-user-font width height SF
+} def
+
+/SUF_PS { % fontname width height -> -	set a new user font preserving its enc
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF_PS
+  /F-gs-user-font width height SF
+} def
+
+/M {moveto} bind def
+/s {show} bind def
+
+/Box {	% x y w h -> -			define box path
+  /d_h exch def /d_w exch def /d_y exch def /d_x exch def
+  d_x d_y  moveto
+  d_w 0 rlineto
+  0 d_h rlineto
+  d_w neg 0 rlineto
+  closepath
+} def
+
+/bgs {	% x y height blskip gray str -> -	show string with bg color
+  /str exch def
+  /gray exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    gray setgray
+    fill
+  grestore
+  x y M str s
+} def
+
+/bgcs { % x y height blskip red green blue str -> -  show string with bg color
+  /str exch def
+  /blue exch def
+  /green exch def
+  /red exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    red green blue setrgbcolor
+    fill
+  grestore
+  x y M str s
+} def
+
+% Highlight bars.
+/highlight_bars {	% nlines lineheight output_y_margin gray -> -
+  gsave
+    setgray
+    /ymarg exch def
+    /lineheight exch def
+    /nlines exch def
+
+    % This 2 is just a magic number to sync highlight lines to text.
+    0 d_header_y ymarg sub 2 sub translate
+
+    /cw d_output_w cols div def
+    /nrows d_output_h ymarg 2 mul sub lineheight div cvi def
+
+    % for each column
+    0 1 cols 1 sub {
+      cw mul /xp exch def
+
+      % for each rows
+      0 1 nrows 1 sub {
+        /rn exch def
+        rn lineheight mul neg /yp exch def
+        rn nlines idiv 2 mod 0 eq {
+	  % Draw highlight bar.  4 is just a magic indentation.
+	  xp 4 add yp cw 8 sub lineheight neg Box fill
+	} if
+      } for
+    } for
+
+  grestore
+} def
+
+% Line highlight bar.
+/line_highlight {	% x y width height gray -> -
+  gsave
+    /gray exch def
+    Box gray setgray fill
+  grestore
+} def
+
+% Column separator lines.
+/column_lines {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h translate
+    /cw d_output_w cols div def
+    1 1 cols 1 sub {
+      cw mul 0 moveto
+      0 d_output_h rlineto stroke
+    } for
+  grestore
+} def
+
+% Column borders.
+/column_borders {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h moveto
+    0 d_output_h rlineto
+    d_output_w 0 rlineto
+    0 d_output_h neg rlineto
+    closepath stroke
+  grestore
+} def
+
+% Do the actual underlay drawing
+/draw_underlay {
+  ul_style 0 eq {
+    ul_str true charpath stroke
+  } {
+    ul_str show
+  } ifelse
+} def
+
+% Underlay
+/underlay {	% - -> -
+  gsave
+    0 d_page_h translate
+    d_page_h neg d_page_w atan rotate
+
+    ul_gray setgray
+    ul_font setfont
+    /dw d_page_h dup mul d_page_w dup mul add sqrt def
+    ul_str stringwidth pop dw exch sub 2 div ul_h_ptsize -2 div moveto
+    draw_underlay
+  grestore
+} def
+
+/user_underlay {	% - -> -
+  gsave
+    ul_x ul_y translate
+    ul_angle rotate
+    ul_gray setgray
+    ul_font setfont
+    0 0 ul_h_ptsize 2 div sub moveto
+    draw_underlay
+  grestore
+} def
+
+% Page prefeed
+/page_prefeed {		% bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} def
+
+% Wrapped line markers
+/wrapped_line_mark {	% x y charwith charheight type -> -
+  /type exch def
+  /h exch def
+  /w exch def
+  /y exch def
+  /x exch def
+
+  type 2 eq {
+    % Black boxes (like TeX does)
+    gsave
+      0 setlinewidth
+      x w 4 div add y M
+      0 h rlineto w 2 div 0 rlineto 0 h neg rlineto
+      closepath fill
+    grestore
+  } {
+    type 3 eq {
+      % Small arrows
+      gsave
+        .2 setlinewidth
+        x w 2 div add y h 2 div add M
+        w 4 div 0 rlineto
+        x w 4 div add y lineto stroke
+
+        x w 4 div add w 8 div add y h 4 div add M
+        x w 4 div add y lineto
+	w 4 div h 8 div rlineto stroke
+      grestore
+    } {
+      % do nothing
+    } ifelse
+  } ifelse
+} def
+
+% EPSF import.
+
+/BeginEPSF {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack
+  userdict begin
+  /showpage { } def
+  0 setgray 0 setlinecap
+  1 setlinewidth 0 setlinejoin
+  10 setmiterlimit [ ] 0 setdash newpath
+  /languagelevel where {
+    pop languagelevel
+    1 ne {
+      false setstrokeadjust false setoverprint
+    } if
+  } if
+} bind def
+
+/EndEPSF {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+%%EndResource
+%%BeginResource: procset Enscript-Encoding-88591 1.6.5 90
+/encoding_vector [
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclam       	/quotedbl     	/numbersign   	
+/dollar       	/percent      	/ampersand    	/quoteright   	
+/parenleft    	/parenright   	/asterisk     	/plus         	
+/comma        	/hyphen       	/period       	/slash        	
+/zero         	/one          	/two          	/three        	
+/four         	/five         	/six          	/seven        	
+/eight        	/nine         	/colon        	/semicolon    	
+/less         	/equal        	/greater      	/question     	
+/at           	/A            	/B            	/C            	
+/D            	/E            	/F            	/G            	
+/H            	/I            	/J            	/K            	
+/L            	/M            	/N            	/O            	
+/P            	/Q            	/R            	/S            	
+/T            	/U            	/V            	/W            	
+/X            	/Y            	/Z            	/bracketleft  	
+/backslash    	/bracketright 	/asciicircum  	/underscore   	
+/quoteleft    	/a            	/b            	/c            	
+/d            	/e            	/f            	/g            	
+/h            	/i            	/j            	/k            	
+/l            	/m            	/n            	/o            	
+/p            	/q            	/r            	/s            	
+/t            	/u            	/v            	/w            	
+/x            	/y            	/z            	/braceleft    	
+/bar          	/braceright   	/tilde        	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclamdown   	/cent         	/sterling     	
+/currency     	/yen          	/brokenbar    	/section      	
+/dieresis     	/copyright    	/ordfeminine  	/guillemotleft	
+/logicalnot   	/hyphen       	/registered   	/macron       	
+/degree       	/plusminus    	/twosuperior  	/threesuperior	
+/acute        	/mu           	/paragraph    	/bullet       	
+/cedilla      	/onesuperior  	/ordmasculine 	/guillemotright	
+/onequarter   	/onehalf      	/threequarters	/questiondown 	
+/Agrave       	/Aacute       	/Acircumflex  	/Atilde       	
+/Adieresis    	/Aring        	/AE           	/Ccedilla     	
+/Egrave       	/Eacute       	/Ecircumflex  	/Edieresis    	
+/Igrave       	/Iacute       	/Icircumflex  	/Idieresis    	
+/Eth          	/Ntilde       	/Ograve       	/Oacute       	
+/Ocircumflex  	/Otilde       	/Odieresis    	/multiply     	
+/Oslash       	/Ugrave       	/Uacute       	/Ucircumflex  	
+/Udieresis    	/Yacute       	/Thorn        	/germandbls   	
+/agrave       	/aacute       	/acircumflex  	/atilde       	
+/adieresis    	/aring        	/ae           	/ccedilla     	
+/egrave       	/eacute       	/ecircumflex  	/edieresis    	
+/igrave       	/iacute       	/icircumflex  	/idieresis    	
+/eth          	/ntilde       	/ograve       	/oacute       	
+/ocircumflex  	/otilde       	/odieresis    	/divide       	
+/oslash       	/ugrave       	/uacute       	/ucircumflex  	
+/udieresis    	/yacute       	/thorn        	/ydieresis    	
+] def
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Courier
+/HFpt_w 10 def
+/HFpt_h 10 def
+/Courier-Bold /HF-gs-font MF
+/HF /HF-gs-font findfont [HFpt_w 0 0 HFpt_h 0 0] makefont def
+/Courier /F-gs-font MF
+/F-gs-font 10 10 SF
+/#copies 1 def
+% Pagedevice definitions:
+gs_languagelevel 1 gt {
+  <<
+    /PageSize [612 792] 
+  >> setpagedevice
+} if
+%%BeginResource: procset Enscript-Header-simple 1.6.5 90
+
+/do_header {	% print default simple header
+  gsave
+    d_header_x d_header_y HFpt_h 3 div add translate
+
+    HF setfont
+    user_header_p {
+      5 0 moveto user_header_left_str show
+
+      d_header_w user_header_center_str stringwidth pop sub 2 div
+      0 moveto user_header_center_str show
+
+      d_header_w user_header_right_str stringwidth pop sub 5 sub
+      0 moveto user_header_right_str show
+    } {
+      5 0 moveto fname show
+      45 0 rmoveto fmodstr show
+      45 0 rmoveto pagenumstr show
+    } ifelse
+
+  grestore
+} def
+%%EndResource
+/d_page_w 512 def
+/d_page_h 692 def
+/d_header_x 0 def
+/d_header_y 677 def
+/d_header_w 512 def
+/d_header_h 15 def
+/d_footer_x 0 def
+/d_footer_y 0 def
+/d_footer_w 512 def
+/d_footer_h 0 def
+/d_output_w 512 def
+/d_output_h 677 def
+/cols 1 def
+%%EndSetup
+%%Page: (1) 1
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 1 def
+/fname (NBody.cpp) def
+/fdir (.) def
+/ftail (NBody.cpp) def
+% User defined strings:
+/fmodstr (Wed May 01 19:23:28 2019) def
+/pagenumstr (1) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+30 664 M (1:) s
+48 664 M
+(/*) s
+30 653 M (2:) s
+48 653 M
+(  Name: Ryan Balachandran) s
+30 642 M (3:) s
+48 642 M
+(  Computing IV) s
+30 631 M (4:) s
+48 631 M
+(  Professor: Yelena Rykalova) s
+30 620 M (5:) s
+48 620 M
+(  Due Date: 2/25/19) s
+30 609 M (6:) s
+48 609 M
+(  Problem Set 3a) s
+30 598 M (7:) s
+48 598 M
+(*/) s
+30 587 M (8:) s
+30 576 M (9:) s
+48 576 M
+(#include <SFML/System.hpp>) s
+24 565 M (10:) s
+48 565 M
+(#include <SFML/Graphics.hpp>) s
+24 554 M (11:) s
+48 554 M
+(#include <SFML/Window.hpp>) s
+24 543 M (12:) s
+48 543 M
+(#include <SFML/Audio.hpp>) s
+24 532 M (13:) s
+48 532 M
+(#include <iostream>) s
+24 521 M (14:) s
+48 521 M
+(#include <string>) s
+24 510 M (15:) s
+48 510 M
+(#include <stdlib.h>) s
+24 499 M (16:) s
+48 499 M
+(#include <stdio.h>) s
+24 488 M (17:) s
+48 488 M
+(#include <cmath>) s
+24 477 M (18:) s
+48 477 M
+(#include <vector>) s
+24 466 M (19:) s
+48 466 M
+(#include <sstream>) s
+24 455 M (20:) s
+48 455 M
+(#include <new>) s
+24 444 M (21:) s
+48 444 M
+(#include <memory>) s
+24 433 M (22:) s
+48 433 M
+(#include "NBody.hpp") s
+24 422 M (23:) s
+24 411 M (24:) s
+48 411 M
+(using namespace sf;) s
+24 400 M (25:) s
+48 400 M
+(using namespace std;) s
+24 389 M (26:) s
+24 378 M (27:) s
+48 378 M
+(Body::~Body\(\) {}) s
+24 367 M (28:) s
+24 356 M (29:) s
+48 356 M
+(Body::Body\(\) {}) s
+24 345 M (30:) s
+24 334 M (31:) s
+48 334 M
+(Body::Body\(Vector2f P, Vector2f V, double M, string F\)) s
+24 323 M (32:) s
+48 323 M
+({) s
+24 312 M (33:) s
+48 312 M
+(  position = P;) s
+24 301 M (34:) s
+48 301 M
+(  velocity = V;) s
+24 290 M (35:) s
+48 290 M
+(  mass = M;) s
+24 279 M (36:) s
+48 279 M
+(  filename = F;) s
+24 268 M (37:) s
+48 268 M
+(  this->setSprite\(\);) s
+24 257 M (38:) s
+24 246 M (39:) s
+48 246 M
+(  //cout << "Position: \(" << position.x << ", " << position.y << "\)"  << end) s
+5 235 M
+(l;) s
+24 224 M (40:) s
+48 224 M
+(  //cout << "Velocity: \(" << velocity.x << ", " << velocity.y << "\)"<< endl;) s
+24 213 M (41:) s
+48 213 M
+(  //cout << "Mass: " << mass << endl;) s
+24 202 M (42:) s
+48 202 M
+(  //cout << "Filename: " << filename << endl;) s
+24 191 M (43:) s
+48 191 M
+(}) s
+24 180 M (44:) s
+24 169 M (45:) s
+24 158 M (46:) s
+24 147 M (47:) s
+48 147 M
+(void Body::determine_position\(double& radius, Vector2u wSize\)) s
+24 136 M (48:) s
+48 136 M
+({) s
+24 125 M (49:) s
+48 125 M
+(  Vector2f r;) s
+24 114 M (50:) s
+48 114 M
+(  r.x = \(\(wSize.x/2\) + \(\(this->position.x/radius\) * \(wSize.x/2\)\)\);) s
+24 103 M (51:) s
+48 103 M
+(  r.y = \(\(wSize.y/2\) - \(\(this->position.y/radius\) * \(wSize.y/2\)\)\);) s
+24 92 M (52:) s
+24 81 M (53:) s
+48 81 M
+(  FloatRect sprite_dimensions = object.getGlobalBounds\(\);) s
+24 70 M (54:) s
+48 70 M
+(  r.x -= \(sprite_dimensions.width/2\);) s
+24 59 M (55:) s
+48 59 M
+(  r.y -= \(sprite_dimensions.height/2\);) s
+24 48 M (56:) s
+24 37 M (57:) s
+48 37 M
+(  this->setRenderPos\(r\);) s
+24 26 M (58:) s
+48 26 M
+(  object.setPosition\(this->render_position.x, this->render_position.y\);) s
+24 15 M (59:) s
+48 15 M
+(}) s
+24 4 M (60:) s
+_R
+S
+%%Page: (2) 2
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 2 def
+/fname (NBody.cpp) def
+/fdir (.) def
+/ftail (NBody.cpp) def
+% User defined strings:
+/fmodstr (Wed May 01 19:23:28 2019) def
+/pagenumstr (2) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+24 664 M (61:) s
+24 653 M (62:) s
+24 642 M (63:) s
+48 642 M
+(void Body::setPosition\(Vector2f coordinates\)) s
+24 631 M (64:) s
+48 631 M
+({) s
+24 620 M (65:) s
+48 620 M
+(  this->position = coordinates;) s
+24 609 M (66:) s
+48 609 M
+(}) s
+24 598 M (67:) s
+24 587 M (68:) s
+48 587 M
+(Vector2f Body::getPosition\(\) const) s
+24 576 M (69:) s
+48 576 M
+({) s
+24 565 M (70:) s
+48 565 M
+(  return this->position;) s
+24 554 M (71:) s
+48 554 M
+(}) s
+24 543 M (72:) s
+24 532 M (73:) s
+24 521 M (74:) s
+24 510 M (75:) s
+48 510 M
+(void Body::setAcceleration\(Vector2f accel\)) s
+24 499 M (76:) s
+48 499 M
+({) s
+24 488 M (77:) s
+48 488 M
+(  this->acceleration = accel;) s
+24 477 M (78:) s
+48 477 M
+(}) s
+24 466 M (79:) s
+24 455 M (80:) s
+48 455 M
+(Vector2f Body::getAcceleration\(\)) s
+24 444 M (81:) s
+48 444 M
+({) s
+24 433 M (82:) s
+48 433 M
+(  return this->acceleration;) s
+24 422 M (83:) s
+48 422 M
+(}) s
+24 411 M (84:) s
+24 400 M (85:) s
+24 389 M (86:) s
+24 378 M (87:) s
+48 378 M
+(void Body::setNetForce\(Vector2f fnet\)) s
+24 367 M (88:) s
+48 367 M
+({) s
+24 356 M (89:) s
+48 356 M
+(  this->net_force = fnet;) s
+24 345 M (90:) s
+48 345 M
+(}) s
+24 334 M (91:) s
+24 323 M (92:) s
+48 323 M
+(Vector2f Body::getNetForce\(\)) s
+24 312 M (93:) s
+48 312 M
+({) s
+24 301 M (94:) s
+48 301 M
+(  return this->net_force;) s
+24 290 M (95:) s
+48 290 M
+(}) s
+24 279 M (96:) s
+24 268 M (97:) s
+24 257 M (98:) s
+24 246 M (99:) s
+48 246 M
+(void Body::setVelocity\(Vector2f V\)) s
+18 235 M (100:) s
+48 235 M
+({) s
+18 224 M (101:) s
+48 224 M
+(  this->velocity = V;) s
+18 213 M (102:) s
+48 213 M
+(}) s
+18 202 M (103:) s
+18 191 M (104:) s
+48 191 M
+(Vector2f Body::getVelocity\(\) const) s
+18 180 M (105:) s
+48 180 M
+({) s
+18 169 M (106:) s
+48 169 M
+(  return this->velocity;) s
+18 158 M (107:) s
+48 158 M
+(}) s
+18 147 M (108:) s
+18 136 M (109:) s
+18 125 M (110:) s
+18 114 M (111:) s
+48 114 M
+(void Body::setMass\(double M\)) s
+18 103 M (112:) s
+48 103 M
+({) s
+18 92 M (113:) s
+48 92 M
+(  this->mass = M;) s
+18 81 M (114:) s
+48 81 M
+(}) s
+18 70 M (115:) s
+18 59 M (116:) s
+48 59 M
+(double Body::getMass\(\)) s
+18 48 M (117:) s
+48 48 M
+({) s
+18 37 M (118:) s
+48 37 M
+(  return this->mass;) s
+18 26 M (119:) s
+48 26 M
+(}) s
+18 15 M (120:) s
+18 4 M (121:) s
+_R
+S
+%%Page: (3) 3
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 3 def
+/fname (NBody.cpp) def
+/fdir (.) def
+/ftail (NBody.cpp) def
+% User defined strings:
+/fmodstr (Wed May 01 19:23:28 2019) def
+/pagenumstr (3) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (122:) s
+18 653 M (123:) s
+48 653 M
+(void Body::setSprite\(\)) s
+18 642 M (124:) s
+48 642 M
+({) s
+18 631 M (125:) s
+48 631 M
+(  if\(!\(planet.loadFromFile\(filename\)\)\)) s
+18 620 M (126:) s
+48 620 M
+(  {) s
+18 609 M (127:) s
+48 609 M
+(    cout << "ERROR! Unable to find Image!" << endl;) s
+18 598 M (128:) s
+48 598 M
+(    exit\(EXIT_FAILURE\);) s
+18 587 M (129:) s
+48 587 M
+(  }) s
+18 576 M (130:) s
+18 565 M (131:) s
+48 565 M
+(  texture.loadFromImage\(planet\);) s
+18 554 M (132:) s
+48 554 M
+(  this->object.setTexture\(texture\);) s
+18 543 M (133:) s
+48 543 M
+(  this->object.setPosition\(getRenderPos\(\).x, getRenderPos\(\).y\);) s
+18 532 M (134:) s
+48 532 M
+(}) s
+18 521 M (135:) s
+18 510 M (136:) s
+48 510 M
+(Sprite Body::getSprite\(\)) s
+18 499 M (137:) s
+48 499 M
+({) s
+18 488 M (138:) s
+48 488 M
+(  return this->object;) s
+18 477 M (139:) s
+48 477 M
+(}) s
+18 466 M (140:) s
+18 455 M (141:) s
+18 444 M (142:) s
+18 433 M (143:) s
+18 422 M (144:) s
+48 422 M
+(void Body::setRenderPos\(Vector2f renderPos\)) s
+18 411 M (145:) s
+48 411 M
+({) s
+18 400 M (146:) s
+48 400 M
+(  this->render_position = renderPos;) s
+18 389 M (147:) s
+48 389 M
+(}) s
+18 378 M (148:) s
+18 367 M (149:) s
+48 367 M
+(Vector2f Body::getRenderPos\(\) const) s
+18 356 M (150:) s
+48 356 M
+({) s
+18 345 M (151:) s
+48 345 M
+(  return this->render_position;) s
+18 334 M (152:) s
+48 334 M
+(}) s
+18 323 M (153:) s
+18 312 M (154:) s
+18 301 M (155:) s
+18 290 M (156:) s
+18 279 M (157:) s
+48 279 M
+(string Body::getFile\(\)) s
+18 268 M (158:) s
+48 268 M
+({) s
+18 257 M (159:) s
+48 257 M
+(  return filename;) s
+18 246 M (160:) s
+48 246 M
+(}) s
+18 235 M (161:) s
+18 224 M (162:) s
+18 213 M (163:) s
+18 202 M (164:) s
+48 202 M
+(istream& operator>>\(istream& input, Body& body\)) s
+18 191 M (165:) s
+48 191 M
+({) s
+18 180 M (166:) s
+48 180 M
+(  input >> body.position.x >> body.position.y >> body.velocity.x >> body.vel) s
+5 169 M
+(ocity.y >> body.mass >> body.filename;) s
+18 158 M (167:) s
+18 147 M (168:) s
+48 147 M
+(  return input;) s
+18 136 M (169:) s
+48 136 M
+(}) s
+18 125 M (170:) s
+18 114 M (171:) s
+18 103 M (172:) s
+18 92 M (173:) s
+48 92 M
+(ostream& operator<<\(ostream &output, Body& body\)) s
+18 81 M (174:) s
+48 81 M
+({) s
+18 70 M (175:) s
+48 70 M
+(  output << "Window Dimension: \(" << body.window.x << ", " << body.window.y ) s
+5 59 M
+(<< "\)" << endl;) s
+18 48 M (176:) s
+48 48 M
+(  output << "Radius of Universe: " << body.universe_radius << endl;) s
+18 37 M (177:) s
+48 37 M
+(  output << "Position: \(" << body.position.x << ", " << body.position.y << ") s
+5 26 M
+(\)" << endl;) s
+18 15 M (178:) s
+48 15 M
+(  output << "Velocity: \(" << body.velocity.x << ", " << body.velocity.y << ") s
+5 4 M
+(\)" << endl;) s
+_R
+S
+%%Page: (4) 4
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 4 def
+/fname (NBody.cpp) def
+/fdir (.) def
+/ftail (NBody.cpp) def
+% User defined strings:
+/fmodstr (Wed May 01 19:23:28 2019) def
+/pagenumstr (4) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (179:) s
+48 664 M
+(  output << "Mass: " << body.mass << endl;) s
+18 653 M (180:) s
+48 653 M
+(  output << "File name: " << body.filename << endl;) s
+18 642 M (181:) s
+48 642 M
+(  cout << "--------------------------------------------------------------" <) s
+5 631 M
+(< endl;) s
+18 620 M (182:) s
+18 609 M (183:) s
+48 609 M
+(  return output;) s
+18 598 M (184:) s
+48 598 M
+(}) s
+18 587 M (185:) s
+18 576 M (186:) s
+18 565 M (187:) s
+18 554 M (188:) s
+48 554 M
+(void Body::draw\(RenderTarget& target, RenderStates states\) const) s
+18 543 M (189:) s
+48 543 M
+({) s
+18 532 M (190:) s
+48 532 M
+(  target.draw\(this->object\);) s
+18 521 M (191:) s
+48 521 M
+(}) s
+18 510 M (192:) s
+18 499 M (193:) s
+18 488 M (194:) s
+18 477 M (195:) s
+48 477 M
+(//calculate and set body velocity) s
+18 466 M (196:) s
+48 466 M
+(void setBodyVelocity\(double time, Body* body\)) s
+18 455 M (197:) s
+48 455 M
+({) s
+18 444 M (198:) s
+48 444 M
+(  Vector2f vel;) s
+18 433 M (199:) s
+18 422 M (200:) s
+48 422 M
+(  vel.x = body->getVelocity\(\).x + \(time*body->getAcceleration\(\).x\);) s
+18 411 M (201:) s
+48 411 M
+(  vel.y = body->getVelocity\(\).y + \(time*body->getAcceleration\(\).y\);) s
+18 400 M (202:) s
+48 400 M
+(  body->setVelocity\(vel\);) s
+18 389 M (203:) s
+48 389 M
+(}) s
+18 378 M (204:) s
+18 367 M (205:) s
+18 356 M (206:) s
+18 345 M (207:) s
+48 345 M
+(void setBodyPosition\(double time, Body* body\)) s
+18 334 M (208:) s
+48 334 M
+({) s
+18 323 M (209:) s
+48 323 M
+(  Vector2f pos;) s
+18 312 M (210:) s
+48 312 M
+(  ) s
+18 301 M (211:) s
+48 301 M
+(  pos.x = body->getPosition\(\).x + \(time*body->getVelocity\(\).x\);) s
+18 290 M (212:) s
+48 290 M
+(  pos.y = body->getPosition\(\).y + \(time*body->getVelocity\(\).y\);) s
+18 279 M (213:) s
+48 279 M
+(  body->setPosition\(pos\);) s
+18 268 M (214:) s
+48 268 M
+(}) s
+18 257 M (215:) s
+18 246 M (216:) s
+18 235 M (217:) s
+18 224 M (218:) s
+48 224 M
+(void setBodyAcceleration\(Body* body\)) s
+18 213 M (219:) s
+48 213 M
+({) s
+18 202 M (220:) s
+48 202 M
+(  Vector2f accel;) s
+18 191 M (221:) s
+18 180 M (222:) s
+48 180 M
+(  accel.x = body->getNetForce\(\).x/body->getMass\(\);) s
+18 169 M (223:) s
+48 169 M
+(  accel.y = body->getNetForce\(\).y/body->getMass\(\);) s
+18 158 M (224:) s
+48 158 M
+(  body->setAcceleration\(accel\);) s
+18 147 M (225:) s
+48 147 M
+(}) s
+18 136 M (226:) s
+18 125 M (227:) s
+18 114 M (228:) s
+18 103 M (229:) s
+48 103 M
+(Vector2f Force\(Body* body1, Body* body2\)) s
+18 92 M (230:) s
+48 92 M
+({) s
+18 81 M (231:) s
+48 81 M
+(  Vector2f force\(0,0\);) s
+18 70 M (232:) s
+48 70 M
+(  double dX = 0;) s
+18 59 M (233:) s
+48 59 M
+(  double dY = 0;) s
+18 48 M (234:) s
+48 48 M
+(  double radius;) s
+18 37 M (235:) s
+48 37 M
+(  double total_force;) s
+18 26 M (236:) s
+18 15 M (237:) s
+48 15 M
+(  //calculate the radius between two bodies) s
+18 4 M (238:) s
+48 4 M
+(  dX = \(body1->getPosition\(\).x\) - \(body2->getPosition\(\).x\);) s
+_R
+S
+%%Page: (5) 5
+%%BeginPageSetup
+_S
+50 50 translate
+/pagenum 5 def
+/fname (NBody.cpp) def
+/fdir (.) def
+/ftail (NBody.cpp) def
+% User defined strings:
+/fmodstr (Wed May 01 19:23:28 2019) def
+/pagenumstr (5) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18 664 M (239:) s
+48 664 M
+(  dY = \(body1->getPosition\(\).y\) - \(body2->getPosition\(\).y\);) s
+18 653 M (240:) s
+48 653 M
+(  radius = sqrt\(pow\(dX, 2\) + \(pow\(dY, 2\)\)\);) s
+18 642 M (241:) s
+18 631 M (242:) s
+48 631 M
+(  total_force = \(UGRAV * body1->getMass\(\) * body2->getMass\(\)\)/pow\(radius, 2\)) s
+5 620 M
+(;) s
+18 609 M (243:) s
+48 609 M
+(  force.x = total_force * \(dX/radius\);) s
+18 598 M (244:) s
+48 598 M
+(  force.y = total_force * \(dY/radius\);) s
+18 587 M (245:) s
+18 576 M (246:) s
+48 576 M
+(  return force; ) s
+18 565 M (247:) s
+48 565 M
+(}) s
+18 554 M (248:) s
+18 543 M (249:) s
+18 532 M (250:) s
+18 521 M (251:) s
+48 521 M
+(void step\(double seconds, double radius, Vector2u wSize, Body* body\)) s
+18 510 M (252:) s
+48 510 M
+({) s
+18 499 M (253:) s
+48 499 M
+(  setBodyAcceleration\(body\);) s
+18 488 M (254:) s
+48 488 M
+(  setBodyVelocity\(seconds, body\);) s
+18 477 M (255:) s
+48 477 M
+(  setBodyPosition\(seconds, body\);) s
+18 466 M (256:) s
+48 466 M
+(  body->determine_position\(radius, wSize\);) s
+18 455 M (257:) s
+48 455 M
+(}) s
+18 444 M (258:) s
+18 433 M (259:) s
+18 422 M (260:) s
+18 411 M (261:) s
+48 411 M
+(void printVariables\(vector<Body*> body\)) s
+18 400 M (262:) s
+48 400 M
+({) s
+18 389 M (263:) s
+48 389 M
+(  for\(vector<Body*>::iterator it = body.begin\(\); it !=body.end\(\); ++it\)) s
+18 378 M (264:) s
+48 378 M
+(  {) s
+18 367 M (265:) s
+48 367 M
+(    cout << scientific << \(*it\)->getPosition\(\).x << "\\t" << \(*it\)->getPositi) s
+5 356 M
+(on\(\).y;) s
+18 345 M (266:) s
+48 345 M
+(    cout << scientific << "\\t" << \(*it\)->getVelocity\(\).x << "\\t" << \(*it\)->g) s
+5 334 M
+(etVelocity\(\).y;) s
+18 323 M (267:) s
+48 323 M
+(    cout << "\\t" << \(*it\)->getMass\(\) << "\\t";) s
+18 312 M (268:) s
+48 312 M
+(    cout.width\(11\);) s
+18 301 M (269:) s
+48 301 M
+(    cout << right << \(*it\)->getFile\(\) << endl;) s
+18 290 M (270:) s
+48 290 M
+(  }) s
+18 279 M (271:) s
+48 279 M
+(}) s
+18 268 M (272:) s
+18 257 M (273:) s
+18 246 M (274:) s
+_R
+S
+%%Trailer
+%%Pages: 5
+%%DocumentNeededResources: font Courier-Bold Courier 
+%%EOF

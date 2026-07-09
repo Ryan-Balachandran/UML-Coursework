@@ -1,0 +1,27 @@
+Ryan Balachandran
+Computing Architecture
+COMP 3050-201
+Email: Ryan_Balachandran@student.uml.edu
+
+I think my degree of success is 100%
+
+I first started with retrieving the masm_mrd and prom_mrd.dat files from /~bill/cs305, as I wanted to make sure it ran correctly. I then commented above the variables what each of the transmitter numbers did; 4092 = input buffer, 4093 = receiver address, etc. 
+
+After, I added variables that held a string requesting input, what the sum of the integers is, and an overflow if no sum was possible.
+
+
+At the beginning of the file, I added a main function to load the address of the result to get back from the AddInput function before calling said function.
+
+In the AddInput function I load and store the address of the return and result function into their respective variables before loading a pointer to the last digit.
+
+From AddIng, we fall to the start function given to us which loads the address of the string which prompts input where it falls to the nextw function which outputs each digit of the string until it sees a carriage return.
+
+The main function is the addnum function which adds the two numbers:
+
+addnum:		lodd num1:		; retrieve num 1, ac = num1
+		push			; put num 1 on stack, m[sp] = num1
+		lodd num2:		; retrieve num 2, ac = num2
+		addl 0			; num 2 (ac) + num 1 (sp), ac = num1 + num2
+		stod rslt:		; store result in rslt:, rslt = ac (num1 + num2)
+		jneg oflow:		; check for overflow
+		pop			; get num 1 off stack - not needed

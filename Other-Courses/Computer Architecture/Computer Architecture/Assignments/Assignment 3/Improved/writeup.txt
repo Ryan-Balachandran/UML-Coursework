@@ -1,0 +1,32 @@
+Ryan Balachandran
+Computing Architecture
+COMP 3050-201
+Email: Ryan_Balachandran@student.uml.edu
+
+I think my degree of success is 100%
+
+Coding in MIPS last semester for assembly language was hard towards the end of the semester. Mic1 is the same.
+
+Sunday, 2/9/20, I came down with a bad stomach bug, so I missed Mondays class. I was able to watch the recorded 
+lecture later that week when I felt better, but even after that, I had a lot of trouble figuring out how to begin 
+working on this assignment. I know we just had to replace the iterative solution with the recursive solution, so I 
+tried to see how the Mic1 code matched up with the iterative C code, then try and change it to match the resursive
+C code, but I was getting nowhere. 
+
+After many attempts, I was finally able to piece together the solution. The recursive fibonacci C code was much 
+neater than the iterative fibonacci C code, so I guessed that the recursive Mic1 code would be shorter 
+than the iterative code.
+
+I knew i didnt need the temporary count that was used in the for loop in the iterative version, so I tried to 
+go and work with using the fn1 and fn1 variables. After many hours, I couldn't figure out how to mimic the 
+recursive calls in C to mic1, so I read through the book and thoroughly went through the slides and rewatched 
+the lectures until I was able to figure out I just had to do: 
+
+PUSH            ; pass current value in AC to stack fib(n - 1)
+CALL FIB:       ; recursive call to fib
+PUSH            
+LODL 1
+SUBD c1:
+PUSH            ; pass current value in AC to stack fib(n - 2)
+CALL FIB:
+

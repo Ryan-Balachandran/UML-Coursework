@@ -1,0 +1,14 @@
+predict program --> stmt_list eof
+predict stmt_list --> stmt stmt_list
+predict stmt --> read id
+matched read
+matched id: n
+predict stmt_list --> stmt stmt_list
+predict stmt --> id gets expr
+matched id: cp
+matched gets
+predict expr --> term term_tail
+predict term --> factor factor_tail
+predict factor --> literal
+matched literal: 2
+syntax error

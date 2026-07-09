@@ -1,0 +1,65 @@
+# Compiled files
+*.o
+*.obj
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+
+# Build directories
+bin/
+obj/
+build/
+dist/
+target/
+
+# IDE and editor files
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+*.cbp
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Java
+*.class
+*.jar
+*.log
+
+# macOS
+._*
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# OS files
+.Thumbs.db
+.directory
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+.~*
+
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.log
+*.pdf

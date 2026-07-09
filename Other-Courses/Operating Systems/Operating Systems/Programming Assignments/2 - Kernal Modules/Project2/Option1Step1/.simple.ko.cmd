@@ -1,0 +1,1 @@
+cmd_/home/osc/Project2/Option1Step1/simple.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/osc/Project2/Option1Step1/simple.ko /home/osc/Project2/Option1Step1/simple.o /home/osc/Project2/Option1Step1/simple.mod.o

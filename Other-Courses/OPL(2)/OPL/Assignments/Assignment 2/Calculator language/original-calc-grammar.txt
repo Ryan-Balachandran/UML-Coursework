@@ -1,0 +1,10 @@
+program 	→ stmt_list $$$
+stmt_list 	→ stmt stmt_list | ε
+stmt 		→ id := expr | read id | write expr
+expr		→ term term_tail
+term_tail 	→ add_op term term_tail | ε
+term		→ factor fact_tail
+fact_tail	→ mult_op fact fact_tail | ε
+factor	 	→ ( expr ) | id | number
+add_op 		→ + | -
+mult_op 	→ * | /

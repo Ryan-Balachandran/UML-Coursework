@@ -1,0 +1,4 @@
+1) While in this folder: Balachandran_Ryan_01427025
+    a) Open the terminal
+2) In the terminal type: ./masm < myHW3.asm > myHW3.obj
+3) Then type: ./mic1 prom.dat myHW3.obj 0 2048

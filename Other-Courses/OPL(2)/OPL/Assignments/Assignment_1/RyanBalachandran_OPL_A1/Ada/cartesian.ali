@@ -1,0 +1,68 @@
+V "GNAT Lib v7"
+M P W=b
+P ZX
+
+RN
+RV NO_IO
+RV SPARK_05
+
+U cartesian%b		cartesian.adb		fbe29275 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+D ada.ads		20170106103348 76789da1 ada%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-inteio.ads		20070406091342 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20170106103348 31484697 ada.unchecked_conversion%s
+D cartesian.adb		20200208003654 35c4ee05 cartesian%b
+D interfac.ads		20160502101001 5ab55268 interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D system.ads		20170510173650 4635ec04 system%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160502101423 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 10|1r6 1r31 2r6 2r31 25r4 26r4 27r4
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 10|2w10 2r35
+X 7 a-textio.ads
+49K13*Text_IO 471e16 10|1w10 1r35 25r8 26r8 27r8
+263U14*Put_Line 10|25s16 26s16 27s16 35s4 39s4 50s4 69s4 70s4 71s4 78s10
+. 83s4 84s4 85s4 86s4
+X 8 a-tiinio.ads
+66U14*Put 10|37s7[3|18] 52s7[3|18] 74s7[3|18]
+X 10 cartesian.adb
+4U11*Cartesian 4b11 89l5 89t14
+8i4 aLimit{integer} 10r24 15r24 31r18 36r18 61r18
+9i4 bLimit{integer} 10r33 16r24 46r18 51r18 62r21 76r22
+10i4 cLimit{integer} 17r24 73r18
+12i4 cIndex{integer} 60m4 63r12 64m10 64r20
+13i4 lineCount{integer} 72m4 75m7 75r20 76r10 77m10
+15A9 AP(integer)<integer> 18r8
+16A9 EP(integer)<integer> 19r8
+17A9 CP(integer)<integer> 20r8
+18a4 a{15A9} 32m7 37r11 63r23
+19a4 b{16A9} 47m7 52r11 63r30
+20a4 c{17A9} 63m10 74r11
+31i8 i{integer} 32r9 32r15
+36i8 i{integer} 37r13
+46i8 i{integer} 47r9 47r15
+51i8 i{integer} 52r13
+61i8 i{integer} 63r25
+62i11 j{integer} 63r32
+73i8 i{integer} 74r13
+

@@ -1,0 +1,27 @@
+Ryan Balachandran
+Computing Architecture
+COMP 3050-201
+Email: Ryan_Balachandran@student.uml.edu
+
+I think my degree of success is 100%
+
+It took me while to get started on this assignment and organize everything into clear steps of what I had to do.
+
+I first copied the three div, mult, and rshift test files into my assignment folder along with the Makefile.
+
+I then started with the original flex file and added div, mult, and rshift rules along with comments indicating what I added.
+
+Next I started with the given extended microcode and spent a few days reviewing the lectures and slides before attempting to add the microcode for div, mult, and rshift.
+
+After finishing the microcode and flex files, I worked on the masm source file, once again looking back at previous lectures, slides, and the extended masm source code from the assignment.
+
+After double checking the microcode, flex file, and masm source code, I went to modifying the Makefile to build the new prom.dat file, compile the a4 test files into objects, and then run each of them.
+
+HOW TO RUN: 
+	1) Inside the folder, bring up the terminal
+	2) type: make
+	3) type this to run each test file: 
+		a) make div
+		b) make mult
+		c) make rshift
+	4) type this to clean up the directory to how it was before: make clean
