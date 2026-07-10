@@ -7,25 +7,25 @@ A comprehensive collection of coursework from my Computer Science degree at Univ
 ### GitHub-Based Courses
 These courses had their work tracked in dedicated GitHub repositories:
 
-#### Computer-Graphics/
+#### Computer-Graphics:
 - **Course**: Computer Graphics (CS 2020)
 - **Content**: Programming assignments (5 projects) + Final Project
 - **Focus**: Graphics rendering, OpenGL, 3D transformations
 - **Languages**: C++, GLSL
 
-#### Battleship-AI/
+#### Battleship-AI:
 - **Course**: Artificial Intelligence (CS 2050)
 - **Content**: Final team project - AI-powered Battleship game
 - **Focus**: Game AI, minimax algorithm, strategic decision-making
 - **Languages**: Python
 
-#### Computing-3/
+#### Computing-3:
 - **Course**: Computing III (CS 1030)
 - **Content**: Daily assignments and programming exercises
 - **Focus**: Object-oriented programming, data structures
 - **Languages**: C++
 
-### Other-Courses/
+### Other-Courses:
 Extracted coursework from local storage (12 additional courses):
 
 #### Core CS Courses
