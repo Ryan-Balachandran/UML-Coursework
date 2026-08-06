@@ -1,0 +1,47 @@
+* { box-sizing: border-box; }
+
+body {
+    background-image: url("images/wood.webp");
+    background-size: cover;
+    color: navajowhite;
+}
+
+#controlDiv {
+    width: auto;
+    float: left;
+    overflow: auto;
+}
+
+#universeDiv {
+    width: available;
+    float: left;
+    /* border-style: solid; */
+}
+
+/* div { border-style: solid; } */
+#titleSpan { font-size: x-large; }
+#subtitleSpan { font-size: small; }
+
+button, input, select {
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    color: navajowhite;
+}
+
+/* up down adjust buttons */
+.halfButtons { width:50%; }
+
+#controlTable {
+    table-layout: fixed;
+    width: 250px;
+}
+
+#universeCanvas {
+    border-style: solid;
+    position: relative;
+}
+
+#panNZoomTB {
+    display: none;
+}

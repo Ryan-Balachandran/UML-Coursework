@@ -1,0 +1,166 @@
+@charset "utf-8";
+
+/* Kevin Coursey */
+
+/* HTML and Body Styles */
+
+html {
+    background-color: rgb(0, 0, 0);
+}
+
+body {
+   color: rgb(91, 91, 91);
+   background-color: rgb(188, 201, 252);
+   margin-right: 10px;
+   max-width: 100%;
+   min-width: 640px;
+   max-height: 100%;
+   width: 99%;
+}
+
+img#indexPic{
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+td {
+    width: 200px;
+    vertical-align: middle;
+}
+
+section#middleColumn > img {
+   display: block;
+   width: 95%;
+}
+
+ /* Navigation Styles */	
+nav {
+    font-size: 1.0em;
+ }
+
+nav > ul {
+   line-height: 2em;
+   list-style-type: none;
+   padding-left: 35px;
+}
+
+nav > ul > li.newgroup {
+   margin-top: 20px;
+}
+
+nav > ul > li > a:link, nav > ul > li > a:visited {
+   color: rgb(92, 92, 92);
+   text-decoration: none;
+}
+
+nav > ul > li > a:hover, nav > ul > li > a:active {
+   color: rgb(255, 0, 0);
+   text-decoration: none;
+}
+
+section > nav > dl > dt > a:link, nav > ul > li > a:visited {
+color: rgb(92, 92, 92);
+text-decoration: none;
+}
+
+section > nav > dl > dt > a:hover, nav > ul > li > a:active {
+   color: rgb(255, 0, 0);
+   text-decoration: none;
+}
+
+section > nav > ul >li > a:link, nav > ul > li > a:visited {
+   color: rgb(92, 92, 92);
+   text-decoration: none;
+   }
+   
+section > nav > ul > li > a:hover, nav > ul > li > a:active {
+   color: rgb(255, 0, 0);
+   text-decoration: none;
+}
+
+dl#info dt:hover, nav > ul > li > dt:active {
+   color: rgb(255, 0, 0);
+   text-decoration: none;
+}
+
+dl#info dt {
+   background: url("studioImages/minus-20x20.png") left center/20px no-repeat ;   
+   font-size: 1em;
+   display: block;
+   margin: 10px 0 10px;
+   text-indent: 60px;
+   cursor: pointer;
+   user-select: none;
+}
+
+dl#info dt.hiddenInfo {
+   background: url("studioImages/plus-20x20.png") left center/20px no-repeat ;
+}
+
+dt + dd {
+   display: none;
+}
+
+dl#info dd p {
+   font-size: 1.2em;
+   line-height: 1.2;
+   margin: 0 0 15px 65px;
+   font-family: "Gill Sans", Helvetica, Arial, sans-serif;
+   text-align: justify;
+   overflow:visible;
+}
+
+ /* Footer Styles */
+
+body > footer#foot {
+    background-color: rgb(250, 174, 120);
+    color: white; color: rgba(0, 0, 0, 0.7);
+    font: normal small-caps bold 0.9em/3em
+          Quicksand, Veranda, Geneva, sans-serif;
+    text-align: center;
+    clear: left;
+    line-height: 1.5em;
+ }
+
+ /* Upper Left Column Styles */
+ section#leftColumn {
+    clear: left;
+    float: left;
+    padding: 1.5em;
+    width:30%;
+    height:150px;
+ }
+
+  /* Lower Left and Column Styles */
+  section#leftMiddleColumn {
+   clear: left;
+   float: left;
+   padding: 1.5em;
+   width:70%;
+}
+
+/* Upper Middle Column Styles */
+ section#middleColumn {
+    float:left;
+    width: 40%;
+    height: 150px;
+ }
+ 
+ /* Right Column Styles */
+ section#rightColumn {
+    float:right;
+    width: 25%;
+    border-left: 4px solid rgb(224, 147, 147);
+ }
+
+ section#rightColumn > article {
+    margin-left: 10px;
+    font-size: 1.1em;
+    line-height: 1.2;
+}
+
+section#rightColumn > nav > ul {
+   margin-top: auto;
+   margin-bottom: auto;
+}

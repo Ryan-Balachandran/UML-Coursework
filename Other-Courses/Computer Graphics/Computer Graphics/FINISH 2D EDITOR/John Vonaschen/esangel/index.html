@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>Ryan's Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="Common/initShaders.js"></script>
+    <script type="text/javascript" src="Common/MV.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+
+
+<body>
+    <div class="headerDiv">
+        <span id="titleSpan">Interactive Computer Graphics</span>
+        <span id="subtitleSpan">A Top-Down Approach with WebGL, 7th Edition</span>
+        <hr>
+        <label for="examplesSelect">examples:</label>
+        <select id="examplesSelect">
+            <option value="0" selected="selected">2.1 The Sierpinski Gasket</option>
+            <option value="1">2.10 The Three Dimensional Gasket</option>
+        </select>
+    </div><br>
+
+
+    <div id="div0" class="contentDiv">
+        <div class="controlDiv" id="controlDiv">
+            <table id="controlTable">
+                <tr>
+                    <td colspan="3"><button id="randColorButton">
+                        Random Color
+                    </button></td>
+                </tr>
+
+                <tr>
+                    <td><label for="redRange">Red</label></td>
+                    <td><input id="redRange" type="range" min="0" max="1" step="0.01"></td>
+                    <td id="redRangeTD" class="fw"></td>
+                <tr>
+                    <td><label for="greenRange">Green</label></td>
+                    <td><input id="greenRange" type="range" min="0" max="1" step="0.01"></td>
+                    <td id="greenRangeTD" class="fw"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="blueRange">Blue</label></td>
+                    <td><input id="blueRange" type="range" min="0" max="1" step="0.01"></td>
+                    <td id="blueRangeTD" class="fw"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="alphaRange">Alpha</label></td>
+                    <td><input id="alphaRange" type="range" min="0" max="1" step="0.01"></td>
+                    <td id="alphaRangeTD" class="fw"></td>
+                </tr>
+
+                <tr><td colspan="2">&nbsp;</td></tr>
+                <tr>
+                    <td><label for="PSRange">Size</label></td>
+                    <td><input id="PSRange" type="range" min="1" max="10" step="0.1"></td>
+                    <td id="PSRangeTD" class="fw"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="NOPRange">Points</label></td>
+                    <td><input id="NOPRange" type="range" min="0" max="500000" step="100"></td>
+                    <td id="NOPRangeTD" class="fw"></td>
+                </tr>
+
+                <tr><td colspan="3">&nbsp;</td></tr>
+                <tr>
+                    <td><label for="xRange">Pan x</label></td>
+                    <td><input id="xRange" type="range" min="-1" max="1" step="0.01"></td>
+                    <td id="xRangeTD" class="fw"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="yRange">Pan y</label></td>
+                    <td><input id="yRange" type="range" min="-1" max="1" step="0.01"></td>
+                    <td id="yRangeTD" class="fw"></td>
+                </tr>
+                <tr>
+                    <td><label for="rotRange">Rot</label></td>
+                    <td><input id="rotRange" type="range" min="0" max="3.142" step="0.001"></td>
+                    <td id="rotRangeTD" class="fw"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="zoomRange">Zoom</label></td>
+                    <td><input id="zoomRange" type="range" min="0" max="10" step="0.1"></td>
+                    <td id="zoomRangeTD" class="fw"></td>
+                </tr>
+
+                <tr><td colspan="3">&nbsp;</td></tr>
+                <tr id="keyframeButtonRow">
+                    <td colspan="3"><button id="addKeyframeButton">+</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="canvasDiv">
+            <canvas id="sierpinskiCanvas">
+                Your browser sucks.
+            </canvas>
+        </div>
+    </div>
+    
+    <div id="div1" class="contentDiv"></div>
+</body>
+</html>

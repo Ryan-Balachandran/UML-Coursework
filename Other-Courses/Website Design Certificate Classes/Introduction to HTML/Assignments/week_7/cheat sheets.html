@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>Week 7</title> 
+  <style>
+@import url(https://fonts.googleapis.com/css?family=Arvo:700);
+@import url(https://fonts.googleapis.com/css?family=Seaweed+Script);
+body {
+  background-color:  #16a085;
+}
+.plate {
+  width: 700px;
+  margin: 10% auto;
+}
+.shadow {
+  color: #fff;
+  font-family: Arvo;
+  font-weight: bold;
+  text-shadow:
+    -3px -3px 0  #222,
+    3px -3px 0  #222,
+    -3px 3px 0  #222,
+    3px 3px 0  #222,
+    4px 4px 0  #222,
+    5px 5px 0  #222,
+    6px 6px 0  #222,
+    7px 7px 0  #222;
+  line-height: 0.8em;
+  letter-spacing: 0.1em;
+  transform: scaleY(0.7);
+  -webkit-transform: scaleY(0.7);
+  -moz-transform: scaleY(0.7);
+  margin:0;
+  text-align: center;
+}
+.script {
+  /* font-family: "Seaweed Script"; */
+  color:  #222;
+  text-align: center;
+  font-size: 40px;
+  position: relative;
+  margin:0;
+}
+.script span {
+  background-color:  #16a085;
+  padding: 0 0.3em;
+}
+.script:before {
+  content:"";
+  display: block;
+  position: absolute;
+  z-index:-1;
+  top: 50%;
+  width: 70%;
+  border-bottom: 3px solid #fff;
+}
+.text1 {
+  font-size: 60px;
+}
+.text2 {
+  font-size: 169px;
+}
+.text3 {
+  font-size: 100px;
+}
+</style> 
+ </head> 
+ <body> 
+  <div class="plate"> 
+   <p class="script"><span style="color: white; text-align: center;"> 
+     <bold>
+       HTML5 Cheat Sheets 
+      <br />
+      <br />
+     </bold></span></p> 
+   <p class="script"><span style="text-align: center;">HTML5 includes many new tags, which earlier versions of browsers might ignore,<br />thereby not rendering the page properly.<br />That's why it's especially important for users to have the latest versions of browsers;<br />new versions can also contain stronger security and encryption blocks.<br /></span></p> 
+   <p class="script"><span style="text-align: center;"></span></p> 
+   <p class="script"><span style="color: white; text-align: center;"> 
+     <bold>
+       Exercise 
+      <br />
+     </bold></span><span>In our Resources module, you'll see HTML5 cheat sheets. Where possible, include new HTML5 tags into your Index page, including the header and footer tags. Especially, ensure that your single-sided tags comply with HTML5.</span></p> 
+   <p class="script"><span>As always, check out our <a href="https://htmlcheatsheet.com/" title="HTML Cheat Sheet" target="_blank" rel="noopener">HTML Cheat Sheet</a> for tools and information.</span></p> 
+  </div>  
+ </body>
+</html>

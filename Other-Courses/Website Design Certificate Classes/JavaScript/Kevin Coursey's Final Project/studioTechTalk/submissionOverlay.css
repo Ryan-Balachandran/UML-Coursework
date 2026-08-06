@@ -1,0 +1,68 @@
+@charset "utf-8";
+
+/* Kevin Coursey */
+
+/* Styles for the overlay */
+div#messageOverlay {
+   position: fixed;                        /* Overlay is fixed on screen */
+   z-index: 1;                             /* Overlay sits on top of other content */
+   width: 20%;                            /* Full width */
+   height: 25%;                           /* Full height */
+   top:50%;
+   left: 50%;
+   margin-top: -10%;
+   margin-left: -12.5%;
+   background-color: rgba(91, 91, 91, .85);  /* Semitransparent brown background */
+   display: flex;
+   justify-content: center; 
+   align-items: center;
+   border-radius: 10px;
+}
+
+/* Styles for the figure box within the overlay */
+div#messageOverlay figure {
+   display: block;
+   width: 80%;
+   max-width: 800px;
+}
+
+/* Styles for the image within the overlay */
+div#messageOverlay figure img {
+   display: block;
+   margin: auto;
+   width: 100%;
+   height: auto;
+   box-shadow: 5px 5px 20px black;
+}
+
+/* Styles for the caption within the overlay */
+div#messageOverlay figure figcaption {
+   text-align: center;
+   font-size: 1.25em;
+   color: white;
+   margin-top: 10px;
+   animation-name: zoom;      /* animate the opening of the figure */
+   animation-duration: 1s;    /* over a 1-second interval */  
+}
+
+div#messageOverlay figure a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 1.25em;
+    color: rgb(0, 204, 255);
+    animation-name: zoom;      /* animate the opening of the figure */
+    animation-duration: 1s;    /* over a 1-second interval */  
+ }
+
+/* Styles for the overlay close button */
+div#messageOverlay div#messageOverlayClose {
+   position: absolute;
+   top: 20px;
+   right: 40px;
+   color: #f1f1f1;
+   font-size: 20px;
+   cursor: pointer;
+   user-select: none;
+}

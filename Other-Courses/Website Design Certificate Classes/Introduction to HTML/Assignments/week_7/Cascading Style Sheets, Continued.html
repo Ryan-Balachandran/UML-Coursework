@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head> 
+  <title>Cascading Style Sheets, Continued</title> 
+  <style>:root {
+    --color-bg: #ffa500;
+    --color-bg2: #534d7a;
+    --color-highlight: #fff;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.goo {
+    font-size: 3rem;
+    line-height: 1.35;
+    display: inline;
+    box-decoration-break: clone;
+    background: var(--color-highlight);
+    padding: 0.5rem 1rem;
+    filter: url('#goo');
+}
+
+.goo:focus {
+    outline: 0;
+}
+
+.edit {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--color-bg2);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--color-highlight);
+    border-radius: 1em;
+}
+
+body {
+    padding: 7.5vh 100px 0 100px;
+    font-family: var(--font);
+    background: var(--color-bg);
+}
+</style> 
+ </head> 
+ <body>
+<div class="goo" contenteditable="true">Cascading Style Sheets, Continued</div>
+<hr />
+<table summary="CSS Assignment" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; width: 100%; height: 150px;">
+<tbody>
+<tr style="height: 245px;">
+<td style="height: 245px; width: 20.7982%;"><img src="css..jpg" alt="" style="border: 0px solid #000000;" width="251" height="173" /></td>
+<td style="height: 245px; width: 79.1754%;">Cascading Style Sheets should remove the formatting from the body of your HTML5 page.</td>
+</tr>
+</tbody>
+</table>
+<h2>Assignment:</h2>
+<p>If you haven't already, remove all formatting from the body of last week's assignment, and then place it into the CSS. Post the URL when you're done.</p>
+<p>Read <a href="http://blog.hubspot.com/marketing/web-design-html-css-javascript" target="_blank" rel="noopener">Web Design 101: How HTML, CSS, and JavaScript Work</a>, especially the brief section on CSS.</p>
+<p>The <a href="http://www.blooberry.com/indexdot/css/topics/stylefaq.htm" target="_blank" rel="noopener">Cascading Style Sheets </a>FAQ seems a bit dated, but still contains relevant information.</p>
+<p>Check out <a title="CSS CheatSheet" href="https://htmlcheatsheet.com/css/" target="_blank" rel="noopener">the CSS CheatSheet</a> and implement any changes or additions you can make to your CSS assignment.</p>
+<h2><span style="font-size: 10pt;">How this page appears without CSS:</span></h2>
+<h2><img src="pagewithoutcss.jpg" alt="" style="border: 0px solid #000000;" height="338" width="686" /></h2>
+<hr /><!-- Filter: https://css-tricks.com/gooey-effect/ -->
+<p><svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1"> <defs> <filter id="goo"> <fegaussianblur in="SourceGraphic" stddeviation="10" result="blur"></fegaussianblur> <fecolormatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"></fecolormatrix> <fecomposite in="SourceGraphic" in2="goo" operator="atop"></fecomposite> </filter> </defs> </svg></p>
+</body></html>

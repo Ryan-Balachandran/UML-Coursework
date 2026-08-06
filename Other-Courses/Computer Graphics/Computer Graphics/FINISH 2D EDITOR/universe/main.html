@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>Universe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="shortcut icon" href="images/favicon_io/favicon.ico">
+
+    <!-- <script src="scripts/vendor/modernizr-3.7.1.min.js"></script> -->
+    <!-- <script src="scripts/vendor/planck.js-master/dist/planck.js"></script> -->
+    <!-- <script src="scripts/plugins.js"></script> -->
+
+    <script src="scripts/common.js"></script>
+    <script src="scripts/shapeClasses/Shape.js"></script>
+    <script src="scripts/shapeClasses/Scrim.js"></script>
+    <script src="scripts/shapeClasses/BCurve.js"></script>
+    <script src="scripts/shapeClasses/QCurve.js"></script>
+    <script src="scripts/shapeClasses/Text.js"></script>
+    <script src="scripts/shapeClasses/Arc.js"></script>
+    <script src="scripts/shapeClasses/Line.js"></script>
+    <script src="scripts/shapeClasses/Rect.js"></script>
+    <script src="scripts/controls.js"></script>
+    <script src="scripts/controlRowClasses/ButtonRow.js"></script>
+    <script src="scripts/controlRowClasses/ColorRow.js"></script>
+    <script src="scripts/controlRowClasses/RangeRow.js"></script>
+    <script src="scripts/controlRowClasses/SelectRow.js"></script>
+    <script src="scripts/controlRowClasses/TextInputRow.js"></script>
+    <script src="scripts/controlRowClasses/GroupRow.js"></script>
+    <script src="scripts/controlRowClasses/SteplistRow.js"></script>
+    <script src="scripts/main.js"></script>
+</head>
+<body>
+    <div id="headerDiv">
+        <!-- apply this style while it's waiting for the page to load -->
+        <img id="universeImg" src = "images/universeCropped.png"
+            alt="Universe Image Icon" style="width: 50px; position: relative;
+            top: 5px; visibility: hidden;">
+    </div>
+    <div id="controlDiv">
+        <table id="controlTable">
+            <!-- This forces the table to be 4 columns from the start.
+            Also, I used this to debug pan and zoom but since I've licked that,
+            so far. I don't need it anymore.  But let's just keep it around.  I
+            might need it later.  Display none until further notice. -->
+            <thead id="panNZoomTB">
+                <tr>
+                    <td colspan="2" id="panXTD"></td>
+                    <td colspan="2" id="panYTD"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="zoomTD"></td>
+                    <td colspan="2" id="scaleTD"></td>
+                </tr>
+                <tr title="select a collection of controls">
+                    <td colspan="1"><label for="controlSelect">Menu</label></td>
+                    <td colspan="3"><select id="controlSelect"></select></td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div id="universeDiv">
+        <canvas id="universeCanvas">Your browser sucks!</canvas>
+    </div>
+</body>
+</html>

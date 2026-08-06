@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600' rel='stylesheet' type='text/css'>
+	<meta charset="UTF-8">
+  <title>Daniela Baron | Assignment 5 | Coursera WebGL</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="assignment5.css">
+
+  <script id="vertex-shader" type="x-shader/x-vertex">
+
+  attribute vec4 vPosition;
+  attribute vec3 vNormal;
+  attribute vec2 vTexCoord;
+  varying vec2 fTexCoord;
+
+  uniform mat4 modelViewMatrix;
+  uniform mat4 projectionMatrix;
+
+  // lighting
+  uniform vec4 lightPosition;
+  uniform mat3 normalMatrix;
+  varying vec3 N, L, E;
+
+  void main() {
+    vec3 light;
+    vec3 pos = (modelViewMatrix * vPosition).xyz;
+    if(lightPosition.w == 0.0)  L = normalize(lightPosition.xyz);
+    else  L = normalize(lightPosition.xyz - pos);
+    E =  -normalize(pos);
+    N = normalize( normalMatrix*vNormal.xyz);
+
+    fTexCoord = vTexCoord;
+    gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+  }
+  </script>
+
+  <script id="fragment-shader" type="x-shader/x-fragment">
+  precision mediump float;
+
+  uniform vec4 ambientProduct;
+  uniform vec4 diffuseProduct;
+  uniform vec4 specularProduct;
+  uniform float shininess;
+
+  varying vec3 N, L, E;
+
+  varying  vec2 fTexCoord;
+
+  uniform vec4 fColor;
+  uniform sampler2D texture;
+
+  void main() {
+    vec4 fColor;
+    vec3 H = normalize( L + E );
+    vec4 ambient = ambientProduct;
+    float Kd = max( dot(L, N), 0.0 );
+    vec4  diffuse = Kd*diffuseProduct;
+    float Ks = pow( max(dot(N, H), 0.0), shininess );
+    vec4  specular = Ks * specularProduct;
+    if( dot(L, N) < 0.0 ) specular = vec4(0.0, 0.0, 0.0, 1.0);
+
+    fColor = ambient + diffuse + specular;
+    fColor.a = 1.0;
+
+    gl_FragColor = fColor * texture2D( texture, fTexCoord );
+  }
+  </script>
+
+  <script id="vertex-shader-2" type="x-shader/x-vertex">
+
+  // assume both position and normal are in homogeneous form
+
+  attribute vec4 vPosition;
+  attribute vec3 vNormal;
+
+  varying vec4 fColor;
+
+  varying vec3 R;
+
+
+  uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+  uniform mat4 modelViewMatrix;
+  uniform mat4 projectionMatrix;
+  uniform vec4 lightPosition;
+  uniform float shininess;
+  uniform mat3 normalMatrix;
+
+
+  void
+  main()
+  {
+
+      // pos is vertex position in eye coordinates
+
+      vec3 pos = (modelViewMatrix * vPosition).xyz;
+
+      // vector from vertex position to light source
+
+      vec3 L;
+
+      // check for directional light
+
+      if(lightPosition.w == 0.0) L = normalize(lightPosition.xyz);
+      else L = normalize( lightPosition.xyz - pos );
+
+      // Because the eye point the is at the orgin
+      // the vector from the vertex position to the eye is
+
+      vec3 E = -normalize( pos );
+
+      // halfway vector
+
+      vec3 H = normalize( L + E );
+
+      // Transform vertex normal into eye coordinates
+
+      vec3 N = normalize( normalMatrix*vNormal.xyz);
+
+      R = reflect(pos, N);
+
+
+      // Compute terms in the illumination equation
+      vec4 ambient = ambientProduct;
+
+      float Kd = max( dot(L, N), 0.0 );
+      vec4  diffuse = Kd*diffuseProduct;
+
+      float Ks = pow( max(dot(N, H), 0.0), shininess );
+      vec4  specular = Ks * specularProduct;
+
+      if( dot(L, N) < 0.0 ) {
+  	specular = vec4(0.0, 0.0, 0.0, 1.0);
+      }
+
+      gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+
+      fColor = ambient + diffuse +specular;
+
+      fColor.a = 1.0;
+  }
+  </script>
+
+  <script id="fragment-shader-2" type="x-shader/x-fragment">
+
+  precision mediump float;
+
+  varying vec4 fColor;
+  uniform samplerCube texMap;
+  varying vec3 R;
+
+  void
+  main()
+  {
+      vec4 texColor = textureCube(texMap, R);
+      gl_FragColor = fColor*texColor;
+
+  }
+  </script>
+
+
+  <!--  WebGL Utils -->
+  <script type="text/javascript" src="../../Common/webgl-utils.js"></script>
+  <script type="text/javascript" src="../../Common/initShaders.js"></script>
+  <script type="text/javascript" src="../../Common/flatten.js"></script>
+  <script type="text/javascript" src="../../Common/MV.js"></script>
+
+  <!-- App and dependencies -->
+  <script type="text/javascript" src="dom-utils.js"></script>
+  <script type="text/javascript" src="sphere.js"></script>
+  <script type="text/javascript" src="pattern.js"></script>
+  <script type="text/javascript" src="assignment5.js"></script>
+</head>
+
+<body>
+
+  <!--[if lt IE 9]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <nav id="nav" class="">
+    <div id="navClose" class="close">
+      <i id="navCloseIcon" class="fa fa-close fa-2x nav-icon"></i>
+    </div>
+    <ul>
+      <li><a href="../../index.html#assignments">Assignments</a></li>
+      <li><a href="../../index.html#experiments">Experiments</a></li>
+      <li><a href="../../index.html">Home</a></li>
+    </ul>
+  </nav>
+  <div id="navToggle" class="nav-collapse">
+    <i class="fa fa-bars fa-2x"></i>
+  </div>
+
+  <canvas id="gl-canvas">
+    Oops ... your browser doesn't support the HTML5 canvas element
+  </canvas>
+
+  <div class="message">
+    <i class="fa fa-rotate-right icon"></i>Click and drag with mouse to rotate sphere
+  </div>
+
+  <div id="loadingIndicator" class="loading">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+
+  <div class="side-controls">
+
+    <!-- smooth shading -->
+    <div class="multi-group control-group">
+
+      <div id="mappingMethodSelection" class="radio-form-group">
+        <input type="radio" name="textureMapping" value="spherical" checked><span class="radio-label">Spherical</span>
+        <input type="radio" name="textureMapping" value="planar"><span class="radio-label">Planar</span>
+        <input type="radio" name="textureMapping" value="cylindrical"><span class="radio-label">Cylindrical</span>
+      </div>
+
+      <!-- file texture -->
+      <div id="fileTextureSelection" class="control-group">
+        <div class="group-header">
+          <h4><i class="fa fa-image icon"></i>File</h4>
+        </div>
+        <button title="Moon" data-texture-file="moon.gif">
+          <img src="images/moon-thumb.gif" alt="moon" data-texture-file="moon.gif">
+        </button>
+        <button title="Flower" data-texture-file="flower.jpg">
+          <img src="images/flower-thumb.jpg" alt="flower" data-texture-file="flower.jpg">
+        </button>
+        <button title="Granite" data-texture-file="granite.jpg">
+          <img src="images/granite-thumb.jpg" alt="granite" data-texture-file="granite.jpg">
+        </button>
+        <button title="Stones" data-texture-file="stones.jpg">
+          <img src="images/stones-thumb.jpg" alt="stones" data-texture-file="stones.jpg">
+        </button>
+      </div>
+
+      <!-- pattern texture -->
+      <div id="patternTextureSelection" class="control-group">
+        <div class="group-header">
+          <h4><i class="fa fa-th icon"></i>Pattern</h4>
+        </div>
+        <button title="Cherckerboard" data-texture-pattern="checkerboard">
+          <img src="images/checkerboard-thumb.gif" data-texture-pattern="checkerboard" alt="checkerboard">
+        </button>
+        <button title="Confetti" data-texture-pattern="confetti">
+          <img src="images/confetti-thumb.png" data-texture-pattern="confetti" alt="confetti">
+        </button>
+        <button title="Stripe" data-texture-pattern="stripe">
+          <img src="images/stripe-thumb.png" data-texture-pattern="stripe" alt="stripe">
+        </button>
+      </div>
+
+    </div>
+
+    <!-- reflection mapping -->
+    <div id="reflectionSelection" class="control-group">
+      <div class="group-header">
+        <h4><i class="fa fa-globe icon"></i>Environment</h4>
+      </div>
+      <button data-reflection-map="lycksele" title="Lycksele, Sweden">
+        <img src="images/lycksele/lycksele-thumb.jpg" data-reflection-map="lycksele" alt="lycksele">
+      </button>
+      <button data-reflection-map="yokohama" title="Yokohama, Japan">
+        <img src="images/yokohama/yokohama-thumb.jpg" data-reflection-map="yokohama" alt="yokohama">
+      </button>
+    </div>
+
+    <!-- viewing controls -->
+    <div class="multi-group control-group">
+
+      <div id="viewControl" class="control-group">
+        <div class="group-header">
+          <h4><i class="fa fa-eye icon"></i>Perspective</h4>
+        </div>
+        <div class="form-group">
+          <label for="cameraFovy">FOV</label>
+          <input type=range id=cameraFovy min=0 value=63.0 max=180 step=1.0 oninput="outputCameraFovy(value)">
+          <output for=cameraFovy id=cfvy>63.0</output>
+        </div>
+        <div class="form-group">
+          <label for="eyeZoom">Zoom</label>
+          <input type=range id=eyeZoom min=0.0 value=4.5 max=10.0 step=0.1 oninput="outputEyeZoom(value)">
+          <output for=eyeZoom id=ez>4.5</output>
+        </div>
+        <div class="form-group">
+          <label for="eyeTheta">Theta</label>
+          <input type=range id=eyeTheta min=0.0 value=11.0 max=360.0 step=1.0 oninput="outputEyeTheta(value)">
+          <output for=eyeTheta id=et>11.0</output>
+        </div>
+        <div class="form-group">
+          <label for="eyePhi">Phi</label>
+          <input type=range id=eyePhi min=0.0 value=93.0 max=360.0 step=1.0 oninput="outputEyePhi(value)">
+          <output for=eyePhi id=ep>93.0</output>
+        </div>
+        <div class="form-group">
+          <label for="eyeAtX">At X</label>
+          <input type=range id=eyeAtX min=-10.0 value=0.5 max=10.0 step=0.1 oninput="outputEyeAtX(value)">
+          <output for=eyeAtX id=eax>0.5</output>
+        </div>
+        <div class="form-group">
+          <label for="eyeAtY">At Y</label>
+          <input type=range id=eyeAtY min=-10.0 value=-0.9 max=10.0 step=0.1 oninput="outputEyeAtY(value)">
+          <output for=eyeAtY id=eay>-0.9</output>
+        </div>
+        <div class="form-group">
+          <label for="eyeAtZ">At Z</label>
+          <input type=range id=eyeAtZ min=-10.0 value=1.0 max=10.0 step=0.1 oninput="outputEyeAtZ(value)">
+          <output for=eyeAtZ id=eaz>1.0</output>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- slider updates -->
+<script>
+var outputCameraNear = function(value) {
+  document.querySelector('#cn').value = value;
+}
+var outputCameraFar = function(value) {
+  document.querySelector('#cf').value = value;
+}
+var outputCameraFovy = function(value) {
+  document.querySelector('#cfvy').value = value;
+}
+var outputEyeZoom = function(value) {
+  document.querySelector('#ez').value = value;
+}
+var outputEyeTheta = function(value) {
+  document.querySelector('#et').value = value;
+}
+var outputEyePhi = function(value) {
+  document.querySelector('#ep').value = value;
+}
+var outputEyeAtX = function(value) {
+  document.querySelector('#eax').value = value;
+}
+var outputEyeAtY = function(value) {
+  document.querySelector('#eay').value = value;
+}
+var outputEyeAtZ = function(value) {
+  document.querySelector('#eaz').value = value;
+}
+</script>
+
+</body>
+</html>

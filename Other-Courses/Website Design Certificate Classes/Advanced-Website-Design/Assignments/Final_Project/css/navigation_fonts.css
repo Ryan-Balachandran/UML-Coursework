@@ -1,0 +1,38 @@
+#sidenav a,
+.dropdown-btn {
+	text-align: center;
+	color: #1eff0a;
+	text-decoration: none;
+	display: block;
+	cursor: pointer;
+	padding: 6px 8px 6px 18px;
+	width: 100%;
+}
+
+/* Option 1: Medieval/Fantasy Style */
+#sidenav a,
+.dropdown-btn {
+	font-family: 'Cinzel', serif;
+	font-size: 1.6em;
+}
+
+/* Option 2: Elegant Fantasy Style */
+#sidenav a,
+.dropdown-btn {
+	font-family: 'Luminari', 'Dragon Hunter', fantasy;
+	font-size: 1.7em;
+}
+
+/* Option 3: Gothic Fantasy Style */
+#sidenav a,
+.dropdown-btn {
+	font-family: 'Uncial Antiqua', 'Palatino Linotype', serif;
+	font-size: 1.5em;
+}
+
+/* Option 4: Elegant Script Style */
+#sidenav a,
+.dropdown-btn {
+	font-family: 'MedievalSharp', 'Copperplate', fantasy;
+	font-size: 1.6em;
+}

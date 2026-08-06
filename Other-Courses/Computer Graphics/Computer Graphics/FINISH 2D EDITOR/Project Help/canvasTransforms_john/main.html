@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas Transforms</title>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <canvas id="mainCanvas" width="500" height="500"
+            style="border-width: 2px; border: solid;">
+            Your browser sucks.
+        </canvas><br>
+        <table>
+            <tr>
+                <td><label for="shapeSelect">Shape Select</label></td>
+                <td><select id="shapeSelect"></select></td>
+                <td>Global</td>
+            </tr>
+            <tr>
+                <td><label for="shapePanXRange">PanX</label></td>
+                <td><input type="range" id="shapePanXRange" min="-250"
+                    max="250" value="0"></td>
+                <td><label><input type="range" id="globalPanXRange" min="-250"
+                    max="750" value="250"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="shapePanYRange">PanY</label></td>
+                <td><input type="range" id="shapePanYRange" min="-250"
+                    max="250" value="0">
+                </td>
+                <td><label><input type="range" id="globalPanYRange" min="-250"
+                    max="750" value="250"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="shapeRotRange">Rotation</label></td>
+                <td><input type="range" id="shapeRotRange" min="0"
+                    max="628.318" value="0">
+                </td>
+                <td><label><input type="range" id="globalRotRange" min="0"
+                    max="628.318" value="0"></label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="shapeScaleRange">Scale</label></td>
+                <td><input type="range" id="shapeScaleRange" min="0"
+                    max="5000" value="100">
+                </td>
+                <td><label><input type="range" id="globalScaleRange" min="0"
+                    max="5000" value="100"></label>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

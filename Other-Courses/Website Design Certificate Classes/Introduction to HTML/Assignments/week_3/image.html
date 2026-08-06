@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+     <head>
+          <meta charset="utf-8">
+          <title>Images</title>
+          <meta name="description" content="Ryan Balachandran's image compression and image map">
+          <meta name="keywords" content="image compression map">
+          <meta name="created" content="2023-05-28">
+          <meta name="author" content="Ryan Balachandran">
+
+          <link rel="stylesheet" href="../../back.css">
+     </head>
+
+     <body>
+          <h1>Image Compression</h1>
+          <img title="dragonvillage" alt="dragon village" src="images/dragonvillage.jpeg" height="586" width="1037"/>
+          <p>&uarr; File Size: 215 kb</p>
+
+          <img title="dragonvillage" alt="dragon village 68% compressed" src="images/dragonvillage2.jpg" height="586" width="1037"/>
+          <p>&uarr; File Size: 44 kb</p>
+
+          <h1>Image Map</h1>
+
+          <!-- <ol>
+               <li>Human on left &rarr; human wiki entry</li>
+               <li>Dragon &rarr; list of dragon movies</li>
+               <li>Big House &rarr; house wiki entry</li>
+          </ol> -->
+
+          <img title="dragonvillage" alt="dragon village 68% compressed image map" src="images/dragonvillage2.jpg" height="586" width="1037" usemap="#dragonmap"/>
+
+          <map name="dragonmap">               
+               <area target="_blank" alt="Human" title="Human" href="https://en.wikipedia.org/wiki/Human" coords="234,584,354,322" shape="rect">
+               <area target="_blank" alt="Dragon" title="Dragon" href="https://en.wikipedia.org/wiki/List_of_dragons_in_film_and_television" coords="459,429,587,490" shape="rect">
+               <area target="_blank" alt="House" title="House" href="https://en.wikipedia.org/wiki/House_of_the_Dragon" coords="592,445,596,361,527,325,590,276,574,151,609,147,662,191,719,40,791,84,867,234,933,252,925,382,910,411,936,443,902,455" shape="poly">
+          </map>
+          <br><br><a href="../../index.html" id="go_back">← back</a><br><br>
+     </body>
+</html>
+

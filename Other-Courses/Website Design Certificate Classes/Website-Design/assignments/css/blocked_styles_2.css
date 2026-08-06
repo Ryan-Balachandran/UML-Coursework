@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+#wrapper {
+	width: 80%;
+	margin: 0 auto;
+/*	background-color: darkblue;*/
+	background-image: url(../images/background/fantasytree.jpg);
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+/*     background-attachment: fixed; */
+}
+
+
+#header {
+	text-align: center;
+/*	background-color: greenyellow;*/
+/*	padding: 5px;*/
+}
+
+h1, h2 {
+/*	background-color: yellow;*/
+     text-align: center;
+}
+
+h1 {
+	font-size: 5em;
+	font-family: "Apple Chancery", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+	color: #3CFF03;
+
+}
+
+h2 {
+	font-size: 2em;
+	margin-top: -30px;
+	font-family: "Apple Chancery", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+	color: orange;
+}
+
+h3 {
+	font-family: "Apple Chancery", Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+	font-size: 3.2em;
+	color: #3CFF03;
+}
+
+p {
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+	font-size: 1.5em;
+/*	margin-top: -40px;*/
+	color: white;
+}
+
+#image1 {
+	float: right;
+	width: 200px;
+	height: 200px;
+	margin-right: 20px;
+	margin-top: 20px;
+	background-color: white;
+}
+
+#image2 {
+	float: left;
+	width: 200px;
+	height: 200px;
+	margin-left: 20px;
+	margin-top: 20px;
+	background-color: white;
+}
+
+#navigation {
+	background-color: rgba(0, 0, 0, 0.85);
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+	float: left;
+	width: 182px;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: green 2px solid;
+	line-height: 1.8em;
+	color: #3CFF03;
+}
+
+#content {
+	background-color: rgba(0, 0, 0, 0.85);
+	text-align: center;
+	margin-left: 185px;
+/*	font-size: 4em;*/
+	border: green 2px solid;
+}
+
+#footer {
+	font-size: 2em;
+	clear: both;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.85);
+	border: red 2px solid;
+	color: #3CFF03;
+	padding: 30px;
+}
+

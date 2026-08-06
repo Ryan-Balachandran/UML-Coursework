@@ -1,0 +1,45 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Ignore these files #
+*.bak~
+*.out
+*~
+*.docx#
+*#
+*.swp
+
+# Ignore the giant logfiles, only keep the zip file!
+kronos2015/
+
+# Ignore all crap that LaTeX generates ( >:( )
+*.log
+*.synctex.gz
+*.aux
+*.dvi

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>Ryan's Book</title>
+    <script type="text/javascript" src="Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="Common/initShaders.js"></script>
+    <script type="text/javascript" src="Common/MV.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+    <h1>Interactive Computer Graphics - A Top-Down Approach with WebGL, 7th Edition</h1>
+    <hr>
+    
+    <label for="examplesSelect">examples:</label>
+    <select id="examplesSelect">
+        <option value="0" selected="selected">2.1 The Sierpinski Gasket</option>
+        <option value="1">Other</option>
+    </select>
+    <br>
+    <br>
+
+    <div id="div0">
+        <button id="randColorButton">Different Random Color</button>&nbsp;
+
+        <label for="redRange">
+            Red<input id="redRange" type="range" min="0" max="1" step="0.01">
+        </label>&nbsp;
+
+        <label for="greenRange">
+            Green<input id="greenRange" type="range" min="0" max="1" step="0.01">
+        </label>&nbsp;
+
+        <label for="blueRange">
+            Blue<input id="blueRange" type="range" min="0" max="1" step="0.01">
+        </label>&nbsp;
+
+        <label for="alphaRange">
+            Alpha<input id="alphaRange" type="range" min="0" max="1" step="0.01">
+        </label><br>
+
+        <canvas id="sierpinskiCanvas" width="512" height="512">
+            Your browser sucks.
+        </canvas>
+        
+    </div>
+    <div id="div1">
+        <span id="otherSpan"></span>
+    </div>
+</body>
+</html>

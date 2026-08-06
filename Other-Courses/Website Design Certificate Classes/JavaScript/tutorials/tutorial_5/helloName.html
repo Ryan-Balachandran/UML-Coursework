@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Hello Name</title>
+
+          <style>
+               body {
+                    background-color: darkslategray;
+                    text-align: center;
+                    color: floralwhite;
+               }
+          </style>
+     </head>
+
+     <body>
+          <h1>Hello. What is your name?</h1>
+          <input id="userInput"> <br><br>
+          <button onclick="myFunction()">Submit</button>
+          <h1 id="message"></h1>
+
+          <script>
+               function myFunction() {
+                    let userInput = document.querySelector("#userInput");
+                    let message = document.querySelector("#message");
+
+                    message.innerHTML = "Welcome to my webpage, " + userInput.value;    
+
+               }
+          </script>
+     </body>
+</html>

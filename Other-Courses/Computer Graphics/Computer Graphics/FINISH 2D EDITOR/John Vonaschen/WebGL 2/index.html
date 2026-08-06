@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebGL Book</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="localLibraries/webgl-utils.js"></script>
+    <script src="localLibraries/webgl-debug.js"></script>
+    <script src="localLibraries/cuon-utils.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1>WebGL</h1>
+    <hr>
+    <label for="examplesSelect"></label>
+    <select id="examplesSelect">
+        <option value="0" selected="selected">Draw Rectangle</option>
+        <option value="1">Hello Canvas</option>
+        <option value="2">Hello Point</option>
+    </select>
+    <br>
+    <br>
+    <div id="div0">
+        <canvas id="drCanvas" width="400" height="400">
+            Your browser sucks.
+        </canvas>
+    </div>
+    <div id="div1">
+        <label for="colorSelect"></label>
+        <select id="colorSelect">
+            <option value='{"r":"1", "g":"0", "b":"0", "a":"1"}' selected="selected">red</option>
+            <option value='{"r":"0", "g":"1", "b":"0", "a":"1"}'>green</option>
+            <option value='{"r":"0", "g":"0", "b":"1", "a":"1"}'>blue</option>
+            <option value='{"r":"1", "g":"1", "b":"0", "a":"1"}'>yellow</option>
+            <option value='{"r":"1", "g":"0", "b":"1", "a":"1"}'>magenta</option>
+            <option value='{"r":"0", "g":"1", "b":"1", "a":"1"}'>cyan</option>
+            <option value='{"r":"1", "g":"1", "b":"1", "a":"1"}'>white</option>
+        </select><br>
+        <canvas id="helloCanvas" width="400" height="400">
+            Your browser sucks.
+        </canvas>
+    </div>
+    <div id="div2">
+        <button id="upButton">y↑</button><button id="downButton">y↓</button>
+        <span id="ySpan"></span>&nbsp;
+        <button id="leftButton">x←</button><button id="rightButton">x→</button>
+        <span id="xSpan"></span>&nbsp;
+        <button id="zupButton">z↑</button><button id="zdownButton">z↓</button>
+        <span id="zSpan"></span>&nbsp;
+        <button id="wupButton">w↑</button><button id="wdownButton">w↓</button>
+        <span id="wSpan"></span>
+        <br>
+        <canvas id="hpCanvas" width="400" height="400">
+            Your browser sucks.
+        </canvas>
+    </div>
+</body>
+</html>

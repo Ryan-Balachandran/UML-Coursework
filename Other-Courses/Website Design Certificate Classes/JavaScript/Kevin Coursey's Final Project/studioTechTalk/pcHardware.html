@@ -1,0 +1,107 @@
+<!DOCTYPE html> 
+
+<html lang="en-US"> 
+<head> 
+    <title id="pc">PC Hardware</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kevin Coursey" />
+    <meta name="robots" content="All" />
+    <meta name="description" content="Studio Tech Talk Page: PC Hardware" />
+    <meta name="keywords" content="" />
+    <meta name="rating" content="General" />
+    <link href="pages.css" rel="stylesheet">
+    <script src="pages.js" defer></script>
+    <script src="head.js" defer></script>
+    <script src="navMenu.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> 
+</head> 
+<body onload="whichPic('pc'); whichMsg('pc')" onresize=location.reload>
+<header id="head"></header> 
+
+<section id="leftColumn">
+    <table>
+        <tr>
+            <td><img src="#" alt="" title="" id="indexPic" height="150" width="150"></td>
+            <td><em id="picMsg"></em></td>
+        </tr>
+    </table> 
+</section>
+
+<section id="middleColumn">
+</section>
+
+<section id="rightColumn">
+    <nav id="pageMenu">
+        <ul id="theMenu"></ul>
+    </nav>
+</section>
+
+<section id="leftMiddleColumn">  
+<nav>
+    <dl id="info">
+        <dt class="hiddenInfo">Motherboards and CPU</dt>
+        <dd>
+           <p>
+            Any 32 or 64 bit Intel or ARM compatible computer (other hardware can be used if you build Ardour yourself or have someone else build it for you). 
+            CPU speed limits the amount of signal processing you can do.
+            <br>
+            [Shop for <a href="https://www.newegg.com/p/pl?d=motherboards" target="_blank">motherboards</a> and 
+            <a href="https://www.newegg.com/p/pl?d=cpu">CPUs</a> at NewEgg]
+           </p>
+        </dd> 
+        <dt class="hiddenInfo">RAM</dt>
+        <dd>
+           <p>
+            Minimum of 2GB is recommended, more is always better. 
+            <br>
+            [Shop for <a href="https://www.newegg.com/p/pl?d=ram" target="_blank">RAM</a> at NewEgg]
+           </p>
+        </dd>         
+        <dt class="hiddenInfo">Hard Drives</dt>
+        <dd>
+            <p>
+            <ul><ul>
+                <li>One System Drive</li>
+                <ul>
+                    <li>Minimum 16GB free space for Ubuntu Studio OS.</li>
+                    <li>Minimum 350MB of free space in the /opt folder to install Ardour. </li>
+                </ul>
+                <li>
+                You will want lots more disk space for recording. 
+                Since we want to be sure all of our musical creations are saved for posterity, 
+                you'll want one hard drive for storing your recordings and another for backing them up.
+                </li> 
+             [Shop for <a href="https://www.newegg.com/p/pl?d=ram" target="_blank">hard drives</a> at NewEgg]
+           </ul></ul>
+           </p>
+           <br>
+        </dd>          
+        <dt class="hiddenInfo">USB 3 Card</dt>
+        <dd>
+           <p>
+            Most of the peripheral devices you'll be connecting to your computer are going to require USB 3 connectivity.
+            Your motherboard likely provides a few of these connections, but chances are, you'll need more.
+            It is best to invest in a USB 3 PCIe card with 5-7 ports. I recommend this over a USB 3 hub because unlike a hub,
+            the card plugs directly into the motherboard, ensuring that your devices are getting the best connection possible.
+            <br>
+            [Shop for <a href="https://www.newegg.com/p/pl?d=usb+3+card" target="_blank">USB 3 Cards</a> at NewEgg]
+        </p>
+        </dd>          
+        <dt class="hiddenInfo">Wireless Keyboard and Mouse</dt>
+        <dd>
+           <p>
+            While it certainly isn't a requirement, I do recommend using a wireless keyboard and mouse. I find that during my studio workflow,
+            I frequently find myself moving the keyboard and mouse to make room for some other peripheral that I need in front of me. I like 
+            the <a href="https://www.logitech.com/en-us/products/combos.html?filters=usb-receiver" target="_blank">Logitech Unifying USB devices</a>, 
+            because the receiver only takes up one USB port for up to 6 devices and it has a range of 33 feet.
+            <br>
+            [Shop for <a href="https://www.logitech.com/en-us/products/combos.html?filters=usb-receiver" target="_blank">Logitech Unifying USB devices</a> at NewEgg]
+        </p>
+        </dd>          
+     </dl>
+  </nav>
+</section>
+
+<footer id="foot"></footer>
+</body> 
+</html> 

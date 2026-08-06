@@ -1,0 +1,11 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">			
+<header>
+	<a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('logo1','','../Final_Project/images/bluedragon1_spin.gif',1)">
+		<img src="../Final_Project/images/bluedragon1.png" alt="" width="200" height="200" id="logo1"></a>
+
+	<a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('logo2','','../Final_Project/images/bluedragon2_spin.gif',1)">
+		<img src="../Final_Project/images/bluedragon2.png" alt="" width="200" height="200" id="logo2"></a>
+
+	<h1 id="title"><a href="../Final_Project/index.html">Dragonomica</a></h1>
+	<h2 id="subtitle"><a href="../Final_Project/index.html">An Introduction To Dragons</a></h2>
+</header>

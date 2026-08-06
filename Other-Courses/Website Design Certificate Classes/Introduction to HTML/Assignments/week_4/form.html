@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en">
+     <head>
+          <meta charset="utf-8">
+          <title>Magazine Subscription</title>
+          <meta name="description" content="Ryan Balachandran's magazine subscription form">
+          <meta name="keywords" content="magazine subscription form">
+          <meta name="created" content="2023-06-04">
+          <meta name="author" content="Ryan Balachandran">
+
+          <link rel="stylesheet" href="form.css">
+          <link rel="stylesheet" href="../../back.css">
+
+          <!-- See if I can do this function with only CSS -->
+          <!-- Change this to disable and enable on which radio button is checked -->
+
+          <script>
+               function ifCredit()
+               {
+                    if (document.getElementById("payHere").checked) 
+                    {
+                         document.getElementById("cardType").style.display = "block";
+                         document.getElementById("number").required = true;
+                         document.getElementById("expiration").required = true;
+                         document.getElementById("card").required = true;
+                    }
+                    else
+                    {
+                         document.getElementById("cardType").style.display = "none";
+                         document.getElementById("number").removeAttribute("required");
+                         document.getElementById("expiration").removeAttribute("required");
+                         document.getElementById("card").removeAttribute("required");
+                    }
+               }
+          </script>
+     </head>
+
+     <body>
+          <div id="form-center">
+               <form name="donationForm" id="donationForm" method="post" action="http://www.rebol.com/cgi-bin/test-cgi.cgi">
+                    <h1>Magazine Subscription</h1>
+
+                    <!-- FIELD SET FOR FIRST AND LAST NAME -->
+                    <fieldset> 
+                         <legend>Full Name</legend>
+                         <table>
+                              <tr>
+                                   <td><label for="fname"><strong>First name:</strong></label></td>
+                                   <td>
+                                        <input type="text" id="fname" name="fname" placeholder="Ryan" size="20" required>
+                                        <span></span>
+                                   </td>
+                              </tr>
+                              <tr>
+                                   <td><label for="lname"><strong>Last name:</strong></label></td>
+                                   <td>
+                                        <input type="text" id="lname" name="lname" placeholder="Balachandran" size="20" required>
+                                        <span></span>
+                                   </td>
+                              </tr>
+                         </table>
+                    </fieldset><br>
+
+                    <!-- FIELD SET FOR STREET ADDRESS, CITY, STATE, ZIP CODE -->
+                    <fieldset>
+                         <legend>Address</legend>
+                         <table>
+                              <tr>
+                                   <td><label for="street"><strong>Street:</strong></label></td>
+                                   <td>
+                                        <input type="text" id="street" name="street" placeholder="855 Lake St" size="20" required>
+                                        <span></span>
+                                   </td>
+                              </tr>
+                              <tr>
+                                   <td><label for="city"><strong>Town/City:</strong></label></td>
+                                   <td>
+                                        <input type="text" id="city" name="city" placeholder="Oak Park" size="20" required>
+                                        <span></span>
+                                   </td>
+                              </tr>
+                              <tr>
+                                   <td><label for="state"><strong>State:</strong></label></td>
+                                   <td>
+                                        <input type="text" id="state" name="state" placeholder="IL" size="3" maxlength="2" required>
+                                        <span></span>
+                                   </td>
+                              </tr>
+                              <tr>
+                                   <td><label for="zip"><strong>ZIP:</strong></label></td>
+                                   <td>
+                                        <input type="number" id="zip" name="zip" placeholder="60301" size="5" maxlength="5" required>
+                                        <span></span>
+                                   </td>
+                              </tr>
+                         </table>
+                    </fieldset><br>
+
+                    <!-- FIELD SET FOR MAGAZINE SELECTION -->
+                    <fieldset>
+                         <legend>Magazine Selection</legend>
+                         <table>
+                              <tr>
+                                   <td>
+                                        <label>
+                                             <div><strong>Magazines:</strong> (You can choose more than one)</div>
+                                             <div><input type="checkbox" name="magazines" value="Newsweek">Newsweek</div>
+                                             <div><input type="checkbox" name="magazines" value="New York Times">New York Times</div>
+                                             <div><input type="checkbox" name="magazines" value="Sports Illustrated">Sports Illustrated</div>
+                                             <div><input type="checkbox" name="magazines" value="Internet World">Internet World</div>
+                                             <div><input type="checkbox" name="magazines" value="Publishers Weekly">Publishers Weekly</div>
+                                             <div><input type="checkbox" name="magazines" value="Kids Discover">Kids Discover</div>
+                                        </label>
+                                   </td>
+                              </tr>
+                         </table>
+                    </fieldset><br>
+
+                    <!-- FIELD SET FOR PAYMENT METHOD -->
+                    <fieldset>
+                         <legend>Payment Method</legend>
+                         <table>
+                              <tr>
+                                   <td>
+                                        <div><input type="radio" id="payThere" name="payment" value="bill" onclick="ifCredit();" required>Bill by Mail</div>
+                                        <div><input type="radio" id="payHere" name="payment" value="credit" onclick="ifCredit();" checked="checked">Pay Online via Credit Card</div>
+                                   </td>
+                              </tr>
+                         </table>
+                    </fieldset><br>
+
+                    <!-- FIELD SET FOR CREDIT CARD TYPE IF PAY ONLINE VIA CREDIT CARD WAS SELECTED -->
+                    <div id="cardType">
+                         <fieldset>
+                              <legend>Credit Card Type</legend>
+                              <table>
+                                   <tr>
+                                        <td>
+                                             <div><input type="radio" name="card" id="card" value="american" required>American Express</div>
+                                             <div><input type="radio" name="card" value="visa">Visa</div>
+                                             <div><input type="radio" name="card" value="master">MasterCard</div>
+                                             <div><input type="radio" name="card" value="discover">Discover</div>
+                                        </td>
+                                   </tr>
+                              </table>
+                         </fieldset><br>
+     
+                         <!-- CREDIT CARD INFORMATION IF PAY ONLINE VIA CREDIT CARD WAS SELECTED-->
+                         <fieldset>
+                              <legend>Credit Card Information</legend>
+                              <table>
+                                   <tr>
+                                        <td><label for="number"><strong>Credit Card Number:</strong></label></td>
+                                        <td><input type="text" id="number" name="number" placeholder="1234-1234-1234-1234" size="17" maxlength="19"required><span></span></td>
+                                   </tr>
+     
+                                   <tr>
+                                        <td><label for="expiration"><strong>Expiration Date:</strong></label></td>
+                                        <td><input type="month" id="expiration" name="expiration" placeholder="MM/YY" size="6" maxlength="5" required><span></span></td>
+                                   </tr>
+                              </table>
+                         </fieldset><br>
+                    </div>
+                    
+                    <input type="submit" name="submit" id="submit" value="submit"/>
+                    <input type="reset" name="reset" id="reset" value="Reset Form" />
+               </form>
+          </div>
+          <br><a href="../../index.html" id="go_back">← back</a><br><br>
+     </body>
+</html>

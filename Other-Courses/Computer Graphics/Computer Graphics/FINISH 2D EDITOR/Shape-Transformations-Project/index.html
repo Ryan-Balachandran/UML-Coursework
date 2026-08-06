@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Computer Graphics HW 3</title>
+
+        <!-- Bootstrap stylesheet for ease of organization -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <!-- My own style sheet for custom styling to make things look nice and also to position elements. Uneccessary for this assignment but figured its easy enough to include. -->
+        <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="styles.css">
+
+        <!-- Cool Google fonts just for fun -->
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa|Press+Start+2P&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- - - - - - - - - - - - - Canvas Elements - - - - - - - - - - - - - - - - - - - - - - -->
+        <div class="canvas-container container-fluid">
+            <div class="canvas-title row justify-content-center">Greg's Transformation Canvas</div>
+            <div class="button-row row justify-content-center">
+                <button type="button" id="line-button" class="ui-button">Create Line</button>
+                <button type="button" id="rect-button" class="ui-button">Create Rectangle</button>
+                <button type="button" id="circle-button" class="ui-button">Create Circle</button>
+                <button type="button" id="triangle-button" class="ui-button">Create Triangle</button>
+                <button type="button" id="poly-button" class="ui-button">Create Polygon</button>
+                <button type="button" id="clear-button" class="ui-button">Clear Canvas</button>
+            </div>
+
+            <div class="canvas-items row justify-content-center">
+                <div class="tf-buttons col-md-2">
+                    <div id="translate-button" class="ui-button tf-button row">Translate</div>
+                    <div id="scale-button" class="ui-button tf-button row">Scale</div>
+                    <div id="rotate-button" class="ui-button tf-button row">Rotate</div>
+                </div>
+                <div class="col-md-8">
+                    <canvas id="myCanvas" height="500" width="1000">
+                        Your browser does not support the canvas element.
+                    </canvas>
+                </div>
+                <div class="col-md-2" style="width: 100%; height: 100%;"></div>
+            </div>
+        </div>
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+        <!-- My script file for implementing the transformations -->
+        <script src="transform.js" type="text/javascript"></script>
+
+        <!-- Bootstrap Scripts -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>

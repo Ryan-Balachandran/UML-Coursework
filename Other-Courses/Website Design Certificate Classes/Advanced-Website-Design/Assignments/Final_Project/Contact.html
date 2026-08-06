@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+          <title>Dragonomica - Contact</title>
+          <meta name="description" content="Ryan Balachandran's Final Project!">
+          <meta name="keywords" content="Final project dragon website">
+		<meta name="created" content="2024-9-14">
+          <meta name="author" content="Ryan Balachandran">
+
+          <link href="css/index.css" rel="stylesheet" type="text/css">
+          <link href="css/contact.css" rel="stylesheet" type="text/css">
+          <script src="javascript/nav.js" defer></script>
+          <script src="javascript/contact.js" defer></script>
+
+          <link href="https://fonts.cdnfonts.com/css/apple-chancery" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+          <style>
+               body {
+                    background-image: url("images/backgrounds/dragonfantasy.jpg")
+               }
+          </style>
+     </head>
+
+     <body>
+          <div id="wrapper">
+			<header>
+				<img src="images/logos/No-Background/logo2.png" id="logo1" alt="dragon icon">
+				<div class="title-container">
+					<h1 id="title"><a href="index.html">Dragonomica</a></h1>
+					<h2 id="subtitle"><a href="index.html">An Introduction To Dragons</a></h2>
+				</div>
+				<img src="images/logos/No-Background/logo2.png" id="logo2" alt="dragon icon">
+				<img src="images/logos/No-Background/logo7.png" alt="Mobile Logo" id="mobile-logo">
+			</header>
+
+			<button class="menu-toggle" aria-label="Toggle navigation menu">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+
+               <nav id="sidenav" role="navigation">
+                    <a href="index.html">Home</a>
+                    <button class="dropdown-btn">About Dragons <i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-container">
+                         <a href="DragonH_L.html">Dragon History and Lore</a>
+                         <a href="DragonsVWyverns.html">Dragons Vs. Wyverns</a>
+                         <a href="DragonSpecies.html">Dragon Species</a>
+                         <a href="DragonH&B.html">Dragon Habits and Behaviors</a>
+                         <a href="DragonChar.html">Dragon Characteristics</a>
+                         <a href="Dragontaming.html">Dragon Taming</a>
+                    </div>
+                    <a href="Aboutme.html">About me</a>
+                    <a href="Contact.html" class="active_tab">Contact me</a>
+               </nav>
+
+               <div class="nav-overlay"></div>
+               
+               <!-- Improve pattern for inputs -->
+               <div id="content" class="form-container">
+                    <form name="contactMe" method="post" id="contactMe" action="http://www.rebol.com/cgi-bin/test-cgi.cgi">
+                         <fieldset>
+                              <legend>Personal Information</legend>
+                              <div class="form-grid">
+                                   <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" id="firstName" name="firstName" placeholder="First name" required>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="age">Age</label>
+                                        <input type="number" id="age" name="age" min="1" max="110" placeholder="28" required>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" placeholder="youremail@example.com" required>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="date">Date</label>
+                                        <input type="date" id="date" name="date" required>
+                                   </div>
+                              </div>
+                         </fieldset>
+     
+                         <fieldset>
+                              <!-- Improve by adding a regular expression object with all valid states or change to selection list -->
+                              <legend>Address</legend>
+                              <div class="form-grid">
+                                   <div class="form-group full-width">
+                                        <label for="street">Street</label>
+                                        <input type="text" id="street" name="street" placeholder="855 Lake St" required>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="city">Town/City</label>
+                                        <input type="text" id="city" name="city" placeholder="Oak Park" required>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="state">State</label>
+                                        <input type="text" id="state" name="state" placeholder="IL" required>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="zip">ZIP</label>
+                                        <input type="text" id="zip" name="zip" pattern="[0-9]{5}" maxlength="6" placeholder="00000" required>
+                                   </div>
+                              </div>
+                         </fieldset>
+     
+                         <fieldset>
+                              <legend>Feedback</legend>
+                              <div class="form-grid">
+                                   <div class="form-group full-width">
+                                        <label>Did you enjoy my website?</label>
+                                        <div class="radio-group">
+                                             <div class="radio-option">
+                                                  <input type="radio" id="yes" name="enjoyed" value="yes">
+                                                  <label for="yes">Yes</label>
+                                             </div>
+                                             <div class="radio-option">
+                                                  <input type="radio" id="no" name="enjoyed" value="no">
+                                                  <label for="no">No</label>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="form-group full-width">
+                                        <label for="comments">Comments</label>
+                                        <textarea id="comments" name="comments" placeholder="What did or didn't like about my website?"></textarea>
+                                   </div>
+                              </div>
+                         </fieldset>
+     
+                         <div class="button-group">
+                              <button type="submit" class="submit-btn">Submit</button>
+                              <button type="reset" class="reset-btn">Reset</button>
+                              <span id="createError"></span>
+                         </div>
+                    </form>
+               </div>
+
+               <footer class="site-footer"> 
+				<div class="footer-content">
+					<div class="footer-section">
+						<h4>Quick Links</h4>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="DragonH_L.html">Dragon History</a></li>
+							<li><a href="DragonSpecies.html">Species Guide</a></li>
+							<li><a href="Contact.html">Contact</a></li>
+						</ul>
+					</div>
+
+					<div class="footer-section">
+						<h4>Connect</h4>
+						<div class="social-links">
+							<a href="https://github.com/Ryan-Balachandran" title="GitHub"><i class="fab fa-github"></i></a>
+							<a href="https://www.linkedin.com/in/ryan-balachandran/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+							<a href="#" title="Portfolio"><i class="fas fa-briefcase"></i></a>
+						</div>
+					</div>
+
+					<div class="footer-section">
+						<h4>Newsletter</h4>
+						<form class="newsletter-form">
+							<input type="email" placeholder="Enter your email">
+							<button type="submit">Subscribe</button>
+						</form>
+					</div>
+				</div>
+
+				<div class="footer-bottom">
+					<p>Copyright &copy; 2024 Ryan Balachandran</p>
+					<p>22 19th Avenue &bull; Haverhill, MA, 01830 &bull; (978) 245 - 6415</p>
+					<p><a href="mailto:Ryan_Balachandran@student.uml.edu">Ryan_Balachandran@student.uml.edu</a></p>
+					<a href="#"><i class="fa fa-home fa-2x">&#8593;</i></a>
+				</div>
+			</footer>
+          </div>
+     </body>
+</html>

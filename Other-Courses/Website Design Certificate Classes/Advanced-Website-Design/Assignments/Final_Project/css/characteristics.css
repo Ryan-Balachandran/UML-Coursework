@@ -1,0 +1,418 @@
+@charset "UTF-8";
+
+/* Table Styles */
+table {
+     text-align: center;
+     border: 2px solid #0087CB;
+     margin: 0 auto 40px;
+     /* border-radius: 8px; */
+     width: 100%;
+     max-width: 100%;
+     /* border-collapse: collapse; */
+     border-collapse: separate;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     border-spacing: 0;
+}
+
+th,
+td {
+     border: 1px solid rgba(255, 0, 0, 0.5);
+     padding: 12px;
+     transition: background-color 0.3s ease;
+}
+
+th {
+     background-color: #0087CB;
+     color: white;
+     font-weight: bold;
+     text-transform: uppercase;
+     letter-spacing: 0.5px;
+}
+
+.table-grid {
+     display: grid;
+     grid-template-columns: 1fr;
+     gap: 10px;
+}
+
+tr:nth-child(even) {
+     background-color: rgba(146, 222, 161, 0.8);
+}
+
+tr:nth-child(odd) {
+     background-color: rgba(160, 192, 223, 0.8);
+}
+
+tr:hover {
+     background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Form Layout */
+#createDragon {
+     display: flex;
+     justify-content: center;
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 20px;
+     margin-bottom: 30px;
+     /* background: rgba(255, 255, 255, 0.9); */
+     border-radius: 15px;
+     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Labels and Inputs */
+label {
+     font-size: 1.2em;
+     font-weight: 500;
+     color: #000000;
+     display: inline-block;
+     margin-bottom: 5px;
+}
+
+table input {
+     padding: 8px 12px;
+     border-radius: 6px;
+     border: 2px solid #ddd;
+     font-size: 1em;
+     transition: all 0.3s ease;
+     width: 100%;
+     max-width: 300px;
+}
+
+table input::placeholder {
+     color: black;
+}
+
+/* Input States */
+table input:focus {
+     outline: none;
+     background-color: rgba(173, 216, 230, 0.2);
+     box-shadow: 0 0 0 3px rgba(0, 135, 203, 0.2);
+}
+
+/* Validation States */
+table input:invalid,
+table input:focus:invalid {
+     border-color: #ff4444;
+     background-color: rgba(255, 68, 68, 0.05);
+}
+
+table input:valid,
+table input:focus:valid {
+     border-color: #00c851;
+     background-color: rgba(0, 200, 81, 0.05);
+}
+
+/* Help Text */
+.help-text {
+     font-size: 0.9em;
+     color: #666;
+     margin-top: 4px;
+     display: block;
+}
+
+.invalid-feedback {
+     color: #ff4444;
+     font-size: 0.9em;
+     margin-top: 4px;
+     display: none;
+     animation: slideIn 0.3s ease-in-out;
+}
+
+input:invalid ~ .invalid-feedback {
+     display: block;
+}
+
+/* Buttons */
+#create,
+#reset {
+     font-size: 1.6em;
+     font-weight: bold;
+     font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif";
+     color: #000000;
+     background: linear-gradient(to bottom, #B9DFFF, #9bc9e8);
+     border-radius: 10px;
+     box-shadow: 0 4px 6px rgba(18, 190, 64, 0.3);
+     text-shadow: none;
+     cursor: pointer;
+     height: 50px;
+     width: 49%;
+     margin: 20px 0;
+     border: 2px solid rgba(0, 0, 0, 0.1);
+     transition: all 0.3s ease;
+}
+
+#create:hover,
+#reset:hover {
+     color: #00ff44;
+     background: linear-gradient(to bottom, #0ABC, #089ab7);
+     box-shadow: 0 6px 8px rgba(255, 165, 0, 0.4);
+     transform: translateY(-2px);
+}
+
+#create:active,
+#reset:active {
+     transform: translateY(1px);
+     box-shadow: 0 2px 4px rgba(255, 165, 0, 0.4);
+}
+
+/* Error Message */
+#createError {
+     position: relative;
+     color: #ff4444;
+     top: 10px;
+     font-size: 1.5em;
+     text-align: center;
+     padding: 10px;
+     border-radius: 6px;
+     background-color: rgba(255, 68, 68, 0.1);
+     display: none;
+     animation: slideIn 0.3s ease-in-out;
+}
+
+/* Radio Buttons */
+input[type="radio"] {
+     width: auto;
+     margin-right: 8px;
+}
+
+input[type="radio"] + label {
+     margin-right: 20px;
+}
+
+/* Range Input */
+input[type="range"] {
+     width: 80%;
+     height: 6px;
+     border-radius: 3px;
+     background: #ddd;
+     outline: none;
+     padding: 0;
+     margin: 10px 5px;
+     
+}
+
+input[type="range"]::-webkit-slider-thumb {
+     appearance: none;
+     width: 20px;
+     height: 20px;
+     border-radius: 50%;
+     background: #0087CB;
+     cursor: pointer;
+     transition: all 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+     background: #006699;
+     transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes shake {
+     0%,
+     100% {
+          transform: translateX(0);
+     }
+
+     25% {
+          transform: translateX(-5px);
+     }
+
+     75% {
+          transform: translateX(5px);
+     }
+}
+
+@keyframes slideIn {
+     from {
+          opacity: 0;
+          transform: translateY(-10px);
+     }
+
+     to {
+          opacity: 1;
+          transform: translateY(0);
+     }
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+     #createDragon {
+          padding: 15px;
+          margin: 0 10px;
+     }
+
+     #createDragon table {
+          width: 100%;
+     }
+
+     #createDragon table tr {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 10px;
+     }
+
+     #createDragon table td {
+          width: 100%;
+          margin-bottom: 5px;
+     }
+
+     label {
+          margin-bottom: 5px;
+          display: block;
+          width: 100%;
+     }
+
+     input {
+          max-width: 100%;
+          box-sizing: border-box; /* Ensure padding doesn't break layout */
+     }
+
+     #create,
+     #reset {
+          width: 100%; /* Full width buttons */
+          margin: 10px 0;
+          font-size: 1.2em;
+          height: 40px;
+     }
+}
+
+/* Make table horizontally scrollable on small screens */
+@media screen and (max-width: 768px) {
+     /* Enhanced Mobile Grid Layout */
+     .table-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 15px;
+     }
+     
+     table {
+          display: block;
+          width: 100%;
+          overflow-x: auto;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+          /* Smooth scrolling on iOS */
+     }
+
+     /* Hide Default Header */
+     table thead {
+          display: none;
+     }
+
+     /* Convert Rows to Flexible Blocks */
+     table tbody,
+     table tr {
+          display: block;
+     }
+
+     table tr {
+          margin-bottom: 15px;
+          border: 1px solid rgba(0, 135, 203, 0.3);
+          /* border-radius: 8px; */
+          overflow: hidden;
+          background-color: rgba(160, 192, 223, 0.8);
+     }
+
+     table td {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          text-align: right;
+     }
+
+     /* Add Column Labels */
+     table td::before {
+          content: attr(data-label);
+          font-weight: bold;
+          margin-right: 10px;
+          color: #000000;
+          text-align: left;
+          flex-grow: 1;
+     }
+
+     /* Remove Bottom Border from Last Cell */
+     table td:last-child {
+          border-bottom: none;
+     }
+
+     /* Scrollbar Styling for Webkit Browsers */
+     table::-webkit-scrollbar {
+          height: 8px;
+          background-color: rgba(0, 0, 0, 0.1);
+     }
+
+     table::-webkit-scrollbar-thumb {
+          background-color: rgba(0, 135, 203, 0.5);
+          border-radius: 4px;
+     }
+}
+
+/* Enhanced Mobile View */
+@media screen and (max-width: 480px) {
+     .table-grid {
+          gap: 10px;
+     }
+
+     table td {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 8px;
+     }
+
+     table td::before {
+          margin-bottom: 5px;
+          width: 100%;
+          text-align: left;
+     }
+
+     /* Optional: Convert table to card-like layout for extreme small screens */
+     @supports (display: grid) {
+
+          table,
+          tbody,
+          tr,
+          td {
+               display: block;
+          }
+
+          thead {
+               display: none;
+          }
+
+          tr {
+               margin-bottom: 10px;
+               border: 1px solid rgba(0, 135, 203, 0.3);
+               border-radius: 8px;
+               overflow: hidden;
+          }
+
+          td {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               padding: 8px;
+               border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          }
+
+          td:last-child {
+               border-bottom: none;
+          }
+
+          td::before {
+               content: attr(data-label);
+               font-weight: bold;
+               margin-right: 10px;
+               color: #0087CB;
+          }
+     }
+}
+
+/* Performance and Accessibility Enhancements */
+table {
+     text-rendering: optimizeLegibility;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+}

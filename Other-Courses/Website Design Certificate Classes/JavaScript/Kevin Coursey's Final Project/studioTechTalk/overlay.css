@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+/* Kevin Coursey */
+
+/* Styles for the overlay */
+div#messageOverlay {
+   position:fixed;                        /* Overlay is fixed on screen */
+   z-index: 1;                             /* Overlay sits on top of other content */
+   background-color: rgba(91, 91, 91, .85);  /* Semitransparent brown background */
+   justify-content: center; 
+   align-items: center;
+}
+
+/*div#messageOverlay1 {
+   position: fixed;                        /* Overlay is fixed on screen 
+   z-index: 1;                             /* Overlay sits on top of other content 
+   background-color: rgba(91, 91, 91, .85);  /* Semitransparent brown background 
+   justify-content: center; 
+   align-items: center;
+}*/
+
+/* Styles for the figure box within the overlay */
+div#messageOverlay figure {
+   display: block;
+   width: 80%;
+   max-width: 800px;
+}
+
+/* Styles for the image within the overlay */
+div#messageOverlay figure img {
+   display: block;
+   margin: auto;
+   width: 100%;
+   height: auto;
+   box-shadow: 5px 5px 20px black;
+}
+
+/* Styles for the caption within the overlay */
+div#messageOverlay figure figcaption {
+   text-align: center;
+   font-size: 1.25em;
+   color: white;
+   margin-top: 10px;
+   animation-name: zoom;      /* animate the opening of the figure */
+   animation-duration: 1s;    /* over a 1-second interval */ 
+}
+
+div#messageOverlay figure a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 1.25em;
+    color: rgb(0, 204, 255);
+    animation-name: zoom;      /* animate the opening of the figure */
+    animation-duration: 1s;    /* over a 1-second interval */  
+ }
+
+ /* Styles for the caption within the overlay */
+div#messageOverlay figure a#overlayRef {
+   text-align: center;
+   font-size: 1em;
+   color: rgb(238, 63, 63);
+   margin-top: 10px;
+}
+
+/* Styles for the overlay close button */
+div#messageOverlay div#messageOverlayClose {
+   position: absolute;
+   top: 10px;
+   right: 15px;
+   color: #ffffff;
+   font-size: 20px;
+   cursor: pointer;
+   user-select: none;
+}

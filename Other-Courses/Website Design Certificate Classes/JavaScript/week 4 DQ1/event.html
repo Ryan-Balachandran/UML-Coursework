@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+     <head>
+          <meta charset="utf-8">
+          <title>Playstation</title>
+          <style>
+               input{
+                    border-radius: 50%;
+                    height: 80px;
+                    width: 80px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+               }
+
+               p, h1{
+                    display: flex;
+                    justify-content: center;
+               }
+
+               body{
+                    background-color: red;
+               }
+          </style>
+     </head>
+
+     <body>
+          <script type="text/javascript">
+               function changeText() 
+               {
+                    const power = document.getElementById('status');
+
+                    if(power.innerHTML == "<strong>OFF</strong>"){
+                         power.innerHTML = "<strong>ON</strong>";
+                         document.body.style.background = "green";
+                    }
+                    else{
+                         power.innerHTML = "<strong>OFF</strong>";
+                         document.body.style.background = "red";
+                    }
+               }
+           </script>
+
+
+          <h1>PlayStation Controller</h1>
+
+          <input type="image" id="power" alt="logo" value="off" src="https://tinyurl.com/2s26vavw" onclick="changeText();">
+          <p>Playstation is: </p>
+          <p id="status"><strong>OFF</strong></p>
+     </body>
+</html>

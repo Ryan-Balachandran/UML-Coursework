@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+.controlDiv {
+    width: auto;
+    float: left;
+}
+
+#canvasDiv {
+    width: available;
+    float: left;
+}
+
+label {
+    width: 100px;
+}
+
+input {
+    width: 150px;
+}
+
+#titleSpan {
+    font-size: x-large;
+}
+
+#subtitleSpan {
+    font-size: small;
+}
+
+#sierpinskiCanvas {
+    border-style: solid;
+}
+
+#picker, #randColorButton {
+    width: 100%;
+}
+
+.fw {
+    width: 40px;
+    text-align: right;
+}
+
+#addKeyframeButton {
+    width: 100%;
+    background-color: green;
+    color: white;
+}

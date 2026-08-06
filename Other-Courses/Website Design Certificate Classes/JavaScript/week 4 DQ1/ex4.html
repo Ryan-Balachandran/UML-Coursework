@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <title>Uber Eats</title>
+     </head>
+
+     <body>
+          <h1>Uber Eats</h1>
+          <button id="searchButton">Search Restaurants</button>
+
+          <div id="restaurantList"></div>
+
+          <script> 
+               const searchButton = document.getElementById("searchButton");
+               const restaurantListElement = document.getElementById("restaurantList");
+
+               // Event handler for the search button click
+
+               searchButton.addEventListener("click", function() {
+                    fetchNearbyRestaurants();
+               });
+
+               // Function to fetch and display nearby restaurants
+               function fetchNearbyRestaurants() {
+
+                    // Fetch nearby restaurants
+                    const nearbyRestaurants = ["Popeyes", "Chipotle", "Subway", "Mcdonalds", "Five Guys"];
+
+                    // Clear previous restaurant list
+                    restaurantListElement.textContent = "";
+
+                    // Display the nearby restaurants
+
+                    nearbyRestaurants.forEach(function(restaurant) {
+                         const restaurantElement = document.createElement("p");
+                         restaurantElement.textContent = restaurant;
+                         restaurantListElement.appendChild(restaurantElement);
+                    });
+               }
+          </script>
+     </body>
+</html>

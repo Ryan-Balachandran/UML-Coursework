@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+		<title>Dragonomica - Home</title>
+		<meta name="description" content="Ryan Balachandran's Final Project!">
+		<meta name="keywords" content="Final project dragon website">
+		<meta name="created" content="2024-9-14">
+		<meta name="author" content="Ryan Balachandran">
+
+		<link href="css/index.css" rel="stylesheet" type="text/css">
+		<link href="css/overlay.css" rel="stylesheet" type="text/css">
+		<script src="javascript/nav.js" defer></script>
+		<script src="javascript/overlay.js" defer></script>
+
+		<link href="https://fonts.cdnfonts.com/css/apple-chancery" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Uncial+Antiqua&family=MedievalSharp&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+		<style>
+			body {
+				background-image: url(images/backgrounds/fantasytree.jpg)
+			}
+
+		</style>
+	</head>
+
+	<!-- Have music play on every page, not just Home -->
+	<!-- <audio id="music" title="How To Train Your Dragon Theme" controls="controls" autoplay="autoplay" loop="loop">
+		<source src="httyd/2010 - How To Train Your Dragon Soundtrack/11. Test Drive.mp3" type="audio/mp3">
+	</audio> -->
+
+	<body>
+		<!-- TODO: Create a transparent fiery background maybe? -->
+		<!-- TODO: Make headers and logo link back to home page -->
+
+		<div id="wrapper">
+			<header>
+				<img src="images/logos/No-Background/logo2.png" id="logo1" alt="dragon icon">
+				<div class="title-container">
+					<h1 id="title"><a href="index.html">Dragonomica</a></h1>
+					<h2 id="subtitle"><a href="index.html">An Introduction To Dragons</a></h2>
+				</div>
+				<img src="images/logos/No-Background/logo2.png" id="logo2" alt="dragon icon">
+				<img src="images/logos/No-Background/logo7.png" alt="Mobile Logo" id="mobile-logo">
+			</header>
+
+			<button class="menu-toggle" aria-label="Toggle navigation menu">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			
+			<!-- TODO: ADD A CLASS TO EVERY IMAGE TO MAKE AN OVERLAY OF THEM -->
+			<nav id="sidenav" role="navigation">
+				<a href="#" class="active_tab">Home</a>
+				<button class="dropdown-btn">About Dragons <i class="fa fa-caret-down"></i></button>
+				<div class="dropdown-container">
+					<a href="DragonH_L.html">Dragon History and Lore</a>
+					<a href="DragonsVWyverns.html">Dragons Vs. Wyverns</a>
+					<a href="DragonSpecies.html">Dragon Species</a>
+					<a href="DragonH&B.html">Dragon Habits and Behaviors</a>
+					<a href="DragonChar.html">Dragon Characteristics</a>
+					<a href="Dragontaming.html">Dragon Taming</a>
+				</div>
+				<a href="Aboutme.html">About me</a>
+				<a href="Contact.html">Contact me</a>
+			</nav>
+
+			<div class="nav-overlay"></div>
+
+			<div id="content">
+				<h3>How to Become a Dragon Master</h3>
+				<p>
+					Explore the world of Dragonomica and see if you have what it takes to become a dragon master.
+					Become versed in the ever expansive knowledge about dragons and how to deal with them and when to leave them alone.
+					Your journey will take you to the far reaches of the world to learn all about dragons and their habits;
+					to the staggering peaks of the mountains to the murky depths of the oceans to the scorching lands of the desert.
+					Do you have what it takes to become a dragon master?
+				</p>
+
+				<div id="page1" class="content-grid">
+					<!-- Grid 1-1: Start Your Journey -->
+					<div class="grid-item grid-1">
+						<h3>Start your Journey Here</h3>
+						<ul>
+							<li>Learn about a world where dragons thrive</li>
+							<li>Discover the history of dragons and how they came about</li>
+							<li>Search the skies and know the difference between dragons and Wyverns</li>
+							<li>Get to know the different species and breeds of dragons and how they live</li>
+							<li>If you dare to go deeper, learn about their biology and anatomy</li>
+						</ul>
+					</div>
+			
+					<!-- Grid 1-2: Dragon Tamer Image -->
+					<div class="grid-item grid-2">
+						<img src="images/dragons/dragontamer3.jpg" class="zoom grid-image" alt="A woman in an arena taming a black dragon">
+					</div>
+			
+			
+					<!-- Grid 2-2: How to Tame -->
+					<div class="grid-item grid-3">
+						<h3>How to Tame a Dragon</h3>
+						<ul>
+							<li>Some dragons are capable of being tamed</li>
+							<li>Learn to recognize which dragon breeds you can and cannot tame</li>
+							<li>Know how to keep and preserve your bond</li>
+							<li>Learn how to properly care for your dragon</li>
+							<li>Learn to recognize body language and when to give them space</li>
+						</ul>
+					</div>
+
+					<!-- Grid 2-1: Dragon Species Image -->
+					<div class="grid-item grid-4">
+						<img src="images/dragons/IMG_2852.JPG" class="zoom grid-image" alt="Types of Dragons">
+					</div>
+				</div>
+			</div>
+
+			<footer class="site-footer"> 
+				<div class="footer-content">
+					<div class="footer-section">
+						<h4>Quick Links</h4>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="DragonH_L.html">Dragon History</a></li>
+							<li><a href="DragonSpecies.html">Species Guide</a></li>
+							<li><a href="Contact.html">Contact</a></li>
+						</ul>
+					</div>
+
+					<div class="footer-section">
+						<h4>Connect</h4>
+						<div class="social-links">
+							<a href="https://github.com/Ryan-Balachandran" title="GitHub"><i class="fab fa-github"></i></a>
+							<a href="https://www.linkedin.com/in/ryan-balachandran/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+							<a href="#" title="Portfolio"><i class="fas fa-briefcase"></i></a>
+						</div>
+					</div>
+
+					<div class="footer-section">
+						<h4>Newsletter</h4>
+						<form class="newsletter-form">
+							<input type="email" placeholder="Enter your email">
+							<button type="submit">Subscribe</button>
+						</form>
+					</div>
+				</div>
+
+				<div class="footer-bottom">
+					<p>Copyright &copy; 2024 Ryan Balachandran</p>
+					<p>22 19th Avenue &bull; Haverhill, MA, 01830 &bull; (978) 245 - 6415</p>
+					<p><a href="mailto:Ryan_Balachandran@student.uml.edu">Ryan_Balachandran@student.uml.edu</a></p>
+					<a href="#"><i class="fa fa-home fa-2x">&#8593;</i></a>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

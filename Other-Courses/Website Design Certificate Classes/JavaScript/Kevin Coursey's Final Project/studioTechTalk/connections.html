@@ -1,0 +1,95 @@
+
+<!DOCTYPE html> 
+
+<html lang="en-US"> 
+<head> 
+    <title id="connections">Connections</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kevin Coursey" />
+    <meta name="robots" content="All" />
+    <meta name="description" content="Studio Tech Talk Page: Connections" />
+    <meta name="keywords" content="" />
+    <meta name="rating" content="General" />
+    <link href="pages.css" rel="stylesheet">
+    <script src="pages.js" defer></script>
+    <script src="head.js" defer></script>
+    <script src="navMenu.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> 
+</head> 
+<body onload="whichPic('connections'); whichMsg('connections')"> 
+<header id="head"></header> 
+
+<section id="leftColumn">
+    <table>
+        <tr>
+            <td><img src="#" alt="" title="" id="indexPic" height="150" width="150"></td>
+            <td><em id="picMsg"></em></td>
+        </tr>
+    </table> 
+</section>
+
+<section id="middleColumn">
+</section>
+
+<section id="rightColumn">
+    <nav id="studioEquipment">
+        <ul id="theMenu"></ul>
+    </nav>
+    
+</section>
+
+<section id="leftMiddleColumn">
+<nav id="ubuntuInfo">
+    <dl id="info">
+        <dt class="hiddenInfo">First things first</dt>
+        <dd>
+            <p>
+                Be sure you have the speakers plugged into the amp. Next, plug the monitor outputs from the the audio interface into the inputs on the amplifier.
+                Make sure your audio interface is powered on and connected to your computer. Most interfaces require a USB 3 connection. Verify that you
+                are connected to the proper port. Otherwise, your device may not connect or function properly. Next, turn on the amplifier.
+            </p>
+        </dd>
+        <dt class="hiddenInfo">Let's make some simple connections</dt>
+        <dd>
+            <p>
+                You may want to read up on <a href="https://jackaudio.org/">Jack</a> so you can get a general idea of what it does and why its useful in this studio
+                application. Jack is responsible for all of the client and audio connections that get made between the <a href="audioInterfaces.html">audio interface</a>,
+                <a href="recordingSoftware.html"> Ardour</a>, and <a href="softInstruments.html"> virtual instruments</a>.
+                No need to become an expert, just check out some of the information and when you're ready, open Jack on your computer.
+                <br /><br />
+                When jack opens, go to setup, select your interface from the pulldown menu. Click OK and then press the green Start button. Once it starts,
+                click connections. In the connections window, you'll see that the interface's audio and midi ports appear in the various tabs. Connect your keyboard midi
+                controller and you'll see it show up on the midi tab. Now go to the alsa tab and drag and drop the midi controller to the midi through port. That's
+                it! The midi controller is connected to jack and ready to use.
+            </p>
+        </dd>
+        <dt class="hiddenInfo">Make another, more useful connection</dt>
+        <dd>
+            <p>
+                Open Zyn Fusion and wait for it to appear on the midi tab of the jack connections window. Then drag it to system midi capture. The keyboard midi
+                controller is now connected to zyn fusion. Try pressing some keys and check it out.
+            </p>
+        </dd>
+        <dt class="hiddenInfo">Connecting Ardour</dt>
+        <dd>
+            <p>
+                Connect the midi controller you plan to use to control Ardour. Open Ardour, and just like with the midi controller and Zyn Fusion, you'll see the
+                connections for the controller and Ardour appear in the various tabs. Find the master outputs from Ardour and drag them to playbacks 1 and 2.
+                Find the preferences menu in Ardour and select midi controllers. Find your controller in the list and select it. Ardour and the controller are
+                ready to work together now. Try moving some sliders on the controller and watch the corresponding faders move in Ardour. Pretty cool!
+            </p>
+        </dd>
+        <dt class="hiddenInfo">Making More Connections</dt>
+        <dd>
+            <p>
+             Try plugging in some actual instruments or a microphone to the inputs of the audio interface. Make the appropriate connections within Ardour and 
+                get recording! For more information on using Ardour, Check out <a href="https://manual.ardour.org/toc/" target="_blank">the manual</a> at their website.
+            </p>
+        </dd>
+    </dl>
+  </nav>
+</section>
+
+<footer id="foot"></footer>
+</body> 
+</html> 

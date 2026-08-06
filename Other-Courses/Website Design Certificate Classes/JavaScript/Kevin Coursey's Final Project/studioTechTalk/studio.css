@@ -1,0 +1,127 @@
+@charset "utf-8";
+
+/* Kevin Coursey */
+
+/* HTML and Body Styles */
+
+html {
+    background-color: rgb(0, 0, 0);
+}
+
+body#studio, #functionality {
+   color: rgb(91, 91, 91);
+   background-color: rgb(188, 201, 252);
+   margin-right: 10px;
+   max-width: 100%;
+   min-width: 640px;
+   max-height: 100%;
+   width: 99%;
+}
+
+h1 {
+   margin-left: 20px;
+}
+
+h2 {
+   text-align: center;
+}
+
+img#randomPic{
+   border-radius: 20px;
+   margin: auto;
+}
+
+img#indexPic{
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+td {
+    width: 200px;
+    vertical-align: middle;    
+}
+
+td#soundwave {
+    width: 55px;
+}
+
+ /* Navigation Styles */	
+nav {
+    font-size: 1.0em;
+ }
+
+nav > ul {
+   line-height: 2em;
+   list-style-type: none;
+   padding-left: 35px;
+}
+
+nav > ul > li.newgroup {
+   margin-top: 20px;
+}
+
+nav > ul > li > a:link, nav > ul > li > a:visited {
+   color: rgb(92, 92, 92);
+   text-decoration: none;
+}
+
+nav > ul > li > a:hover, nav > ul > li > a:active {
+   color: rgb(255, 0, 0);
+   text-decoration: none;
+}
+
+section#leftColumn > nav > ul > li > a:link, nav > ul > li > a:visited {
+color: rgb(92, 92, 92);
+text-decoration: none;
+}
+
+section#leftColumn > nav > ul > li > a:hover, nav > ul > li > a:active {
+   color: rgb(255, 0, 0);
+   text-decoration: none;
+}
+
+ /* Footer Styles */
+body > footer > address, footer#foot {
+    background-color: rgb(250, 174, 120);
+    color: white; color: rgba(0, 0, 0, 0.7);
+    font: normal small-caps bold 0.9em/3em
+          Quicksand, Veranda, Geneva, sans-serif;
+    text-align: center;
+    clear: left;
+    line-height: 1.5em;
+ }
+
+ /* List Styles */
+
+ /* Left Column Styles */
+ section#leftColumn {
+    clear: left;
+    float: left;
+    padding: 1.5em;
+    padding-right: 0;
+    width: 30%;
+ }
+
+/* Middle Column Styles */
+ section#middleColumn {
+    float:left;
+    width: 40%;
+ }
+
+ section#middleColumn > img {
+    display: block;
+    border-width: 0px;
+ }
+ 
+ /* Right Column Styles */
+ section#rightColumn {
+    float:left;
+    width: 25%;
+ }
+
+ section#rightColumn > article {
+    margin-left: 10px;
+    font-size: 1.1em;
+    line-height: 1.2;
+}

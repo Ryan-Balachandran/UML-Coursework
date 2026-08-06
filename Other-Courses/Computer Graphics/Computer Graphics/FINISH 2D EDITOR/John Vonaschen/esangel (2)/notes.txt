@@ -1,0 +1,6 @@
+- use fetch
+- use express
+- be able to add multiple keyframes and lerp between them
+- generalize by making an example class
+- be able to save the animations to the server as json files
+- add background color or pattern

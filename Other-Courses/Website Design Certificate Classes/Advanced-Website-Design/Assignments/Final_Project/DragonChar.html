@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+          <title>Dragonomica - Characteristics</title>
+          <meta name="description" content="Ryan Balachandran's Final Project!">
+          <meta name="keywords" content="Final project dragon website">
+		<meta name="created" content="2024-9-14">
+          <meta name="author" content="Ryan Balachandran">
+
+          <link href="css/index.css" rel="stylesheet" type="text/css">
+          <link href="css/characteristics.css" rel="stylesheet" type="text/css">
+          <script src="javascript/nav.js" defer></script>
+          <script src="javascript/createDragon.js" defer></script>
+
+          <link href="https://fonts.cdnfonts.com/css/apple-chancery" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+          <style>
+               body {
+                    background-image: url("images/dragons/green_dragon.jpg")
+               }
+          </style>
+     </head>
+
+     <body>
+          <div id="wrapper">
+			<header>
+				<img src="images/logos/No-Background/logo2.png" id="logo1" alt="dragon icon">
+				<div class="title-container">
+					<h1 id="title"><a href="index.html">Dragonomica</a></h1>
+					<h2 id="subtitle"><a href="index.html">An Introduction To Dragons</a></h2>
+				</div>
+				<img src="images/logos/No-Background/logo2.png" id="logo2" alt="dragon icon">
+				<img src="images/logos/No-Background/logo7.png" alt="Mobile Logo" id="mobile-logo">
+			</header>
+
+			<button class="menu-toggle" aria-label="Toggle navigation menu">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+
+               <nav id="sidenav" role="navigation">
+                    <a href="index.html">Home</a>
+                    <button class="dropdown-btn active_tab">About Dragons <i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-container">
+                         <a href="DragonH_L.html">Dragon History and Lore</a>
+                         <a href="DragonsVWyverns.html">Dragons Vs. Wyverns</a>
+                         <a href="DragonSpecies.html">Dragon Species</a>
+                         <a href="DragonH&B.html">Dragon Habits and Behaviors</a>
+                         <a href="DragonChar.html" class="active_tab">Dragon Characteristics</a>
+                         <a href="Dragontaming.html">Dragon Taming</a>
+                    </div>
+                    <a href="Aboutme.html">About me</a>
+                    <a href="Contact.html">Contact me</a>
+               </nav>
+
+               <div class="nav-overlay"></div>
+
+               <div id="content">
+                    <h3>Dragon Characteristics</h3>
+                    <p>This is a table about many of the different species of dragons and the characteristics they have</p>
+                    <br>
+
+                    <div class="table-grid">
+                         <table id="characteristics">
+                              <thead>
+                                   <tr>
+                                        <th>Species</th>
+                                        <th>Age</th>
+                                        <th>Wings</th>
+                                        <th># of Legs</th>
+                                        <th>Pair of Wings</th>
+                                        <th>Eggs in a clutch</th>
+                                        <th>Scale strength from 1-10</th>
+                                        <th>Height</th>
+                                        <!-- TODO: Add Length of dragon? -->
+                                   </tr>
+                              </thead>
+
+                              <tbody>
+                                   <tr>
+                                        <td data-label="Species">Fire Dragon</td>
+                                        <td data-label="Age">400+ years</td>
+                                        <td data-label="Wings">Yes</td>
+                                        <td data-label="# of Legs">6</td>
+                                        <td data-label="Pair of Wings">1</td>
+                                        <td data-label="Eggs in a clutch">4-6</td>
+                                        <td data-label="Scale strength">8</td>
+                                        <td data-label="Height">18' +</td>
+                                   </tr>
+                                   <tr>
+                                        <td data-label="Species">Forest Dragon</td>
+                                        <td data-label="Age">750+ years</td>
+                                        <td data-label="Wings">Yes</td>
+                                        <td data-label="# of Legs">4</td>
+                                        <td data-label="Pair of Wings">1</td>
+                                        <td data-label="Eggs in a clutch">3-4</td>
+                                        <td data-label="Scale strength">6</td>
+                                        <td data-label="Height">6'-13'</td>
+                                   </tr>
+                                   <tr>
+                                        <td data-label="Species">Water Dragon</td>
+                                        <td data-label="Age">340+ years</td>
+                                        <td data-label="Wings">No/Yes</td>
+                                        <td data-label="# of Legs">0/2/4</td>
+                                        <td data-label="Pair of Wings">0/1</td>
+                                        <td data-label="Eggs in a clutch">7-10</td>
+                                        <td data-label="Scale strength">4</td>
+                                        <td data-label="Height">24' +</td>
+                                   </tr>
+                                   <tr>
+                                        <td data-label="Species">Earth Dragon</td>
+                                        <td data-label="Age">900+ years</td>
+                                        <td data-label="Wings">No</td>
+                                        <td data-label="# of Legs">4</td>
+                                        <td data-label="Pair of Wings">0</td>
+                                        <td data-label="Eggs in a clutch">1-3</td>
+                                        <td data-label="Scale strength">10</td>
+                                        <td data-label="Height">20' +</td>
+                                   </tr>
+                                   <tr>
+                                        <td data-label="Species">Air Dragon</td>
+                                        <td data-label="Age">430+ years</td>
+                                        <td data-label="Wings">Yes</td>
+                                        <td data-label="# of Legs">4</td>
+                                        <td data-label="Pair of Wings">2</td>
+                                        <td data-label="Eggs in a clutch">3-5</td>
+                                        <td data-label="Scale strength">5.5</td>
+                                        <td data-label="Height">25' +</td>
+                                   </tr>
+                                   <tr>
+                                        <td data-label="Species">Fairy Dragon</td>
+                                        <td data-label="Age">145+ years</td>
+                                        <td data-label="Wings">Yes</td>
+                                        <td data-label="# of Legs">4</td>
+                                        <td data-label="Pair of Wings">1</td>
+                                        <td data-label="Eggs in a clutch">1-2</td>
+                                        <td data-label="Scale strength">3</td>
+                                        <td data-label="Height">8'-14'</td>
+                                   </tr>
+                                   <tr>
+                                        <td data-label="Species">Plain's Dragon</td>
+                                        <td data-label="Age">250+ years</td>
+                                        <td data-label="Wings">No</td>
+                                        <td data-label="# of Legs">4</td>
+                                        <td data-label="Pair of Wings">0</td>
+                                        <td data-label="Eggs in a clutch">2-4</td>
+                                        <td data-label="Scale strength">4</td>
+                                        <td data-label="Height">10'-15'</td>
+                                   </tr>
+                                   <tr>
+                                        <td data-label="Species">Swamp Dragon</td>
+                                        <td data-label="Age">310+ years</td>
+                                        <td data-label="Wings">No</td>
+                                        <td data-label="# of Legs">4</td>
+                                        <td data-label="Pair of Wings">0</td>
+                                        <td data-label="Eggs in a clutch">4-7</td>
+                                        <td data-label="Scale strength">6.3</td>
+                                        <td data-label="Height">7'-12'</td>
+                                   </tr>
+                                   <tr>
+                                        <td data-label="Species">Viper Dragon</td>
+                                        <td data-label="Age">275+ years</td>
+                                        <td data-label="Wings">No</td>
+                                        <td data-label="# of Legs">4</td>
+                                        <td data-label="Pair of Wings">0</td>
+                                        <td data-label="Eggs in a clutch">2-5</td>
+                                        <td data-label="Scale strength">3.7</td>
+                                        <td data-label="Height">6'-11'</td>
+                                   </tr>
+                                   <tr>
+                                        <td data-label="Species">RidgeBack Dragon</td>
+                                        <td data-label="Age">425+ years</td>
+                                        <td data-label="Wings">Yes</td>
+                                        <td data-label="# of Legs">4</td>
+                                        <td data-label="Pair of Wings">1</td>
+                                        <td data-label="Eggs in a clutch">4-6</td>
+                                        <td data-label="Scale strength">6</td>
+                                        <td data-label="Height">15'-22'</td>
+                                   </tr>
+                              </tbody>
+                         </table>
+                    </div>
+
+                    <h3>How would you like to create your own dragon species?</h3>
+
+                    <div id="createDragon">
+                         <!-- <form name="dragonMaker" id="dragonMaker" aria-label="Create Dragon Form" role="form"></form> -->
+                         <form name="dragonMaker" id="dragonMaker" onsubmit="validateForm(); return false;">
+                              <table>
+                                   <tr>
+                                        <td><label for="species"><strong>Species Name:</strong></label></td>
+                                        <td>
+                                             <input type="text" id="species" name="species" aria-describedby="species-help" placeholder="rock dragon" pattern="^[A-Za-z]+\s*[A-Za-z]+$" required>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <td><label for="age"><strong>Age:</strong></label></td>
+                                        <td>
+                                             <input type="text" id="age" name="age" placeholder="357" pattern="^[0-9]+\+?$" required>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <td><label for="wings"><strong>Do they have Wings:</strong></label></td>
+                                        <td>
+                                             <input type="radio" id="wings" name="wings" value="Yes" required> Yes
+                                             <input type="radio" id="wings2" name="wings" value="No"> No
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <td><label for="legs"><strong># of legs:</strong></label></td>
+                                        <td>
+                                             <input type="text" id="legs" name="legs" placeholder="4" pattern="^\d*?((0)|(2)|(4)|(6)|(8))$" required>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <td><label for="wingPair"><strong>Pairs of wings:</strong></label></td>
+                                        <td>
+                                             <input type="text" id="wingPair" name="wingPair" placeholder="2" pattern="^[0-9]+$" required>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <td><label for="eggs"><strong>Eggs in a clutch:</strong></label></td>
+                                        <td>
+                                             <input type="text" id="eggs" name="eggs" placeholder="9" pattern="^[1-9]+$" required>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <td><label for="scale"><strong>Scale strength:</strong></label></td>
+                                        <td>
+                                             0<input type="range" id="scale" name="scale" min="0" max="10" step="0.1" oninput="this.nextElementSibling.nextElementSibling.value = this.value">10
+                                             <br><output>5</output>
+                                        </td>
+                                   </tr>
+                                   <tr>
+                                        <td><label for="height"><strong>Height:</strong></label></td>
+                                        <td>
+                                             <input type="text" id="height" name="height" placeholder="10'" pattern="^\d+'(\s*\d+)?$" required>
+                                        </td>
+                                   </tr>
+                              </table>
+                              <input type="submit" name="create" id="create" value="Create" />
+                              <input type="reset" name="reset" id="reset" value="Reset" />
+                              <span id="createError"></span>
+                         </form>
+                    </div>
+               </div>
+
+               <footer class="site-footer"> 
+				<div class="footer-content">
+					<div class="footer-section">
+						<h4>Quick Links</h4>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="DragonH_L.html">Dragon History</a></li>
+							<li><a href="DragonSpecies.html">Species Guide</a></li>
+							<li><a href="Contact.html">Contact</a></li>
+						</ul>
+					</div>
+
+					<div class="footer-section">
+						<h4>Connect</h4>
+						<div class="social-links">
+							<a href="https://github.com/Ryan-Balachandran" title="GitHub"><i class="fab fa-github"></i></a>
+							<a href="https://www.linkedin.com/in/ryan-balachandran/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+							<a href="#" title="Portfolio"><i class="fas fa-briefcase"></i></a>
+						</div>
+					</div>
+
+					<div class="footer-section">
+						<h4>Newsletter</h4>
+						<form class="newsletter-form">
+							<input type="email" placeholder="Enter your email">
+							<button type="submit">Subscribe</button>
+						</form>
+					</div>
+				</div>
+
+				<div class="footer-bottom">
+					<p>Copyright &copy; 2024 Ryan Balachandran</p>
+					<p>22 19th Avenue &bull; Haverhill, MA, 01830 &bull; (978) 245 - 6415</p>
+					<p><a href="mailto:Ryan_Balachandran@student.uml.edu">Ryan_Balachandran@student.uml.edu</a></p>
+					<a href="#"><i class="fa fa-home fa-2x">&#8593;</i></a>
+				</div>
+			</footer>
+          </div>
+     </body>
+</html>

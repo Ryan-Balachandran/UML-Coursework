@@ -1,0 +1,77 @@
+3/11/2022
+
+Universe, an artificial life simulator
+
+- Web based
+- uses PhysicsJS, and canvas
+- The player sets initial conditions, the simulation runs and you can pan and
+zoom live.
+- Set multiple simulations in motion and set terminate conditions.
+- Set success criteria and repopulate with the more successful ones.
+- Music and sound effects.
+- Customize animations, background.
+- It should be a research tool which is entertaining to watch.
+- Record whole simulations and play them back being able to pan, zoom, VCR
+controls.
+- Play it back with different skins.
+- Some simulations will run on the server and you can look in on them.
+- share initial conditions with others.
+
+- controls on the left and the viewport on the right.
+- viewport resizes to maximum size.
+- mouse keyboard and gamepad control
+
+3/12/2022
+
+- A search for soul.  Soul, consciousness, ordered complexity, a strange loop,
+is both the most evil and the most good thing that can exist.  Soul is what
+makes things valuable.  Soul is to reality what the Higgs boson is to mass.
+Without soul there can be no agony nor ecstasy.  There can be no malice nor
+nurturing.
+- Players/watchers can add a great variety of skin to their simulations but that
+skin does not affect the simulation.  There are many states the organisms can be
+in and each state can have a different animation.  There can be many, different
+organisms which should be just a consequence of their evolved behavior and the
+designed appearance and animation can change as a consequence. Skin is also the
+sounds that events can trigger.  The background music can change in response to
+the whole universe (a particular simulation).  The player/watcher can make
+different initial conditions and skins and all this by default is exposed to
+other player/watchers.  So the skin is effected by the simulation but not the
+other way around.
+- I make a system that not only helps people be creative with the simulation and
+skin, but also helps nature find soul, and helps people to see that nature is in
+the business of growing soul.
+- The player can act as a stressor on the system.  Killing all the organisms
+is the ultimate failure.  You kill the weak to make the universe stronger.  Woh!
+
+3/16/2022
+
+* finish the line thing
+- Made great progress.  Need to make shapes where the alpha is built into the
+color control.
+- Need to make default controls where any new shape added to the steps
+automatically gets these defaults.
+* instead of just an array of shapes it should be a list of steps including
+setting things like global settings
+* need to make a rect shape and use that instead of the custom background
+control.
+- have global controls in the shapes as well as a value for using whatever is
+currently set to.
+- Be able to move steps up, down, delete, disable them
+- snaps
+* make the line so that it draws a line from point 1 to point 2 while you are
+inputting it.
+- undo/redo
+- transform controls
+- groups
+- eventually this can be used to customize images used in the games and
+animations.
+
+3/24/2022
+
+- circle creation methods
+    - Center Radius
+    - 2-Point
+    - 3-Point
+    - 2-Tangent
+    - 3-Tangent

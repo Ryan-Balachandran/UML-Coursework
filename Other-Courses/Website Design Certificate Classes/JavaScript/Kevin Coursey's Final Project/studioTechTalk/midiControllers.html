@@ -1,0 +1,82 @@
+<!DOCTYPE html> 
+
+<html lang="en-US"> 
+<head> 
+    <title id="midi">Midi Controllers</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kevin Coursey" />
+    <meta name="robots" content="All" />
+    <meta name="description" content="Studio Tech Talk Page: Linux OS: Ubuntu Studio" />
+    <meta name="keywords" content="" />
+    <meta name="rating" content="General" />
+    <link href="pages.css" rel="stylesheet">
+    <script src="pages.js" defer></script>
+    <script src="head.js" defer></script>
+    <script src="navMenu.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> 
+</head> 
+<body onload="whichPic('midi'); whichMsg('midi')"> 
+<header id="head"></header> 
+
+<section id="leftColumn">
+    <table>
+        <tr>
+            <td><img src="#" alt="" title="" id="indexPic" height="150" width="150"></td>
+            <td><em id="picMsg"></em></td>
+        </tr>
+    </table> 
+</section>
+
+<section id="middleColumn">
+</section>
+
+<section id="rightColumn">
+    <nav>
+        <ul id="theMenu"></ul>
+    </nav>
+    
+</section>
+
+<section id="leftMiddleColumn">
+<nav id="midiInfo">
+    <dl id="info">
+        <dt class="hiddenInfo">What is a MIDI Controller</dt>
+        <dd>
+           <p>
+            A MIDI controller puts the control of the software right in your hands. For example, it's more intuitive to use the controls on a mixer to work with sound,
+            instead of using a computer keyboard and mouse. The MIDI controller connects to your computer via USB. Your needs will determine what types of controllers
+            you will buy. When using recording and editing software, you'll want one with knobs, faders, and section for transport controls like, play, stop, 
+            fast forward, rewind, etc. For DJ projects, a DJ controller would be more appropriate as it would come with not only knobs and faders, but would include 
+            decks similar to those on an actual turn table and a crossfader. Other MIDI controllers may come in the form of piano style keyboards with finger pads for 
+            triggering drums or sound samples. <a href="https://en.wikipedia.org/wiki/MIDI_controller" target="_blank"> Learn more</a>
+           </p>
+        </dd> 
+        <dt class="hiddenInfo">Buying a Controller</dt>
+        <dd>
+           <p>
+            Most software for audio production make it very easy to configure MIDI controllers. Some even have a learn feature where you can click items 
+            on the screen and associate them with features by moving or pressing the desired control on the controller. This website focuses on Ardour,
+            which has an exhaustive set of features that can be manilpulated via a MIDI controller. Just about everything you can do in Ardour with a mouse, 
+            you can control via MIDI. Ardour comes preinstalled with many MIDI maps ready to use. If your particular controller is not listed, creating a map is 
+            relatively simple by creating a file using XML syntax. 
+            <br><br>
+            Check out MIDI controllers by
+            <a href="https://nektartech.com/products/" target="_blank">Nektar</a>
+            <a href="https://www.alesis.com/products/browse/category/midi-controllers" target="_blank">Alesis</a>
+            <a href="https://www.roland.com/us/categories/keyboards/keyboard_controllers/" target="_blank">Roland</a>
+           </p>
+        </dd>         
+        <dt class="hiddenInfo">Setup Information</dt>
+        <dd>
+           <p>
+            When buying a MIDI controller, be sure that it is 'USB Class Compliant'. This means that the device is 'plug and play', meaning it will work
+            without having to install proprietary drivers. <a href="https://www.midi.org/midi-articles/basic-of-usb" target="_blank"> Learn more</a>
+        </p>
+        </dd>          
+     </dl>
+  </nav>
+</section>
+
+<footer id="foot"></footer>
+</body> 
+</html> 

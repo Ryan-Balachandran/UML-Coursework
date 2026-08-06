@@ -1,0 +1,17 @@
+#go_back:link{ color: white; text-decoration: none; }
+#go_back:visited{ color: black; }
+#go_back:hover{ 
+     color: rgb(255, 255, 255); 
+     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+} 
+
+#go_back{
+     background-color: rgba(0, 128, 0, 0.729);
+     border: 2px solid blue;
+     border-radius: 30px;
+     padding: 10px;
+     font-size: 1.5em;
+     transition: 0.4s;
+}
+
+

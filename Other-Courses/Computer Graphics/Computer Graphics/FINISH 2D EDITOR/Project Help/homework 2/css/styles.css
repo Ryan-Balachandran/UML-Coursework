@@ -1,0 +1,215 @@
+/* TODO Replace fonts with Bitter (Heading serif) and Raleway (Body sans-serif)*/
+
+/* ---------------------------------- */
+/* Global Styles */
+/* ---------------------------------- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Nixie One', sans-serif;
+  font-weight: 300;
+  color: #4D4946;
+}
+
+body.home {
+  background: -webkit-linear-gradient(60deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), -webkit-linear-gradient(-60deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), -webkit-linear-gradient(60deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), -webkit-linear-gradient(-60deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), -webkit-linear-gradient(30deg, rgb(187,187,187) 25%, rgba(0,0,0,0) 25.5%, rgba(0,0,0,0) 75%, rgb(187,187,187) 75%, rgb(187,187,187) 0), -webkit-linear-gradient(30deg, rgb(187,187,187) 25%, rgba(0,0,0,0) 25.5%, rgba(0,0,0,0) 75%, rgb(187,187,187) 75%, rgb(187,187,187) 0), rgb(170, 170, 170);
+  background: -webkit-linear-gradient(60deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), -webkit-linear-gradient(300deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), -webkit-linear-gradient(60deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), -webkit-linear-gradient(300deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), -webkit-linear-gradient(30deg, rgb(187,187,187) 25%, rgba(0,0,0,0) 25.5%, rgba(0,0,0,0) 75%, rgb(187,187,187) 75%, rgb(187,187,187) 0), -webkit-linear-gradient(30deg, rgb(187,187,187) 25%, rgba(0,0,0,0) 25.5%, rgba(0,0,0,0) 75%, rgb(187,187,187) 75%, rgb(187,187,187) 0), rgb(170, 170, 170);
+  background: linear-gradient(30deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), linear-gradient(150deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), linear-gradient(30deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), linear-gradient(150deg, rgb(153,153,153) 12%, rgba(0,0,0,0) 12.5%, rgba(0,0,0,0) 87%, rgb(153,153,153) 87.5%, rgb(153,153,153) 0), linear-gradient(60deg, rgb(187,187,187) 25%, rgba(0,0,0,0) 25.5%, rgba(0,0,0,0) 75%, rgb(187,187,187) 75%, rgb(187,187,187) 0), linear-gradient(60deg, rgb(187,187,187) 25%, rgba(0,0,0,0) 25.5%, rgba(0,0,0,0) 75%, rgb(187,187,187) 75%, rgb(187,187,187) 0), rgb(170, 170, 170);
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  background-origin: padding-box;
+  background-clip: border-box;
+  background-size: 80px 140px;
+  -webkit-box-shadow: none;
+  -webkit-transition: none;
+  transition: none;
+  -webkit-transform: none;
+  -ms-transform: none;
+      transform: none;
+  -webkit-transform-origin: 50% 50% 0;
+  -ms-transform-origin: 50% 50% 0;
+      transform-origin: 50% 50% 0;
+}
+
+h1 {
+  font-family: 'Open Sans', serif;
+  font-size: 101px;
+  margin-bottom: 40px;
+}
+
+header, section, footer {
+  padding: 100px 150px;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+section h1,
+footer h1 {
+  text-transform: lowercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* ---------------------------------- */
+/* Header */
+/* ---------------------------------- */
+
+header {
+  background: #CECCCC;
+  padding-top: 200px;
+}
+
+header h1 {
+  font-size: 124px;
+}
+
+header h2 {
+  font-size: 34px;
+}
+
+
+/* ---------------------------------- */
+/* Nav */
+/* ---------------------------------- */
+
+
+nav {
+  background: #CECCCC;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  text-align: right;
+  box-shadow: 0px 3px 3px 0px rgba(195,189,189,1);
+}
+
+nav a {
+  margin: 10px;
+  padding: 15px;
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #4D4946;
+}
+
+nav a:hover {
+  background: #9D6381;
+  color: #CECCCC;
+  border-radius: 4px;
+}
+
+
+/* ---------------------------------- */
+/* Section */
+/* ---------------------------------- */
+
+section li {
+  display: inline-block;
+  margin: 10px;
+  padding: 16px;
+  font-size: 1.1em;
+  border: 1px solid #9D6381;
+  border-radius: 5px;
+  width: 230px;
+  text-align: center;
+  -webkit-transition: background-color 0.5s ease;
+          transition: background-color 0.5s ease;
+}
+
+section li a {
+  color: #9D6381;
+}
+
+section li:hover {
+  background: #9D6381;
+}
+
+section li:hover a {
+  color: #fff;
+}
+
+/* ---------------------------------- */
+/* Assignments */
+/* ---------------------------------- */
+
+.assignments {
+  background: #fff;
+}
+
+/*.assignments a {
+  color: #4D4946;
+}*/
+
+/* ---------------------------------- */
+/* Experiments */
+/* ---------------------------------- */
+
+.experiments {
+  background: rgba(97, 41, 64, 0.7);
+  color: #fff;
+}
+
+.experiments li {
+  border: 1px solid #fff;
+}
+
+.experiments a {
+  color: #fff;
+}
+
+section.experiments li:hover {
+  background: #fff;
+}
+
+section.experiments li:hover a {
+  color: #9D6381;
+}
+
+
+
+/* ---------------------------------- */
+/* Contact */
+/* ---------------------------------- */
+
+.contact-circle {
+  color: #A09D9D;
+}
+
+.contact-icon {
+  color: #000;
+}
+
+.contact-icon:hover {
+  color: rgba(97, 41, 64, 0.95);
+}
+
+/* ---------------------------------- */
+/* Footer */
+/* ---------------------------------- */
+
+footer {
+  background: #0F110C;
+  color: #CECCCC;
+  text-align: center;
+}
+
+
+/* ---------------------------------- */
+/* Utilities */
+/* ---------------------------------- */
+
+strong, a {
+  color: #9D6381;
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- TemplateBeginEditable name="doctitle" -->
+		<title>Dragonomica - Home</title>
+		<!-- TemplateEndEditable -->
+		<meta name="description" content="Ryan Balachandran's Final Project!">
+		<meta name="keywords" content="Final project dragon website">
+		<meta name="created" content="2023-10-124">   
+		<meta name="author" content="Ryan Balachandran">	
+		
+		<link href="../Final_Project/css/index.css" rel="stylesheet" type="text/css">
+		<script src="../Final_Project/javascript/tab.js" defer></script> 
+
+		<link href="https://fonts.cdnfonts.com/css/apple-chancery" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<style>
+			body{ background-image: url(../Final_Project/images/backgrounds/fantasytree.jpg) }
+			
+			.zoom{
+				float: right;
+				margin: 10px 25px;
+			}
+		</style>
+	<!-- TemplateBeginEditable name="head" -->
+	<!-- TemplateEndEditable -->
+	</head>
+
+	<body>
+		<div id="wrapper">
+			<!-- TemplateBeginEditable name="header" -->
+			<header role="banner"> 
+				<img title="dragonicon" alt="dragon icon" id="logo1" src="../Final_Project/images/bluedragon1.png" width="200px" height="200px"> 
+				<img title="dragonicon" alt="dragon icon" id="logo2" src="../Final_Project/images/bluedragon2.png" width="200px" height="200px">
+				<h1 id="title"><a href="../Final_Project/index.html">Dragonomica</a></h1>
+				<h2 id="subtitle"><a href="../Final_Project/index.html">An Introduction To Dragons</a></h2>
+			</header>
+			<!-- TemplateEndEditable -->
+			
+<!--
+			<div id="main_nav">
+				<div id="dragonomica"><a href="#" class="active_tab">Dragonomica</a></div>
+				<div id="book_of_dragons"><a href="#">Book of Dragons</a></div>
+			</div>
+-->
+			
+			<!-- ADD A CLASS TO EVERY IMAGE TO MAKE AN OVERLAY OF THEM -->
+               <!-- Try to keep dropdown menu open when visiting links contained within menu -->
+			<!-- TemplateBeginEditable name="sidenav" -->
+			<div id="sidenav" role="navigation"> 
+				<a href="../Final_Project/index.html" class="active_tab">Home</a>
+				<button class="dropdown-btn">About Dragons <i class="fa fa-caret-down"></i></button>
+				<div class="dropdown-container"> 
+					<a href="../Final_Project/DragonH_L.html">Dragon History and Lore</a> 
+					<a href="../Final_Project/DragonsVWyverns.html">Dragons Vs. Wyverns</a> 
+					<a href="../Final_Project/DragonSpecies.html">Dragon Species</a> 
+					<a href="../Final_Project/DragonH&B.html">Dragon Habits and Behaviors</a> 
+					<a href="../Final_Project/DragonChar.html">Dragon Characteristics</a> 
+				<a href="../Final_Project/Dragontaming.html">Dragon Taming</a> </div>
+				<a href="../Final_Project/Aboutme.html">About Me</a> 
+				<a href="../Final_Project/Contact.html">Contact me</a> 
+			</div>
+               <!-- TemplateEndEditable -->
+			
+			<!-- TemplateBeginEditable name="content" -->
+			<div id="content">
+				<h3>Title</h3>
+				<p>Text</p>
+			</div>
+               <!-- TemplateEndEditable -->
+			
+			<!-- TemplateBeginEditable name="footer" -->
+			<footer> Copyright &copy; 2023 Ryan Balachandran<br>
+<!--
+                    <address>
+                         22 19th Avenue &bull;
+                         Haverhill, MA, 01830 &bull;
+                         (978) 245 - 6415
+                     </address>
+-->
+				<a href="mailto:Ryan_Balachandran@student.uml.edu" tabindex="-1">Ryan_Balachandran@student.uml.edu</a> <br>
+				<a href="#"><i class="fa fa-home fa-2x">&#8593;</i></a> 
+			</footer>
+               <!-- TemplateEndEditable --></div>
+	</body>
+</html>

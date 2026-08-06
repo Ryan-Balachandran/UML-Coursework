@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <title>Thermostat Control</title>
+          <script src="script.js"></script>
+
+          <script>
+               document.getElementById('temperatureInput').addEventListener('input', function() {
+                    var temperature = document.getElementById('temperatureInput').value;
+                    updateThermostat(temperature);
+               });
+
+               function updateThermostat(temperature) {
+                    var statusMessage = document.getElementById('statusMessage');
+               
+                    if (temperature < 50) {
+                         statusMessage.textContent = 'Heat is turned on';
+                    // Code to activate the heating system
+                    } else if (temperature > 75) {
+                         statusMessage.textContent = 'Cooling is turned on';
+                    // Code to activate the cooling system
+                    } else {
+                         statusMessage.textContent = '';
+                    // Code to deactivate both heating and cooling systems
+                    }
+               }
+          </script>
+     </head>
+     
+     <body>
+          <h1>Thermostat Control</h1>
+          <input type="number" id="temperatureInput" min="0" max="100" value="70">
+          <p id="statusMessage"></p>
+     </body>
+</html>
+

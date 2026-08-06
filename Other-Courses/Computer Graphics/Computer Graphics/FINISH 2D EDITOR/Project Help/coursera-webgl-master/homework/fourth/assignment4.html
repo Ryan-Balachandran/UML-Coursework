@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Nixie+One|Open+Sans:300italic,300,700|Pacifico' rel='stylesheet' type='text/css'>
+	<meta charset="UTF-8">
+  <title>Daniela Baron | Assignment 4 | Coursera WebGL</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/assignment.css">
+
+  <script id="vertex-shader-2" type="x-shader/x-vertex">
+
+  // vertex data
+  attribute vec4 vPosition;
+  attribute vec3 vNormal;
+
+  // camera settings
+  uniform mat4 modelViewMatrix;
+  uniform mat4 projectionMatrix;
+  uniform mat3 normalMatrix;
+
+  // lighting
+  const int cNumLight = 2;
+  uniform vec4 lightPosition[cNumLight];
+  varying vec3 N, E;
+  varying vec3 L[cNumLight];
+
+  void main() {
+
+    vec3 pos = (modelViewMatrix * vPosition).xyz;
+
+    // lighting
+    for (int i=0; i < cNumLight; i++) {
+      if(lightPosition[i].w == 0.0)  L[i] = normalize(lightPosition[i].xyz);
+      else  L[i] = normalize(lightPosition[i].xyz - pos);
+    }
+
+    E =  -normalize(pos);
+    N = normalize( normalMatrix*vNormal.xyz);
+
+    // apply matricies to the vertex
+    gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+  }
+  </script>
+
+  <script id="fragment-shader-2" type="x-shader/x-fragment">
+  precision mediump float;
+
+  const int cNumLight = 2;
+  uniform vec4 ambientProduct[cNumLight];
+  uniform vec4 diffuseProduct[cNumLight];
+  uniform vec4 specularProduct[cNumLight];
+  uniform float shininess;
+  uniform float attenuationA;
+  uniform float attenuationB;
+
+  varying vec3 N, E;
+  varying vec3 L[cNumLight];
+
+  void main() {
+    vec4 fColor;
+    vec3 H[cNumLight];
+    vec4 ambient[cNumLight];
+    float Kd[cNumLight];
+    vec4 diffuse[cNumLight];
+    float Ks[cNumLight];
+    vec4 specular[cNumLight];
+
+    for (int i=0; i < cNumLight; i++) {
+      H[i] = normalize( L[i] + E );
+      ambient[i] = ambientProduct[i];
+      Kd[i] = max( dot(L[i], N), 0.0 );
+      diffuse[i] = Kd[i] * diffuseProduct[i];
+      Ks[i] = pow( max(dot(N, H[i]), 0.0), shininess );
+      specular[i] = Ks[i] * specularProduct[i];
+      if( dot(L[i], N) < 0.0 ) specular[i] = vec4(0.0, 0.0, 0.0, 1.0);
+    }
+
+    fColor = ambient[0] + attenuationA * (diffuse[0] + specular[0]) +
+      ambient[1] + attenuationB * (diffuse[1] + specular[1]);
+    fColor.a = 1.0;
+
+    gl_FragColor = clamp(fColor, vec4(0,0,0,1), vec4(1,1,1,1));
+  }
+  </script>
+
+  <script id="vertex-shader-1" type="x-shader/x-vertex">
+
+  // vertex data
+  attribute vec4 vPosition;
+  attribute vec3 vNormal;
+
+  // camera settings
+  uniform mat4 modelViewMatrix;
+  uniform mat4 projectionMatrix;
+
+  // lighting
+  uniform vec4 lightPosition;
+  uniform mat3 normalMatrix;
+  varying vec3 N, L, E;
+
+  void main() {
+    // lighting
+    vec3 light;
+    vec3 pos = (modelViewMatrix * vPosition).xyz;
+    if(lightPosition.w == 0.0)  L = normalize(lightPosition.xyz);
+    else  L = normalize(lightPosition.xyz - pos);
+    E =  -normalize(pos);
+    N = normalize( normalMatrix*vNormal.xyz);
+    // apply matricies to the vertex
+    gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+  }
+  </script>
+
+  <script id="fragment-shader-1" type="x-shader/x-fragment">
+  precision mediump float;
+
+  uniform vec4 ambientProduct;
+  uniform vec4 diffuseProduct;
+  uniform vec4 specularProduct;
+  uniform float shininess;
+  uniform float attenuation;
+
+  varying vec3 N, L, E;
+
+  void main() {
+    vec4 fColor;
+    vec3 H = normalize( L + E );
+    vec4 ambient = ambientProduct;
+    float Kd = max( dot(L, N), 0.0 );
+    vec4  diffuse = Kd*diffuseProduct;
+    float Ks = pow( max(dot(N, H), 0.0), shininess );
+    vec4  specular = Ks * specularProduct;
+    if( dot(L, N) < 0.0 ) specular = vec4(0.0, 0.0, 0.0, 1.0);
+
+    fColor = ambient + attenuation * (diffuse + specular);
+    fColor.a = 1.0;
+
+    gl_FragColor = fColor;
+  }
+  </script>
+
+  <!--  WebGL Utils -->
+  <script type="text/javascript" src="../../Common/webgl-utils.js"></script>
+  <script type="text/javascript" src="../../Common/initShaders.js"></script>
+  <script type="text/javascript" src="../../Common/flatten.js"></script>
+  <script type="text/javascript" src="../../Common/MV.js"></script>
+
+  <!--  App Utils -->
+  <script type="text/javascript" src="dom-utils.js"></script>
+  <script type="text/javascript" src="color-utils.js"></script>
+  <script type="text/javascript" src="coord-utils.js"></script>
+  <script type="text/javascript" src="light.js"></script>
+
+  <!-- Shapes -->
+  <script type="text/javascript" src="shapes/shape-common.js"></script>
+  <script type="text/javascript" src="shapes/tetrahedron.js"></script>
+  <script type="text/javascript" src="shapes/sphere.js"></script>
+  <script type="text/javascript" src="shapes/cylinder.js"></script>
+  <script type="text/javascript" src="shapes/cone.js"></script>
+  <script type="text/javascript" src="shapes/cube.js"></script>
+  <script type="text/javascript" src="shape.js"></script>
+
+  <!-- App -->
+  <script type="text/javascript" src="assignment4.js"></script>
+</head>
+
+<body class="assignment assignment-four">
+
+  <!--[if lt IE 9]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <nav>
+    <div class="sub-nav">
+      <a href="#">Assignment 4 Lighting</a>
+    </div>
+		<a href="../../index.html#assignments">Assignments</a>
+		<a href="../../index.html#experiments">Experiments</a>
+		<a href="../../index.html">Home</a>
+	</nav>
+
+  <div id="toolbar" class="toolbar">
+
+    <!-- sphere -->
+    <button id="shapeSphere" data-shape="Sphere" title="create a new sphere" class="button button-mini">
+      <i id="shapeSphereIcon" data-shape="Sphere" class="fa fa-fw fa-adjust"></i>
+    </button>
+    <!-- cylinder -->
+    <button id="shapeCylinder" data-shape="Cylinder" title="create a new cylinder" class="button button-mini">
+      <i id="shapeCylinderIcon" data-shape="Cylinder" class="fa fa-fw fa-database"></i>
+    </button>
+    <!-- cone -->
+    <button id="shapeCone" data-shape="Cone" title="create a new cone" class="button button-mini">
+      <i id="shapeConeIcon" data-shape="Cone" class="fa fa-fw fa-chevron-up"></i>
+    </button>
+    <!-- tetrahedron -->
+    <button id="shapeTetrahedron" data-shape="Tetrahedron" title="create a new tetrahedron" class="button button-mini">
+      <i id="shapeTetrahedronIcon" data-shape="Tetrahedron" class="fa fa-fw fa-connectdevelop"></i>
+    </button>
+    <!-- cube -->
+    <button id="shapeCube" data-shape="Cube" title="create a new cube" class="button button-mini">
+      <i id="shapeCubeIcon" data-shape="Cube" class="fa fa-fw fa-cube"></i>
+    </button>
+
+    <div class="toolbar-spacer"></div>
+
+    <!-- manage shapes -->
+    <select name="manageShapes" id="manageShapes" class="toolbar-select"></select>
+
+    <div class="toolbar-spacer"></div>
+
+    <!-- clear all -->
+    <button id="clearAll" title="remove all shape" class="button button-mini">
+      <i id="clearAllIcon" class="fa fa-fw fa-trash"></i>
+    </button>
+
+  </div>
+
+  <div class="canvas-container">
+    <canvas id="gl-canvas">
+      Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+  </div>
+
+  <div id="sideControls" class="settings side-controls">
+
+    <div id="shapeSettings" class="">
+
+      <!-- material -->
+      <div class="group-settings">
+        <div class="form-group">
+          <label for="shapeColor">Ambient</label>
+          <input type="color" name="shapeColor" id="shapeColor" value="#ff0000">
+        </div>
+        <div class="form-group">
+          <label for="materialDiffuse">Diffuse</label>
+          <input type="color" name="materialDiffuse" id="materialDiffuse" value="#ffffff">
+          <label for="materialSpecular" class="label-right">Specular</label>
+          <input type="color" name="materialSpecular" id="materialSpecular" value="#ffffff">
+        </div>
+        <div class="form-group">
+          <label for="materialShininess">Shininess</label>
+          <input type=range id=materialShininess min=1.0 value=10.0 max=50.0 step=1.0 oninput="outputMaterialShininess(value)">
+          <output for=materialShininess id=mshiny>10.0</output>
+        </div>
+      </div> <!--//material-->
+
+      <!-- model -->
+      <div class="group-settings">
+
+        <!-- rotate -->
+        <div class="form-group">
+          <label for="rotateX">Rotate X</label>
+          <input type=range id=rotateX min=-180 value=45 max=180 step=15 oninput="outputRX(value)">
+          <output for=rotateX id=rxv>45</output>
+        </div>
+        <div class="form-group">
+          <label for="rotateY">Rotate Y</label>
+          <input type=range id=rotateY min=-180 value=0 max=180 step=15 oninput="outputRY(value)">
+          <output for=rotateY id=ryv>0</output>
+        </div>
+        <div class="form-group">
+          <label for="rotateZ">Rotate Z</label>
+          <input type=range id=rotateZ min=-180 value=0 max=180 step=15 oninput="outputRZ(value)">
+          <output for=rotateZ id=rzv>0</output>
+        </div>
+
+        <!-- scale -->
+        <div class="form-group">
+          <label for="scaleX">Scale X</label>
+          <input type=range id=scaleX min=0.1 value=0.9 max=5.0 step=0.1 oninput="outputSX(value)">
+          <output for=scaleX id=sxv>0.9</output>
+        </div>
+        <div class="form-group">
+          <label for="scaleY">Scale Y</label>
+          <input type=range id=scaleY min=0.1 value=1.0 max=5.0 step=0.1 oninput="outputSY(value)">
+          <output for=scaleY id=syv>1.0</output>
+        </div>
+        <div class="form-group">
+          <label for="scaleZ">Scale Z</label>
+          <input type=range id=scaleZ min=0.1 value=1.0 max=5.0 step=0.1 oninput="outputSZ(value)">
+          <output for=scaleZ id=szv>1.0</output>
+        </div>
+
+        <!-- translate -->
+        <div class="form-group">
+          <label for="translateX">Translate X</label>
+          <input type=range id=translateX min=-3.0 value=0 max=3.0 step=0.1 oninput="outputTX(value)">
+          <output for=translateX id=txv>0</output>
+        </div>
+        <div class="form-group">
+          <label for="translateY">Translate Y</label>
+          <input type=range id=translateY min=-3.0 value=0 max=3.0 step=0.1 oninput="outputTY(value)">
+          <output for=translateY id=tyv>0</output>
+        </div>
+        <div class="form-group">
+          <label for="translateZ">Translate Z</label>
+          <input type=range id=translateZ min=-3.0 value=1.5 max=3.0 step=0.1 oninput="outputTZ(value)">
+          <output for=translateZ id=tzv>1.5</output>
+        </div>
+      </div><!--//model-->
+
+    </div><!--//shape settings-->
+
+    <!-- light 1 -->
+    <div id="lightSettings1" class="group-settings">
+      <div class="form-group">
+        <input type="checkbox" id="lightSwitch" name="lightSwitch" value="lightSwitch" checked>
+        <label for="lightSwitch">Light 1</label>
+        <input type="checkbox" id="lightAnimated" name="lightAnimated" value="lightAnimated" checked>
+        <label for="lightAnimated">Animated</label>
+      </div>
+      <div class="form-group">
+        <label for="lightAmbient">Ambient</label>
+        <input type="color" name="lightAmbient" id="lightAmbient" value="#ffffff">
+      </div>
+      <div class="form-group">
+        <label for="lightDiffuse">Diffuse</label>
+        <input type="color" name="lightDiffuse" id="lightDiffuse" value="#ffffff">
+        <label for="lightSpecular" class="label-right">Specular</label>
+        <input type="color" name="lightSpecular" id="lightSpecular" value="#ffffff">
+      </div>
+      <div class="form-group">
+        <label for="lightDistance">Distance</label>
+        <input type=range id=lightDistance min=0.0 value=0.0 max=3.0 step=0.1 oninput="outputLightDistance(value)">
+        <output for=lightDistance id=ldz>0.0</output>
+      </div>
+    </div><!--//lightSettings1-->
+
+    <!-- light 2 -->
+    <div id="lightSettings2" class="group-settings">
+      <div class="form-group">
+        <input type="checkbox" id="lightSwitch2" name="lightSwitch2" value="lightSwitch2">
+        <label for="lightSwitch">Light 2</label>
+        <input type="checkbox" id="lightAnimated2" name="lightAnimated2" value="lightAnimated">
+        <label for="lightAnimated2">Animated</label>
+      </div>
+      <div class="form-group">
+        <label for="lightAmbient">Ambient</label>
+        <input type="color" name="lightAmbient2" id="lightAmbient2" value="#333333">
+      </div>
+      <div class="form-group">
+        <label for="lightDiffuse">Diffuse</label>
+        <input type="color" name="lightDiffuse" id="lightDiffuse2" value="#ffffff">
+        <label for="lightSpecular" class="label-right">Specular</label>
+        <input type="color" name="lightSpecular2" id="lightSpecular2" value="#ffffff">
+      </div>
+      <div class="form-group">
+        <label for="lightDistance2">Distance</label>
+        <input type=range id=lightDistance2 min=0.0 value=0.0 max=3.0 step=0.1 oninput="outputLightDistance2(value)">
+        <output for=lightDistance2 id=ldz2>0.0</output>
+      </div>
+    </div><!--//lightSettings2-->
+
+  </div><!--//side-controls-->
+
+  <script>
+  var outputRX = function(value) {
+    document.querySelector('#rxv').value = value;
+  }
+  var outputRY = function(value) {
+    document.querySelector('#ryv').value = value;
+  }
+  var outputRZ = function(value) {
+    document.querySelector('#rzv').value = value;
+  }
+  var outputSX = function(value) {
+    document.querySelector('#sxv').value = value;
+  }
+  var outputSY = function(value) {
+    document.querySelector('#syv').value = value;
+  }
+  var outputSZ = function(value) {
+    document.querySelector('#szv').value = value;
+  }
+  var outputTX = function(value) {
+    document.querySelector('#txv').value = value;
+  }
+  var outputTY = function(value) {
+    document.querySelector('#tyv').value = value;
+  }
+  var outputTZ = function(value) {
+    document.querySelector('#tzv').value = value;
+  }
+  var outputLightDistance = function(value) {
+    document.querySelector('#ldz').value = value;
+  }
+  var outputLightDistance2 = function(value) {
+    document.querySelector('#ldz2').value = value;
+  }
+  var outputMaterialShininess = function(value) {
+    document.querySelector('#mshiny').value = value;
+  }
+  </script>
+
+</body>
+</html>

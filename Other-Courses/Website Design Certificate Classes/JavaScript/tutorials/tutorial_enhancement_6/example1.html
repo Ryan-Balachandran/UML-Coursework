@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <title>Simple Form Validation in HTML and Javascript</title>
+     </head>
+     <body>
+          <form id="form" method="post">
+               <div id="message"></div>
+               <input type="text" id="username" placeholder="Username" required/><br><br>
+               <input type="password" id="password" placeholder="Password" required/><br><br>
+               <input type="submit" value="Register"/>
+          </form>
+     </body>
+     <script>
+          // targeting the form binding a event listern
+
+          var form = document.getElementById("form");
+          var error = [];
+          var success = "";
+
+          form.addEventListener('submit', function(e) {
+               e.preventDefault(); // prevent the auto submission of the form
+               // alert("form is submitted")
+
+               var username = document.getElementById("username");
+               var password = document.getSelection("password");
+
+               if(username.value == "") {
+                    error.push("Please enter the username");
+               }
+               
+               if(password.value == "") {
+                    error.push("Please enter the password");
+               }
+
+               alert("Form is submitted");
+
+               var message = document.getElementById("message");
+               message.innerText = error;
+          }) 
+     </script>
+</html>

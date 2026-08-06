@@ -1,0 +1,179 @@
+* { box-sizing: border-box; }
+
+html{
+     margin: 0;
+     height: 100%;
+}
+
+#wrapper{ 
+     width: 80%;
+     margin-right: auto;
+     margin-left: auto;
+     min-width: 1000px;   
+}    
+
+#dragon1{ float: right; }
+#dragon2{ float: left; }
+
+h1{
+     font-size: 5em;
+     text-align: center;
+     font-family: cursive;
+     color: #0C851E;
+     color: #7AC959;
+
+     letter-spacing: 5px;
+     text-shadow: 3px 2px 3px black;
+}
+
+h2{
+     font-size: 2em;
+     font-family: cursive;
+     color: #EF5310;
+     text-align: center;
+     position: relative;
+     top: -50px;
+     text-shadow: 2px 2px 2px black;
+}
+
+h3{
+     font-family: cursive;
+     color: #1eff0a;
+     text-align: left;
+     font-size: 2em;
+     margin-left: 25px;
+}
+
+#content{
+     padding-left: 5px;
+     margin-left: 190px;
+     margin-top: -30px;
+     padding-bottom: 200px;
+     background-color: #000000;
+     opacity: .8;
+     border: 2px solid #1eff0a;
+}
+
+.sidenav{
+     z-index: 1;
+     margin-top: -30px;
+     margin-right: auto;
+     width: 192px;
+     float: left;
+     position: sticky; 
+     top: 0;
+     opacity: .8;
+     background-color: #000000;
+     border: 2px solid #1eff0a;
+     overflow-x: hidden;
+     padding-top: 10px;
+     padding-bottom: 10px;
+}
+
+.sidenav a, .dropdown-btn{
+     font-family: 'Times New Roman', Times, serif;
+     padding: 6px 8px 6px 18px;
+     text-decoration: none;
+     font-size: 23px;
+     color: #1eff0a;
+     display: block;
+     border: none;
+     background: none;
+     width: 100%;
+     text-align: left;
+     cursor: pointer;
+     outline: none;
+}
+
+.sidenav a:hover, .dropdown-btn:hover{
+     color: white;
+}
+
+.sidenav .active_tab{
+     color: red;
+}
+
+.active {
+     background-color: green;
+     color: white;
+}
+
+/* Turn dropdown arrow left when not active */
+.fa{
+     transform: rotate(90deg);
+     transition: 0.3s;
+}
+
+/* Turn dropdown arrow down when active */
+.active .fa{
+     transform: rotate(0deg);
+}
+
+.dropdown-container {
+     display: none;
+     background-color: #1a3d44;
+     padding-left: 8px;
+}
+
+/* When tabbing */
+a:focus, .dropdown-btn:focus{
+     background-color: gray;
+}
+
+/*  Dragon cursor when hovering over links*/
+/* a:hover{
+     cursor: url("https://downloads.totallyfreecursors.com/cursor_files/dragon3.ani"), 
+     url("https://downloads.totallyfreecursors.com/thumbnails/dragon3.gif"), auto;
+} */
+
+/* html,body{
+     cursor: url("https://downloads.totallyfreecursors.com/cursor_files/dragon3.ani"), 
+     url("https://downloads.totallyfreecursors.com/thumbnails/dragon3.gif"), auto;
+} */
+     
+p{
+     color: #ffffff;
+     margin-left: 25px;
+     font-family: "Times New Roman";
+     margin-right: 25px;
+     font-size: 1.2em;
+     margin-top: -20px;
+}
+
+ul{
+     color: #ffffff;
+     padding-left: 60px;
+     padding-right: 20px;;
+     font-size: 1.2em;
+     font-family: "Times New Roman";
+     margin-top: -20px;
+}
+
+footer a:link{ color: #4CFF00; text-decoration: none; }
+footer a:visited{ color: red; }
+footer a:hover{ color: white; text-decoration: underline; } 
+
+li a:link{ color: #4CFF00; text-decoration: none; }
+li a:visited{ color: red; }
+li a:hover{ color: white; text-decoration: underline; } 
+
+footer{
+     clear: both;
+     text-align: center;
+     padding-bottom: 10px;
+     padding-top: 10px;
+     border: 2px solid red;
+     background-color: #232323;
+     opacity: .7;
+     color: #4CFF00;
+}
+
+.species:nth-child(even){
+     float: right;
+     margin: 70px 20px 20px 10px;
+}
+
+.species:nth-child(odd){
+     float: left;
+     margin: 70px 40px 20px 20px;
+}

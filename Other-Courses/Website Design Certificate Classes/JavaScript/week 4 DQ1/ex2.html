@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title>Alarm Clock</title>
+          <style>
+               body {
+                    background-color: white;
+               }
+               
+               button {
+                    font-size: 1.5em;
+                    padding: 1em;
+                    margin: 0.5em;
+               }
+          </style>
+     </head>
+
+     <body>
+          <h1>Alarm Clock</h1>
+          <button id="set-alarm">Set Alarm</button>
+          <button id="cancel-alarm">Cancel Alarm</button>
+          <audio id="alarm-sound" src="path/to/alarm/sound.mp3"></audio>
+
+          <script>
+               const setAlarmButton = document.getElementById('set-alarm');
+               const cancelAlarmButton = document.getElementById('cancel-alarm');
+               const alarmSound = document.getElementById('alarm-sound');
+               let alarmTime, alarmTimer;
+
+               function setAlarm() {
+                    const alarmInput = prompt('Enter alarm time (HH:MM AM/PM)');
+                    if (alarmInput) 
+                    {
+                         const [hour, minute, period] = alarmInput.split(/:|\s/);
+                         alarmTime = new Date();
+                         alarmTime.setHours(period === 'PM' ? parseInt(hour, 10) + 12 : parseInt(hour, 10));
+                         alarmTime.setMinutes(parseInt(minute, 10));
+                         alarmTime.setSeconds(0);
+                         alarmTime.setMilliseconds(0);
+                         const timeDiff = alarmTime - new Date();
+
+                         alarmTimer = setTimeout(() => {
+                              alarmSound.play();
+                              document.body.style.backgroundColor = 'red';
+                         }, timeDiff);
+                    }
+               }
+
+               function cancelAlarm() {
+                    clearTimeout(alarmTimer);
+                    alarmTime = null;
+                    alarmSound.pause();
+                    alarmSound.currentTime = 0;
+                    document.body.style.backgroundColor = 'white';
+
+               }
+
+               setAlarmButton.addEventListener('click', setAlarm);
+               cancelAlarmButton.addEventListener('click', cancelAlarm);
+          </script>
+     </body>
+</html>

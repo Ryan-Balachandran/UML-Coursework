@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     </head>
+     
+     <body>
+          <h1>setInterval() - Javascript - dcode</h1>
+          <h2 id="timer-text">0</h2>
+          <button id="btn-start">Start Timer</button>
+          <button id="btn-pause">Pause Timer</button>
+
+
+          <script type="text/javascript">
+               const timerText = document.getElementById("timer-text");
+               const btnStart = document.getElementById("btn-start");
+               const btnPause = document.getElementById("btn-pause");
+
+               let count = 0;
+               let intervalID;
+
+               btnStart.addEventListener("click", function() {
+                    intervalID = setInterval(function() {
+                         count += 1;
+                         timerText.textContent = count;
+                    }, 1000);
+               });
+
+               btnPause.addEventListener("click", function() {
+                    clearInterval(intervalID);
+               });
+          </script>
+     </body>
+</html>

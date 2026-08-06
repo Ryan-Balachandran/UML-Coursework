@@ -1,0 +1,84 @@
+html, body{
+    padding: 0px;
+    margin: 0px;
+    height: auto;
+}
+
+.canvas-container{
+    height: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.ui-button{
+    border-style: none;
+    padding: 20px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 40px;
+    box-shadow: 0px 8px 0px 0px #0191AB;
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    color: white;
+    background-color: #02D6FD;
+    user-select: none;
+}
+
+.ui-button:active{
+    box-shadow: 0px 0px 0px -2px #0191AB;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.ui-button:focus{
+    outline: none;
+}
+
+.ui-button:hover{
+    cursor: pointer;
+}
+
+#clear-button{
+    background-color: #FE5B62;
+    text-decoration: none;
+    box-shadow: 0px 8px 0px 0px #A93035;
+}
+
+#clear-button:active{
+    box-shadow: 0px 0px 0px -2px #A93035;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.tf-buttons{
+    height: auto;
+    display: block;
+}
+
+.tf-button:active{
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+.canvas-title{
+    font-size: 2vmax;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: bolder;
+    text-align: center;
+    text-shadow: 0px 4px 0px #02D6FD;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+#myCanvas{
+    display: inline-block;
+    position: relative;
+    border: 0px solid #c3c3c3;
+    box-shadow: inset 0px 0px 15px 6px rgba(0, 0, 0, 0.25);
+}
+
+.tf-buttons{
+    padding: 0px;
+}
