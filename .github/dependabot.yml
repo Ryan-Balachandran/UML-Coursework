@@ -79,6 +79,15 @@ updates:
       - "dependencies"
       - "github-actions"
 
+automerged_updates:
+  - match:
+      update_type: "semver:patch"
+    merge_method: "squash"
+  - match:
+      update_type: "semver:minor"
+      dependency_type: "direct:production"
+    merge_method: "squash"
+
 # General notes:
 # - Dependabot will open PRs for version updates. Review PRs before merging.
 # - Consider enabling auto-merge for low-risk (patch/minor) updates or enabling GitHub's "Dependabot security updates" in repository settings.
