@@ -86,7 +86,7 @@
     "@commitlint/config-conventional": "^8.0.0",
     "@storybook/addon-options": "^5.1.9",
     "@storybook/addon-storyshots": "^5.1.9",
-    "@storybook/react": "^5.1.9",
+    "@storybook/react": "^10.5.7",
     "autoprefixer": "^9.6.0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
