@@ -1,0 +1,84 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "npm"
+    commit-message:
+      prefix: "chore(deps)"
+
+  - package-ecosystem: "npm"
+    directory: "/Other-Courses/Computer Graphics/FINISH 2D EDITOR/Project Help/react-shape-editor-master"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "npm"
+    commit-message:
+      prefix: "chore(deps)"
+
+  - package-ecosystem: "npm"
+    directory: "/Other-Courses/Computer Graphics/FINISH 2D EDITOR/Project Help/shape-editor-master"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "npm"
+
+  - package-ecosystem: "npm"
+    directory: "/Other-Courses/Computer Graphics/FINISH 2D EDITOR/Project Help/coursera-webgl-master"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "npm"
+
+  - package-ecosystem: "npm"
+    directory: "/Other-Courses/Computer Graphics/FINISH 2D EDITOR/Project Help/homework 2"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "npm"
+
+  - package-ecosystem: "npm"
+    directory: "/Other-Courses/Computer Graphics/FINISH 2D EDITOR/universe/scripts/vendor/planck.js-master"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "npm"
+
+  - package-ecosystem: "pip"
+    directory: "/Other-Courses/Artificial Intelligence/Projects/Final Project/GitHub Battleship Code/understanding_genetic_algorithms"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "chore(deps)"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+
+# General notes:
+# - Dependabot will open PRs for version updates. Review PRs before merging.
+# - Consider enabling auto-merge for low-risk (patch/minor) updates or enabling GitHub's "Dependabot security updates" in repository settings.
