@@ -23,8 +23,8 @@
   "devDependencies": {
     "grunt": "^1.6.3",
     "grunt-contrib-clean": "^0.6.0",
+    "grunt-gh-pages": "^4.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-gh-pages": "^0.10.0",
     "load-grunt-tasks": "^3.2.0"
   }
 }
