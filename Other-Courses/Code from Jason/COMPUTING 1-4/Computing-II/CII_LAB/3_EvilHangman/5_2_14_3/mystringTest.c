@@ -641,7 +641,7 @@ static int test_mystring_push(void)
 
 //	Do another comparision
 	check = 0;
-	strcpy(test, "hellohh");
+	memcpy(test, "hellohh", 7);
 	
 //	CHECK CHAR BY CHAR
 	for(i = 0; i <= 6; i++)
