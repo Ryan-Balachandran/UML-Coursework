@@ -203,32 +203,32 @@ window.onload = function init()
 
     positions[0].oninput = function () 
     {
-        outputs[0].innerHTML = this.value;
+        outputs[0].textContent = this.value;
     }
 
     positions[1].oninput = function () 
     {
-        outputs[1].innerHTML = this.value;
+        outputs[1].textContent = this.value;
     }
 
     positions[2].oninput = function () 
     {
-        outputs[2].innerHTML = this.value;
+        outputs[2].textContent = this.value;
     }
 
     positions[3].oninput = function () 
     {
-        outputs[3].innerHTML = this.value;
+        outputs[3].textContent = this.value;
     }
 
     positions[4].oninput = function () 
     {
-        outputs[4].innerHTML = this.value;
+        outputs[4].textContent = this.value;
     }
 
     positions[5].oninput = function () 
     {
-        outputs[5].innerHTML = this.value;
+        outputs[5].textContent = this.value;
     }
 
     g("pointlock").onclick = function ()
