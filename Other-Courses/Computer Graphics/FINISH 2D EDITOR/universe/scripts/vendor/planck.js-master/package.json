@@ -42,7 +42,7 @@
     "closure-webpack-plugin": "^1.1.1",
     "dtslint": "^0.3.0",
     "expect.js": "*",
-    "express": "^4.13.4",
+    "express": "^5.2.1",
     "handlebars": "^4.0.6",
     "nodemon": "^1.11.0",
     "serve-index": "^1.7.3",
