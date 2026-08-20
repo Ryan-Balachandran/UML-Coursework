@@ -22,7 +22,7 @@
   "homepage": "https://github.com/danielabar/coursera-webgl#readme",
   "devDependencies": {
     "grunt": "^1.6.3",
-    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-clean": "^2.0.1",
     "grunt-gh-pages": "^4.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "load-grunt-tasks": "^5.1.0"
