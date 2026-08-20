@@ -40,7 +40,7 @@
   ],
   "devDependencies": {
     "closure-webpack-plugin": "^1.1.1",
-    "dtslint": "^0.3.0",
+    "dtslint": "^4.2.1",
     "expect.js": "*",
     "express": "^5.2.1",
     "handlebars": "^4.0.6",
