@@ -157,6 +157,8 @@ def getLayout(name, back=2):
 def tryToLoad(fullname):
     if(not os.path.exists(fullname)):
         return None
+    if '..' in fullname:
+        raise Exception('Invalid file path')
     f = open(fullname)
     try:
         return Layout([line.strip() for line in f])
