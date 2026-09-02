@@ -138,14 +138,27 @@ import py_compile
 
 
 def loadModuleFile(moduleName, filePath):
+    if '..' in filePath:
+        raise Exception('Invalid file path')
     with open(filePath, 'r') as f:
         return imp.load_module(moduleName, f, "%s.py" % moduleName, (".py", "r", imp.PY_SOURCE))
 
 
 def readFile(path, root=""):
     "Read file from disk at specified path and return as string"
-    with open(os.path.join(root, path), 'r') as handle:
-        return handle.read()
+    full_path = os.path.join(root, path)
+    if root:
+        base_real = os.path.realpath(root)
+        target_real = os.path.realpath(full_path)
+        if os.path.commonpath([base_real, target_real]) != base_real:
+            raise Exception('Invalid file path')
+        with open(target_real, 'r') as handle:
+            return handle.read()
+    else:
+        if '..' in path:
+            raise Exception('Invalid file path')
+        with open(full_path, 'r') as handle:
+            return handle.read()
 
 
 #######################################################################
