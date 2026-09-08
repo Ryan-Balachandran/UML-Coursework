@@ -1,7 +1,10 @@
 const express = require('express');
+const helmet = require('helmet');
 const app = express();
 const PORT = 80;
 const fs = require('fs');
+
+app.use(helmet());
 
 // serve up files local to the server
 app.use(express.static('.'));
