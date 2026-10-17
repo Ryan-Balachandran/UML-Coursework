@@ -44,7 +44,7 @@
     "expect.js": "*",
     "express": "^5.2.1",
     "handlebars": "^4.0.6",
-    "nodemon": "^1.11.0",
+    "nodemon": "^3.1.14",
     "serve-index": "^1.7.3",
     "sinon": "*",
     "stage-js": "^1.0.2",
